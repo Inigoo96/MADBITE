@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Jakarta EE 10  ·  Servlet 5.0  -->
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                             https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         id="WebApp_ID" version="5.0"
+         metadata-complete="false">
+
+    <display-name>MADBITE Web Application</display-name>
+
+    <!-- ================================================================= -->
+    <!--  1 · LISTENER: crea DataSource, Service-Locator, ObjectMapper ... -->
+    <!-- ================================================================= -->
+    <listener>
+        <listener-class>org.madbite.config.AppBootstrap</listener-class>
+    </listener>
+
+    <!-- ================================================================= -->
+    <!--  2 · FILTROS TRANSVERSALES                                       -->
+    <!-- ================================================================= -->
+
+    <!-- 2-A  CORS para front en GitHub Pages / dominio propio -->
+
+    <filter>
+        <filter-name>CorsFilter</filter-name>
+        <filter-class>org.madbite.filter.CorsFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CorsFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!-- 2-B  JWT → valida token Cognito antes de entrar a /api/* -->
+    <!--
+    <filter>
+        <filter-name>JwtFilter</filter-name>
+        <filter-class>org.madbite.filter.JwtFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>JwtFilter</filter-name>
+        <url-pattern>/api/*</url-pattern>
+    </filter-mapping>
+    -->
+    <!-- 2-C  Logging de peticiones API (opcional) -->
+    <!--
+    <filter>
+        <filter-name>LogApiFilter</filter-name>
+        <filter-class>org.madbite.filter.LogApiFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LogApiFilter</filter-name>
+        <url-pattern>/api/*</url-pattern>
+    </filter-mapping>
+    -->
+    <!-- 2-D  Filtro de codificación UTF-8 -->
+    <!--
+    <filter>
+        <filter-name>EncodingFilter</filter-name>
+        <filter-class>org.madbite.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name><param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>EncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    -->
+    <!-- ================================================================= -->
+    <!--  3 · SERVLETS  (uno por recurso REST)                             -->
+    <!-- ================================================================= -->
+
+    <!-- 3-A  Menú de productos / categorías -->
+    <servlet>
+        <servlet-name>ProductoServlet</servlet-name>
+        <servlet-class>org.madbite.controller.ProductoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductoServlet</servlet-name>
+        <url-pattern>/api/menu</url-pattern>
+    </servlet-mapping>
+
+    <!-- 3-B  Pedidos (place-holder, aún por implementar) -->
+    <servlet>
+        <servlet-name>PedidoServlet</servlet-name>
+        <servlet-class>org.madbite.controller.PedidoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PedidoServlet</servlet-name>
+        <url-pattern>/api/pedidos/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- 3-C  Imágenes S3 presign (sólo admin) -->
+    <servlet>
+        <servlet-name>ImagenServlet</servlet-name>
+        <servlet-class>org.madbite.controller.ImagenServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ImagenServlet</servlet-name>
+        <url-pattern>/api/presign</url-pattern>
+    </servlet-mapping>
+
+    <!-- 3-D  Health check para ALB / Auto-Scaling -->
+    <servlet>
+        <servlet-name>HealthServlet</servlet-name>
+        <servlet-class>org.madbite.controller.HealthServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HealthServlet</servlet-name>
+        <url-pattern>/health</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CarritoServlet</servlet-name>
+        <servlet-class>org.madbite.controller.CarritoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CarritoServlet</servlet-name>
+        <url-pattern>/api/carrito/*</url-pattern>
+    </servlet-mapping>
+
+
+    <!-- (Puedes seguir añadiendo servlets: AuthServlet, AdminServlet, …) -->
+
+    <!-- ================================================================= -->
+    <!--  4 · WELCOME PAGES  (no se usan porque el front es externo)       -->
+    <!-- ================================================================= -->
+    <!-- Mantenemos un index.jsp mínimo por si accedes directamente -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- ================================================================= -->
+    <!--  5 · PÁGINAS DE ERROR                                             -->
+    <!-- ================================================================= -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/error/404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/error/500.jsp</location>
+    </error-page>
+
+</web-app>
