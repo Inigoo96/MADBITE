@@ -119,6 +119,17 @@
         <url-pattern>/api/carrito/*</url-pattern>
     </servlet-mapping>
 
+    <!-- 3-E  Intercambio code⇄tokens  (Cognito PKCE) -->
+    <servlet>
+        <servlet-name>CognitoCallbackServlet</servlet-name>
+        <servlet-class>org.madbite.controller.CognitoCallbackServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CognitoCallbackServlet</servlet-name>
+        <url-pattern>/cognito/callback</url-pattern>
+    </servlet-mapping>
+
+
 
     <!-- (Puedes seguir añadiendo servlets: AuthServlet, AdminServlet, …) -->
 
