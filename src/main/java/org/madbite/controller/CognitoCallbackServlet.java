@@ -1,141 +1,167 @@
 package org.madbite.controller;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.UncheckedIOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
- *  /back/cognito/callback  (la ruta real será   http://localhost:8090/back/cognito/callback)
+ * Servlet para intercambiar el authorization-code de Cognito
+ * por tokens (id_token, access_token, refresh_token).
  *
- *  Recibe:
- *     {
- *       "code"    : "AAA.BBB.CCC",
- *       "verifier": "pkce-verifier-base64url"
- *     }
- *
- *  Intercambia el authorization-code por tokens en el endpoint  /oauth2/token
- *  y devuelve el JSON de Cognito al front-end.
+ * Endpoint: POST /back/cognito/callback
  */
-@WebServlet(name = "CognitoCallbackServlet",
-        urlPatterns = "/cognito/callback")           // → /back + /cognito/callback
+@WebServlet(name = "CognitoCallbackServlet", urlPatterns = "/cognito/callback")
 public class CognitoCallbackServlet extends HttpServlet {
+    private static final Logger     LOGGER          = Logger.getLogger(CognitoCallbackServlet.class.getName());
+    private static final String     CLIENT_ID       = "6omlacb6fjdnimu8dalu81ft0r";
+    private static final String     CLIENT_SECRET   = "r3a3i2crbscfmbfr01v36s6mtajc036lohr4ibq4c8ui9918qfp";
+    private static final String     REDIRECT_URI    = "http://localhost:3007/html/redireccion";
+    private static final String     TOKEN_ENDPOINT  =
+            "https://us-east-19ns1g8vpk.auth.us-east-1.amazoncognito.com/oauth2/token";
+    private static final String     ORIGIN_ALLOWED  = "http://localhost:3007";
 
-    /*  💡  Configura aquí tus datos  ─────────────────────────── */
-    private static final String CLIENT_ID     = "6omlacb6fjdnimu8dalu81ft0r";
-    private static final String CLIENT_SECRET = "r3a3i2crbscfmbfr01v36s6mtajc036lohr4ibq4c8ui9918qfp";   // ← si tu app client NO lleva secret, déjalo vacío
-    private static final String REDIRECT_URI  = "http://localhost:3007/html/redireccion";
-    private static final String TOKEN_ENDPOINT = "https://us-east-19ns1g8vpk.auth.us-east-1.amazoncognito.com/oauth2/token";
-    /* ─────────────────────────────────────────────────────────── */
+    private final ObjectMapper      mapper          = new ObjectMapper();
+    private final ObjectWriter      prettyPrinter   = mapper.writerWithDefaultPrettyPrinter();
+    private final TypeReference<Map<String,String>> mapType =
+            new TypeReference<>() {};
 
-    private final ObjectMapper mapper  = new ObjectMapper();
-    private final ObjectWriter pretty = mapper.writerWithDefaultPrettyPrinter();
+    // -----------------------------------
+    // CORS
+    // -----------------------------------
+    @Override
+    protected void doOptions(HttpServletRequest req, HttpServletResponse resp) {
+        handleCors(resp);
+        // No body needed for OPTIONS
+    }
 
-    /* ::::::::::::::::::::::::::::::::  POST (recomendado)  ::::::::::::::::::::::::::::::: */
-    @Override protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        // Añadir Cors
-        resp.setHeader("Access-Control-Allow-Origin", "http://localhost:3007");
+    private void handleCors(HttpServletResponse resp) {
+        resp.setHeader("Access-Control-Allow-Origin",  ORIGIN_ALLOWED);
         resp.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
         resp.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    }
+
+    // -----------------------------------
+    // GET (debug) & POST (producción)
+    // -----------------------------------
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        handleCors(resp);
+        String code     = req.getParameter("code");
+        String verifier = req.getParameter("verifier");
+        if (isBlank(code) || isBlank(verifier)) {
+            sendError(resp, HttpServletResponse.SC_BAD_REQUEST, "Faltan parámetros 'code' o 'verifier'");
+            return;
+        }
+        exchangeCodeForTokens(code, verifier, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        handleCors(resp);
         resp.setStatus(HttpServletResponse.SC_OK);
 
-        Map<String,String> body = readJsonBody(req);           // {code, verifier}
+        Map<String,String> body;
+        try {
+            body = mapper.readValue(req.getInputStream(), mapType);
+        } catch (Exception e) {
+            LOGGER.log(Level.WARNING, "Error parsing JSON body", e);
+            sendError(resp, HttpServletResponse.SC_BAD_REQUEST, "JSON inválido");
+            return;
+        }
 
         String code     = body.get("code");
         String verifier = body.get("verifier");
-
         if (isBlank(code) || isBlank(verifier)) {
-            sendError(resp, 400, "Missing 'code' or 'verifier' field");
-            return;
-        }
-
-        exchangeCodeForTokens(code, verifier, resp);
-    }
-
-    /* ::::::::::::::::::::::::::::::::  GET (solo para debug)  ::::::::::::::::::::::::::::: */
-    @Override protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        // Añadir Cors
-        resp.setHeader("Access-Control-Allow-Origin", "http://localhost:3007");
-        resp.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
-        resp.setHeader("Access-Control-Allow-Headers", "Content-Type");
-
-        String code     = req.getParameter("code");
-        String verifier = req.getParameter("verifier");
-
-        if (isBlank(code) || isBlank(verifier)) {
-            sendError(resp, 400, "Missing code or verifier query parameter");
+            sendError(resp, HttpServletResponse.SC_BAD_REQUEST, "Faltan campos 'code' o 'verifier'");
             return;
         }
         exchangeCodeForTokens(code, verifier, resp);
     }
 
-    /* =======================  Lógica principal  ======================= */
+    // -----------------------------------
+    // Lógica principal de intercambio
+    // -----------------------------------
     private void exchangeCodeForTokens(String code,
                                        String verifier,
                                        HttpServletResponse resp) throws IOException {
+        String form = buildFormData(code, verifier);
 
-        /* Construimos el cuerpo x-www-form-urlencoded */
-        String postData =
-                "grant_type=authorization_code" +
-                        "&client_id="      + url(CLIENT_ID) +
-                        "&code="           + url(code) +
-                        "&code_verifier="  + url(verifier) +
-                        "&redirect_uri="   + url(REDIRECT_URI);
-
-        /* Conexión HTTP → Cognito -------------------------------------------------------- */
         HttpURLConnection con = (HttpURLConnection) new URL(TOKEN_ENDPOINT).openConnection();
         con.setRequestMethod("POST");
         con.setDoOutput(true);
         con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-
-        /* Auth header sólo si existe client_secret (app confidencial)      */
         if (!CLIENT_SECRET.isBlank()) {
+            String creds = CLIENT_ID + ":" + CLIENT_SECRET;
             String basic = java.util.Base64.getEncoder()
-                    .encodeToString((CLIENT_ID + ':' + CLIENT_SECRET).getBytes(StandardCharsets.UTF_8));
+                    .encodeToString(creds.getBytes(StandardCharsets.UTF_8));
             con.setRequestProperty("Authorization", "Basic " + basic);
         }
 
+        // Enviar cuerpo
         try (OutputStream os = con.getOutputStream()) {
-            os.write(postData.getBytes(StandardCharsets.UTF_8));
+            os.write(form.getBytes(StandardCharsets.UTF_8));
         }
 
-        /* Leemos respuesta de Cognito ---------------------------------------------------- */
+        // Leer respuesta (stream de error si status >= 400)
         int status = con.getResponseCode();
-        InputStream is = status < 400 ? con.getInputStream() : con.getErrorStream();
-        String raw = new String(is.readAllBytes(), StandardCharsets.UTF_8);
+        try (InputStream is = (status < 400 ? con.getInputStream() : con.getErrorStream())) {
+            String raw = new String(is.readAllBytes(), StandardCharsets.UTF_8);
+            resp.setContentType("application/json;charset=UTF-8");
+            resp.setStatus(status);
 
-        resp.setContentType("application/json;charset=UTF-8");
-        resp.setStatus(status);
-
-        /* Si es JSON bien formado lo “pretty-print”, si no se envía tal cual */
-        try {
-            Object json = mapper.readValue(raw, Object.class);
-            pretty.writeValue(resp.getWriter(), json);
-        } catch (Exception notJson) {
-            resp.getWriter().write(raw);
+            // Pretty-print JSON valid, si no devolver crudo
+            try {
+                Object json = mapper.readValue(raw, Object.class);
+                prettyPrinter.writeValue(resp.getWriter(), json);
+            } catch (Exception e) {
+                resp.getWriter().write(raw);
+            }
+        } catch (IOException ioe) {
+            LOGGER.log(Level.SEVERE, "Error al leer respuesta de Cognito", ioe);
+            sendError(resp, HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
+                    "Error interno leyendo respuesta de Cognito");
+        } finally {
+            con.disconnect();
         }
     }
 
-    /* =======================  Utils  ======================= */
-    private Map<String,String> readJsonBody(HttpServletRequest req) throws IOException {
-        try (InputStream in = req.getInputStream()) {
-            return mapper.readValue(in, Map.class);
-        }
+    // -----------------------------------
+    // Utilitarios
+    // -----------------------------------
+    private String buildFormData(String code, String verifier) {
+        return "grant_type=authorization_code" +
+                "&client_id="      + encode(CLIENT_ID) +
+                "&code="           + encode(code) +
+                "&code_verifier="  + encode(verifier) +
+                "&redirect_uri="   + encode(REDIRECT_URI);
     }
-    private static void sendError(HttpServletResponse r, int code, String msg) throws IOException {
-        r.setStatus(code);
-        r.setContentType("application/json");
-        r.getWriter().write("{\"error\":\"" + msg + "\"}");
-    }
-    private static boolean isBlank(String s) { return s == null || s.isBlank(); }
-    private static String url(String s)      throws UnsupportedEncodingException {
+
+    private static String encode(String s) {
         return URLEncoder.encode(s, StandardCharsets.UTF_8);
+    }
+
+
+    private static void sendError(HttpServletResponse resp, int status, String message) throws IOException {
+        resp.setStatus(status);
+        resp.setContentType("application/json");
+        resp.getWriter().write("{\"error\":\"" + message + "\"}");
+    }
+
+    private static boolean isBlank(String s) {
+        return s == null || s.isBlank();
     }
 }
