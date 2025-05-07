@@ -31,7 +31,7 @@ public class CognitoCallbackServlet extends HttpServlet {
     /*  💡  Configura aquí tus datos  ─────────────────────────── */
     private static final String CLIENT_ID     = "6omlacb6fjdnimu8dalu81ft0r";
     private static final String CLIENT_SECRET = "r3a3i2crbscfmbfr01v36s6mtajc036lohr4ibq4c8ui9918qfp";   // ← si tu app client NO lleva secret, déjalo vacío
-    private static final String REDIRECT_URI  = "http://localhost:3007/html/menu";
+    private static final String REDIRECT_URI  = "http://localhost:3007/html/redireccion";
     private static final String TOKEN_ENDPOINT = "https://us-east-19ns1g8vpk.auth.us-east-1.amazoncognito.com/oauth2/token";
     /* ─────────────────────────────────────────────────────────── */
 
@@ -39,8 +39,12 @@ public class CognitoCallbackServlet extends HttpServlet {
     private final ObjectWriter pretty = mapper.writerWithDefaultPrettyPrinter();
 
     /* ::::::::::::::::::::::::::::::::  POST (recomendado)  ::::::::::::::::::::::::::::::: */
-    @Override protected void doPost(HttpServletRequest req,
-                                    HttpServletResponse resp) throws IOException {
+    @Override protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        // Añadir Cors
+        resp.setHeader("Access-Control-Allow-Origin", "http://localhost:3007");
+        resp.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+        resp.setHeader("Access-Control-Allow-Headers", "Content-Type");
+        resp.setStatus(HttpServletResponse.SC_OK);
 
         Map<String,String> body = readJsonBody(req);           // {code, verifier}
 
@@ -56,8 +60,11 @@ public class CognitoCallbackServlet extends HttpServlet {
     }
 
     /* ::::::::::::::::::::::::::::::::  GET (solo para debug)  ::::::::::::::::::::::::::::: */
-    @Override protected void doGet(HttpServletRequest req,
-                                   HttpServletResponse resp) throws IOException {
+    @Override protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        // Añadir Cors
+        resp.setHeader("Access-Control-Allow-Origin", "http://localhost:3007");
+        resp.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+        resp.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
         String code     = req.getParameter("code");
         String verifier = req.getParameter("verifier");

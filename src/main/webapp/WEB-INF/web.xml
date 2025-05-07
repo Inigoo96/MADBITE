@@ -129,8 +129,6 @@
         <url-pattern>/cognito/callback</url-pattern>
     </servlet-mapping>
 
-
-
     <!-- (Puedes seguir añadiendo servlets: AuthServlet, AdminServlet, …) -->
 
     <!-- ================================================================= -->
