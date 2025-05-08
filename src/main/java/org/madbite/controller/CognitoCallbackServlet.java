@@ -9,7 +9,6 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.UncheckedIOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -29,7 +28,7 @@ public class CognitoCallbackServlet extends HttpServlet {
     private static final Logger     LOGGER          = Logger.getLogger(CognitoCallbackServlet.class.getName());
     private static final String     CLIENT_ID       = "6omlacb6fjdnimu8dalu81ft0r";
     private static final String     CLIENT_SECRET   = "r3a3i2crbscfmbfr01v36s6mtajc036lohr4ibq4c8ui9918qfp";
-    private static final String     REDIRECT_URI    = "http://localhost:3007/html/redireccion";
+    private static final String     REDIRECT_URI    = "http://localhost:3007/html/callback";
     private static final String     TOKEN_ENDPOINT  =
             "https://us-east-19ns1g8vpk.auth.us-east-1.amazoncognito.com/oauth2/token";
     private static final String     ORIGIN_ALLOWED  = "http://localhost:3007";
