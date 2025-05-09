@@ -43,7 +43,7 @@
   }
 
   // ——————————————————————————————————————————————————————————
-  // Carga nombre e imagen de perfil (unificada para cualquier IdP)
+  // Modificación para dashboard.js en la función loadUserInfo()
   function loadUserInfo() {
     console.log("Dashboard: Cargando información del usuario...");
     const user = window.AuthService.getUserData();
@@ -58,23 +58,18 @@
     let displayName = "Usuario";
     if (user.name) {
       displayName = user.name;
-      console.log("Dashboard: Usando name:", user.name);
     } else if (user.given_name && user.family_name) {
       displayName = user.given_name + " " + user.family_name;
-      console.log("Dashboard: Usando given_name + family_name:", displayName);
     } else if (user.email) {
       displayName = user.email.split("@")[0];
-      console.log("Dashboard: Usando nombre de email:", displayName);
     } else if (user.sub) {
       displayName = user.sub;
-      console.log("Dashboard: Usando sub:", user.sub);
     }
 
     // 2) URL de la foto (si viene en el token)
     const pictureUrl = user.picture || null;
-    console.log("Dashboard: URL de foto:", pictureUrl);
 
-    // 3) Renderizar avatar
+    // 3) Renderizar avatar - Con verificación de existencia
     const avatarEl = document.getElementById("userAvatar");
     if (avatarEl) {
       avatarEl.innerHTML = "";
@@ -87,28 +82,40 @@
         img.onload = function() {
           avatarEl.appendChild(img);
           avatarEl.classList.add("has-image");
-          console.log("Dashboard: Imagen de perfil cargada");
         };
         img.onerror = function() {
           console.warn("Dashboard: Error al cargar imagen, usando inicial");
           avatarEl.textContent = displayName.charAt(0).toUpperCase();
         };
       } else {
-        console.log("Dashboard: Sin imagen, usando inicial:", displayName.charAt(0));
         avatarEl.textContent = displayName.charAt(0).toUpperCase();
       }
     } else {
-      console.error("Dashboard: Elemento userAvatar no encontrado en el DOM");
+      console.warn("Dashboard: Elemento userAvatar no encontrado en el DOM");
+      // Crear el elemento si no existe
+      createAvatarIfNeeded(displayName, pictureUrl);
     }
 
-    // 4) Renderizar nombre de perfil
+    // 4) Renderizar nombre de perfil - Con verificación de existencia
     const nameEl = document.getElementById("userName");
     if (nameEl) {
       nameEl.textContent = displayName;
-      console.log("Dashboard: Nombre de usuario renderizado:", displayName);
     } else {
-      console.error("Dashboard: Elemento userName no encontrado en el DOM");
+      console.warn("Dashboard: Elemento userName no encontrado en el DOM");
+      // Opcionalmente, crear el elemento si no existe
+      createUserNameIfNeeded(displayName);
     }
+  }
+
+  // Funciones auxiliares para crear elementos si es necesario
+  function createAvatarIfNeeded(displayName, pictureUrl) {
+    // Puedes implementar la creación del elemento si lo necesitas
+    console.log("Dashboard: Se podría crear un avatar para:", displayName);
+  }
+
+  function createUserNameIfNeeded(displayName) {
+    // Puedes implementar la creación del elemento si lo necesitas
+    console.log("Dashboard: Se podría crear un elemento para mostrar el nombre:", displayName);
   }
 
   // ——————————————————————————————————————————————————————————

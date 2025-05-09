@@ -271,7 +271,7 @@
 
       // Redireccionar a home
       logger.info("Redirigiendo a página de inicio");
-      window.location.href = '/index.html';
+      window.location.href = '/back';
     },
 
     // Configurar botones de login/signup

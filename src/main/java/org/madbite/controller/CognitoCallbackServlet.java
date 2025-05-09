@@ -29,8 +29,7 @@ public class CognitoCallbackServlet extends HttpServlet {
     private static final String CLIENT_ID      = "6omlacb6fjdnimu8dalu81ft0r";
     private static final String CLIENT_SECRET  = "r3a3i2crbscfmbfr01v36s6mtajc036lohr4ibq4c8ui9918qfp";
     private static final String REDIRECT_URI   = "http://localhost:8090/back/html/callback.html";
-    private static final String TOKEN_ENDPOINT =
-            "https://us-east-19ns1g8vpk.auth.us-east-1.amazoncognito.com/oauth2/token";
+    private static final String TOKEN_ENDPOINT = "https://us-east-19ns1g8vpk.auth.us-east-1.amazoncognito.com/oauth2/token";
 
     private final ObjectMapper mapper  = new ObjectMapper();
     private final TypeReference<Map<String,String>> mapType = new TypeReference<>() {};

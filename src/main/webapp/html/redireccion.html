@@ -4,15 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dashboard – MADBITE</title>
-  <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  />
+  <!-- Asegurarnos de cargar primero jwt-decode -->
+  <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+
+  <!-- Cargar Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Estilos CSS -->
   <link rel="stylesheet" href="../css/main.css" />
 
-  <script src="../js/auth.js"></script>
-  <script type="module" src="../js/auth-guard.js"></script>
-  <script type="module" src="../js/dashboard.js"></script>
+  <!-- Scripts en orden correcto con defer para mejor rendimiento -->
+  <script src="../js/auth.js" defer></script>
+  <script src="../js/auth-guard.js" defer></script>
+  <script src="../js/dashboard.js" defer></script>
 </head>
 <body>
 <header class="header">
@@ -60,7 +64,7 @@
           <div class="profile-dropdown" id="profileDropdown">
             <div class="user-profile-container">
               <div id="userAvatar" class="profile-avatar"></div>
-              <span id="userName" class="profile-name"></span>
+              <span id="userName" class="profile-name">Usuario</span>
             </div>
             <div class="profile-menu">
               <div class="profile-menu-item"><i class="fas fa-user"></i><span>My Profile</span></div>
@@ -109,9 +113,7 @@
         products.
       </p>
     </div>
-    <a href="promociones.html" class="dashboard-card-button"
-    >View Promotions</a
-    >
+    <a href="promociones.html" class="dashboard-card-button">View Promotions</a>
   </div>
 
   <div class="dashboard-card">
@@ -163,7 +165,6 @@
   </div>
 </section>
 
-
 <footer class="footer">
   <div class="container">
     <div class="footer-content">
@@ -178,12 +179,14 @@
           burgers and premium quality ingredients make the difference.
         </p>
         <div class="footer-social">
-          <a
-                  href="https://www.instagram.com/madbite_usa/"
-                  class="social-icon"
-                  aria-label="Instagram"
+
+          href="https://www.instagram.com/madbite_usa/"
+          class="social-icon"
+          aria-label="Instagram"
+          target="_blank"
+          rel="noopener noreferrer"
           >
-            <i class="fab fa-instagram"></i>
+          <i class="fab fa-instagram"></i>
           </a>
           <a href="#" class="social-icon" aria-label="Facebook">
             <i class="fab fa-facebook-f"></i>
@@ -191,12 +194,14 @@
           <a href="#" class="social-icon" aria-label="Twitter">
             <i class="fab fa-twitter"></i>
           </a>
-          <a
-                  href="https://www.tiktok.com/@madbite_usa"
-                  class="social-icon"
-                  aria-label="TikTok"
+
+          href="https://www.tiktok.com/@madbite_usa"
+          class="social-icon"
+          aria-label="TikTok"
+          target="_blank"
+          rel="noopener noreferrer"
           >
-            <i class="fab fa-tiktok"></i>
+          <i class="fab fa-tiktok"></i>
           </a>
         </div>
       </div>
@@ -232,6 +237,7 @@
                   type="email"
                   class="newsletter-input"
                   placeholder="Your email"
+                  required
           />
           <button type="submit" class="newsletter-btn">
             <i class="fas fa-paper-plane"></i>
@@ -256,5 +262,81 @@
   <i class="fas fa-arrow-up"></i>
 </div>
 
-<!-- SCRIPTS -->
-<!-- Cambiamos la forma de cargar los
+<!-- Script para asegurar que el perfil se carga correctamente -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Verificar periódicamente si los elementos de perfil están presentes
+    let profileCheckInterval = setInterval(function() {
+      const avatarEl = document.getElementById('userAvatar');
+      const nameEl = document.getElementById('userName');
+
+      // Si hay datos de usuario pero los elementos no tienen contenido, intentar cargarlos
+      if (avatarEl && nameEl && window.AuthService && window.AuthService.isAuthenticated()) {
+        const userData = window.AuthService.getUserData() || {};
+
+        // Nombre de usuario
+        if (nameEl.textContent === '' || nameEl.textContent === 'Usuario') {
+          let displayName = "Usuario";
+          if (userData.name) {
+            displayName = userData.name;
+          } else if (userData.given_name && userData.family_name) {
+            displayName = userData.given_name + " " + userData.family_name;
+          } else if (userData.email) {
+            displayName = userData.email.split("@")[0];
+          } else if (userData.sub) {
+            displayName = userData.sub;
+          }
+          nameEl.textContent = displayName;
+        }
+
+        // Avatar
+        if (!avatarEl.classList.contains('has-image') && !avatarEl.textContent) {
+          const pictureUrl = userData.picture || null;
+
+          if (pictureUrl) {
+            const img = document.createElement("img");
+            img.src = pictureUrl;
+            img.alt = nameEl.textContent + " avatar";
+            img.onload = function() {
+              avatarEl.innerHTML = '';
+              avatarEl.appendChild(img);
+              avatarEl.classList.add("has-image");
+            };
+            img.onerror = function() {
+              avatarEl.textContent = nameEl.textContent.charAt(0).toUpperCase();
+            };
+          } else {
+            avatarEl.textContent = nameEl.textContent.charAt(0).toUpperCase();
+          }
+        }
+
+        // Si ambos elementos tienen contenido, detener el intervalo
+        if ((avatarEl.classList.contains('has-image') || avatarEl.textContent) &&
+            nameEl.textContent !== '' && nameEl.textContent !== 'Usuario') {
+          clearInterval(profileCheckInterval);
+        }
+      }
+    }, 500);
+
+    // Detener el intervalo después de 10 segundos en cualquier caso
+    setTimeout(function() {
+      clearInterval(profileCheckInterval);
+    }, 10000);
+
+    // Configurar el comportamiento del botón de logout
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (window.AuthService) {
+          window.AuthService.logout();
+        } else {
+          // Fallback si AuthService no está disponible
+          window.location.href = '../index.html';
+        }
+      });
+    }
+  });
+</script>
+</body>
+</html>
