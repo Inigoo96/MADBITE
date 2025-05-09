@@ -564,20 +564,50 @@
         </div>
 
         <!-- ... Importar JS ... -->
-    <script src="./js/main.js"></script>
-    <script src="./js/logo-animation.js"></script>
-    <script src="./js/nosotros.js"></script>
-    <script src="./js/locations.js"></script>
-    <script src="./js/contact.js"></script>
-    <script src="./js/language-switcher.js"></script>
-    <script type="module">
-      import AuthService from "./js/auth.js";
-      document.addEventListener("DOMContentLoaded", () => {
-        AuthService.attachLogin("loginBtn");
-        AuthService.attachSignUp("signUpBtn");
-        AuthService.init();
-      });
-    </script>
-    
+ <!-- Primero los scripts normales -->
+ <script src="./js/main.js"></script>
+ <script src="./js/logo-animation.js"></script>
+ <script src="./js/nosotros.js"></script>
+ <script src="./js/locations.js"></script>
+ <script src="./js/contact.js"></script>
+ <script src="./js/language-switcher.js"></script>
+
+ <!-- Importar JWT Decode para el auth -->
+ <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+
+ <!-- Reemplazar el script type="module" anterior con esto: -->
+ <script src="./js/auth.js"></script>
+ <script>
+     document.addEventListener("DOMContentLoaded", function() {
+       // Verificar si AuthService está disponible
+       if (typeof window.AuthService === 'undefined') {
+         console.error("Error: AuthService no está disponible. Verifica que auth.js esté cargado correctamente.");
+         return;
+       }
+
+       // Configurar botones de login/signup
+       window.AuthService.attachLogin("loginBtn");
+
+       // Verificar si existe el botón de signup antes de configurarlo
+       const signUpBtn = document.getElementById("signUpBtn");
+       if (signUpBtn) {
+         window.AuthService.attachSignUp("signUpBtn");
+       }
+
+       // Inicializar AuthService
+       window.AuthService.init();
+
+       // Escuchar eventos de autenticación si es necesario
+       window.addEventListener("auth:ready", function() {
+         console.log("Usuario autenticado correctamente");
+         // Opcional: Puedes añadir lógica adicional aquí cuando el usuario esté autenticado
+       });
+
+       window.addEventListener("auth:needed", function() {
+         console.log("Usuario no autenticado");
+         // Opcional: Puedes añadir lógica adicional aquí cuando el usuario no esté autenticado
+       });
+     });
+ </script>
     </body>
 </html>
