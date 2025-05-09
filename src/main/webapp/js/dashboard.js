@@ -1,273 +1,375 @@
 // dashboard.js · MADBITE Intranet - Dashboard Unificado
-import AuthService from "./auth.js";
+// Versión sin módulos ES6 (para mejor compatibilidad)
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Inicializamos AuthService (gestiona callback y reemite auth:ready si ya hay tokens)
-  AuthService.init();
+// Función autoejecutada para evitar contaminar el ámbito global
+(function() {
+  document.addEventListener("DOMContentLoaded", function() {
+    // Inicializamos AuthService (gestiona callback y reemite auth:ready si ya hay tokens)
+    console.log("Dashboard: DOM cargado");
 
-  // Cuando estamos realmente autenticados:
-  document.addEventListener("auth:ready", () => {
-    if (!AuthService.isAuthenticated()) {
-      AuthService.logout();
+    // Verificar si AuthService está disponible
+    if (typeof window.AuthService === 'undefined') {
+      console.error("Dashboard: Error - AuthService no está disponible. ¿El archivo auth.js está cargado correctamente?");
       return;
     }
-    filterNavLinks();
-    loadUserInfo();         // <-- carga nombre e imagen de perfil
-    setupEventListeners();
-    initComponents();
-    handleResponsive();
+
+    window.AuthService.init();
+    console.log("Dashboard: AuthService inicializado");
+
+    // Evento auth:ready en WINDOW, no en document
+    window.addEventListener("auth:ready", function() {
+      console.log("Dashboard: Evento auth:ready recibido");
+      if (!window.AuthService.isAuthenticated()) {
+        console.log("Dashboard: Usuario no autenticado, haciendo logout");
+        window.AuthService.logout();
+        return;
+      }
+      console.log("Dashboard: Usuario autenticado, cargando interfaz");
+      filterNavLinks();
+      loadUserInfo();
+      setupEventListeners();
+      initComponents();
+      handleResponsive();
+    });
   });
-});
 
-function filterNavLinks() {
-  const userData = AuthService.getUserData() || {};
-  const groups = Array.isArray(userData["cognito:groups"])
-    ? userData["cognito:groups"]
-    : [];
-  const comiteLi = document
-    .querySelector('nav .nav-list a[href*="comite.html"]')
-    ?.closest("li.nav-item");
-  if (comiteLi && !groups.some((r) => r === "admin" || r === "trabajador")) {
-    comiteLi.style.display = "none";
-  }
-}
-
-// ——————————————————————————————————————————————————————————
-// · Carga nombre e imagen de perfil
-function loadUserInfo() {
-  const user = AuthService.getUserData();
-  if (!user) return console.warn("No hay datos de usuario.");
-
-  // 1) Nombre a mostrar: preferimos `name`, luego email, luego sub
-  const displayName =
-    user.name ||
-    (user.email ? user.email.split("@")[0] : null) ||
-    user.sub ||
-    "Usuario";
-
-  // 2) Avatar: si hay `picture`, lo usamos; si no, iniciales
-  const avatarEl = document.querySelector(
-    ".profile-toggle .profile-avatar"
-  );
-  avatarEl.innerHTML = ""; // limpio
-  avatarEl.classList.remove("has-image");
-
-  if (user.picture) {
-    const img = document.createElement("img");
-    img.src = user.picture;
-    img.alt = `${displayName} avatar`;
-    img.onload = () => {
-      avatarEl.appendChild(img);
-      avatarEl.classList.add("has-image");
-    };
-    img.onerror = () => {
-      // si falló carga, fallback a inicial
-      avatarEl.textContent = displayName.charAt(0).toUpperCase();
-    };
-  } else {
-    // sin picture, inicial
-    avatarEl.textContent = displayName.charAt(0).toUpperCase();
-  }
-
-  // 3) Nombre junto al avatar
-  const nameEl = document.querySelector(".profile-toggle .profile-name");
-  if (nameEl) nameEl.textContent = displayName;
-}
-// ——————————————————————————————————————————————————————————
-
-function setupEventListeners() {
-  const sidebar = document.getElementById("sidebar");
-  const sidebarToggle = document.getElementById("sidebarToggle");
-  const menuToggle = document.getElementById("menuToggle");
-  const logoutBtns = [
-    document.getElementById("logoutBtn"),
-    document.getElementById("dropdownLogout"),
-  ];
-
-  sidebarToggle?.addEventListener("click", () =>
-    sidebar.classList.toggle("collapsed")
-  );
-  menuToggle?.addEventListener("click", () =>
-    sidebar.classList.toggle("open")
-  );
-
-  logoutBtns.forEach((btn) =>
-    btn?.addEventListener("click", (e) => {
-      e.preventDefault();
-      AuthService.logout();
-    })
-  );
-
-  document.addEventListener("click", (e) => {
-    if (
-      window.innerWidth < 992 &&
-      sidebar.classList.contains("open") &&
-      !sidebar.contains(e.target)
-    ) {
-      sidebar.classList.remove("open");
+  function filterNavLinks() {
+    const userData = window.AuthService.getUserData() || {};
+    const groups = Array.isArray(userData["cognito:groups"]) ? userData["cognito:groups"] : [];
+    const comiteLi = document.querySelector('nav .nav-list a[href*="comite.html"]')?.closest("li.nav-item");
+    if (comiteLi && !groups.some(function(r) { return r === "admin" || r === "trabajador"; })) {
+      comiteLi.style.display = "none";
     }
-    document
-      .querySelectorAll(".notification-dropdown, .user-dropdown")
-      .forEach((dd) => {
+  }
+
+  // ——————————————————————————————————————————————————————————
+  // Carga nombre e imagen de perfil (unificada para cualquier IdP)
+  function loadUserInfo() {
+    console.log("Dashboard: Cargando información del usuario...");
+    const user = window.AuthService.getUserData();
+    if (!user) {
+      console.warn("Dashboard: No hay datos de usuario.");
+      return;
+    }
+
+    console.log("Dashboard: Datos de usuario obtenidos", user);
+
+    // 1) Construir displayName
+    let displayName = "Usuario";
+    if (user.name) {
+      displayName = user.name;
+      console.log("Dashboard: Usando name:", user.name);
+    } else if (user.given_name && user.family_name) {
+      displayName = user.given_name + " " + user.family_name;
+      console.log("Dashboard: Usando given_name + family_name:", displayName);
+    } else if (user.email) {
+      displayName = user.email.split("@")[0];
+      console.log("Dashboard: Usando nombre de email:", displayName);
+    } else if (user.sub) {
+      displayName = user.sub;
+      console.log("Dashboard: Usando sub:", user.sub);
+    }
+
+    // 2) URL de la foto (si viene en el token)
+    const pictureUrl = user.picture || null;
+    console.log("Dashboard: URL de foto:", pictureUrl);
+
+    // 3) Renderizar avatar
+    const avatarEl = document.getElementById("userAvatar");
+    if (avatarEl) {
+      avatarEl.innerHTML = "";
+      avatarEl.classList.remove("has-image");
+
+      if (pictureUrl) {
+        const img = document.createElement("img");
+        img.src = pictureUrl;
+        img.alt = displayName + " avatar";
+        img.onload = function() {
+          avatarEl.appendChild(img);
+          avatarEl.classList.add("has-image");
+          console.log("Dashboard: Imagen de perfil cargada");
+        };
+        img.onerror = function() {
+          console.warn("Dashboard: Error al cargar imagen, usando inicial");
+          avatarEl.textContent = displayName.charAt(0).toUpperCase();
+        };
+      } else {
+        console.log("Dashboard: Sin imagen, usando inicial:", displayName.charAt(0));
+        avatarEl.textContent = displayName.charAt(0).toUpperCase();
+      }
+    } else {
+      console.error("Dashboard: Elemento userAvatar no encontrado en el DOM");
+    }
+
+    // 4) Renderizar nombre de perfil
+    const nameEl = document.getElementById("userName");
+    if (nameEl) {
+      nameEl.textContent = displayName;
+      console.log("Dashboard: Nombre de usuario renderizado:", displayName);
+    } else {
+      console.error("Dashboard: Elemento userName no encontrado en el DOM");
+    }
+  }
+
+  // ——————————————————————————————————————————————————————————
+  function setupEventListeners() {
+    console.log("Dashboard: Configurando event listeners");
+    const sidebar = document.getElementById("sidebar");
+    const sidebarToggle = document.getElementById("sidebarToggle");
+    const menuToggle = document.getElementById("menuToggle");
+    const logoutBtns = [
+      document.getElementById("logoutBtn"),
+      document.getElementById("dropdownLogout")
+    ];
+
+    if (sidebarToggle) {
+      sidebarToggle.addEventListener("click", function() {
+        sidebar.classList.toggle("collapsed");
+      });
+    }
+
+    if (menuToggle) {
+      menuToggle.addEventListener("click", function() {
+        sidebar.classList.toggle("open");
+      });
+    }
+
+    logoutBtns.forEach(function(btn) {
+      if (btn) {
+        btn.addEventListener("click", function(e) {
+          e.preventDefault();
+          window.AuthService.logout();
+        });
+      }
+    });
+
+    document.addEventListener("click", function(e) {
+      // Cerrar sidebar en móvil si se hace clic fuera
+      if (window.innerWidth < 992 && sidebar && sidebar.classList.contains("open") && !sidebar.contains(e.target)) {
+        sidebar.classList.remove("open");
+      }
+
+      // Cerrar dropdowns si se hace clic fuera
+      document.querySelectorAll(".notification-dropdown, .user-dropdown").forEach(function(dd) {
         if (!dd.contains(e.target)) {
-          const menu = dd.querySelector(
-            ".notification-menu, .user-dropdown-menu"
-          );
+          const menu = dd.querySelector(".notification-menu, .user-dropdown-menu");
           if (menu) resetDropdown(menu);
         }
       });
-    document.getElementById("profileDropdown")?.classList.remove("active");
-  });
 
-  document
-    .getElementById("profileDropdown")
-    ?.addEventListener("click", (e) => {
-      e.stopPropagation();
-      e.currentTarget.classList.toggle("active");
-    });
-}
-
-function resetDropdown(menu) {
-  menu.style.opacity = "0";
-  menu.style.visibility = "hidden";
-  menu.style.transform = "translateY(10px)";
-  setTimeout(() => menu.removeAttribute("style"), 300);
-}
-
-function initComponents() {
-  const path = window.location.pathname;
-  if (path.includes("comite.html")) {
-    // lógica comité…
-  } else if (path.includes("redireccion.html") || path.endsWith("/")) {
-    initWelcomeVideo();
-    setupCardInteractions();
-    initStatsCounters();
-    showWelcomeNotification();
-  }
-  highlightActiveNavLink();
-}
-
-function highlightActiveNavLink() {
-  const path = window.location.pathname;
-  document.querySelectorAll(".sidebar-link").forEach((link) => {
-    const li = link.closest("li");
-    if (!li) return;
-    li.classList.toggle("active", path.includes(link.getAttribute("href")));
-  });
-}
-
-function initWelcomeVideo() {
-  const video = document.querySelector('.video-container video');
-  if (!video) return;
-
-  new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        video.load();
-        entry.target.getRootNode()?.getIntersectionObservers()?.forEach(obs => obs.disconnect());
+      // Desactivar profileDropdown al hacer clic fuera
+      const profileDropdown = document.getElementById("profileDropdown");
+      if (profileDropdown && !profileDropdown.contains(e.target)) {
+        profileDropdown.classList.remove("active");
       }
     });
-  }, { threshold: 0.1 }).observe(video);
 
-  ['play', 'pause', 'ended'].forEach(evt =>
-    video.addEventListener(evt, () => console.log(`Vídeo ${evt}`))
-  );
-}
-
-function handleResponsive() {
-  const sidebar = document.getElementById('sidebar');
-  const adapt = () => {
-    if (window.innerWidth < 992) sidebar.classList.add('collapsed');
-    else sidebar.classList.remove('collapsed');
-  };
-  window.addEventListener('resize', adapt);
-  adapt();
-}
-
-function setupCardInteractions() {
-  document.querySelectorAll(".dashboard-card").forEach((card) => {
-    card.addEventListener("mouseenter", () => card.classList.add("card-hover"));
-    card.addEventListener("mouseleave", () => card.classList.remove("card-hover"));
-    card.addEventListener("click", (e) => {
-      if (!e.target.classList.contains("dashboard-card-button")) {
-        const btn = card.querySelector(".dashboard-card-button");
-        if (btn) btn.click();
-      }
-    });
-  });
-}
-
-function initStatsCounters() {
-  const elements = document.querySelectorAll(".stat-value");
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        animateCounter(entry.target);
-        obs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.5 });
-
-  elements.forEach((el) => observer.observe(el));
-}
-
-function animateCounter(el) {
-  const target = parseInt(el.textContent, 10);
-  if (isNaN(target)) return;
-
-  const duration = 2000;
-  const frameDur = 1000 / 60;
-  const totalFrames = Math.round(duration / frameDur);
-  let frame = 0;
-
-  el.setAttribute("data-value", target);
-  el.textContent = "0";
-
-  const update = () => {
-    frame++;
-    const progress = 1 - Math.pow(1 - frame / totalFrames, 4);
-    el.textContent = Math.round(target * progress);
-    if (frame < totalFrames) {
-      requestAnimationFrame(update);
-    } else {
-      el.textContent = target;
+    // Alternar dropdown de perfil
+    const profileDropdown = document.getElementById("profileDropdown");
+    if (profileDropdown) {
+      profileDropdown.addEventListener("click", function(e) {
+        e.stopPropagation();
+        this.classList.toggle("active");
+      });
     }
-  };
-  requestAnimationFrame(update);
-}
-
-function showWelcomeNotification() {
-  setTimeout(() => {
-    notify("¡Bienvenido a tu dashboard! Tienes 2 nuevas promociones.");
-  }, 3000);
-}
-
-function notify(message) {
-  let container = document.querySelector(".notification-container");
-  if (!container) {
-    container = document.createElement("div");
-    container.className = "notification-container";
-    document.body.appendChild(container);
   }
 
-  const notif = document.createElement("div");
-  notif.className = "notification";
-  notif.innerHTML = `
-    <div class="notification-content">
-      <i class="fas fa-bell"></i>
-      <span>${message}</span>
-    </div>
-    <button class="notification-close"><i class="fas fa-times"></i></button>
-  `;
-  container.appendChild(notif);
+  function resetDropdown(menu) {
+    menu.style.opacity = "0";
+    menu.style.visibility = "hidden";
+    menu.style.transform = "translateY(10px)";
+    setTimeout(function() {
+      menu.removeAttribute("style");
+    }, 300);
+  }
 
-  setTimeout(() => notif.classList.add("show"), 10);
-  notif.querySelector(".notification-close")
-       .addEventListener("click", () => dismiss(notif));
-  setTimeout(() => dismiss(notif), 5000);
-}
+  function initComponents() {
+    console.log("Dashboard: Inicializando componentes");
+    const path = window.location.pathname;
+    if (path.includes("comite.html")) {
+      // lógica comité…
+      console.log("Dashboard: Página de comité detectada");
+    } else if (path.includes("redireccion.html") || path.endsWith("/")) {
+      console.log("Dashboard: Página de dashboard/redireccion detectada");
+      initWelcomeVideo();
+      setupCardInteractions();
+      initStatsCounters();
+      showWelcomeNotification();
+    }
+    highlightActiveNavLink();
+  }
 
-function dismiss(notif) {
-  notif.classList.remove("show");
-  setTimeout(() => notif.remove(), 300);
-}
+  function highlightActiveNavLink() {
+    const path = window.location.pathname;
+    document.querySelectorAll(".sidebar-link").forEach(function(link) {
+      const li = link.closest("li");
+      if (!li) return;
+      if (path.includes(link.getAttribute("href"))) {
+        li.classList.add("active");
+      } else {
+        li.classList.remove("active");
+      }
+    });
+  }
+
+  function initWelcomeVideo() {
+    const video = document.querySelector('.video-container video');
+    if (!video) return;
+
+    new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          video.load();
+          try {
+            // Versión segura para evitar errores con getRootNode/getIntersectionObservers
+            const observer = entry.target.getRootNode()?.getIntersectionObservers?.();
+            if (observer && Array.isArray(observer)) {
+              observer.forEach(function(obs) {
+                obs.disconnect();
+              });
+            }
+          } catch (e) {
+            console.warn("Error al desconectar observer:", e);
+          }
+        }
+      });
+    }, { threshold: 0.1 }).observe(video);
+
+    ['play', 'pause', 'ended'].forEach(function(evt) {
+      video.addEventListener(evt, function() {
+        console.log("Vídeo " + evt);
+      });
+    });
+  }
+
+  function handleResponsive() {
+    const sidebar = document.getElementById('sidebar');
+    if (!sidebar) return;
+
+    function adapt() {
+      if (window.innerWidth < 992) {
+        sidebar.classList.add('collapsed');
+      } else {
+        sidebar.classList.remove('collapsed');
+      }
+    }
+
+    window.addEventListener('resize', adapt);
+    adapt(); // Aplicar inmediatamente
+  }
+
+  function setupCardInteractions() {
+    document.querySelectorAll(".dashboard-card").forEach(function(card) {
+      card.addEventListener("mouseenter", function() {
+        this.classList.add("card-hover");
+      });
+
+      card.addEventListener("mouseleave", function() {
+        this.classList.remove("card-hover");
+      });
+
+      card.addEventListener("click", function(e) {
+        if (!e.target.classList.contains("dashboard-card-button")) {
+          const btn = this.querySelector(".dashboard-card-button");
+          if (btn) btn.click();
+        }
+      });
+    });
+  }
+
+  function initStatsCounters() {
+    const elements = document.querySelectorAll(".stat-value");
+    if (elements.length === 0) return;
+
+    const observer = new IntersectionObserver(function(entries, obs) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    elements.forEach(function(el) {
+      observer.observe(el);
+    });
+  }
+
+  function animateCounter(el) {
+    const target = parseInt(el.textContent, 10);
+    if (isNaN(target)) return;
+
+    const duration = 2000;
+    const frameDur = 1000 / 60;
+    const totalFrames = Math.round(duration / frameDur);
+    let frame = 0;
+
+    el.setAttribute("data-value", target);
+    el.textContent = "0";
+
+    function update() {
+      frame++;
+      const progress = 1 - Math.pow(1 - frame / totalFrames, 4);
+      el.textContent = Math.round(target * progress);
+
+      if (frame < totalFrames) {
+        requestAnimationFrame(update);
+      } else {
+        el.textContent = target;
+      }
+    }
+
+    requestAnimationFrame(update);
+  }
+
+  function showWelcomeNotification() {
+    setTimeout(function() {
+      notify("¡Bienvenido a tu dashboard! Tienes 2 nuevas promociones.");
+    }, 3000);
+  }
+
+  function notify(message) {
+    let container = document.querySelector(".notification-container");
+    if (!container) {
+      container = document.createElement("div");
+      container.className = "notification-container";
+      document.body.appendChild(container);
+    }
+
+    const notif = document.createElement("div");
+    notif.className = "notification";
+    notif.innerHTML = `
+      <div class="notification-content"><i class="fas fa-bell"></i><span>${message}</span></div>
+      <button class="notification-close"><i class="fas fa-times"></i></button>
+    `;
+
+    container.appendChild(notif);
+    setTimeout(function() {
+      notif.classList.add("show");
+    }, 10);
+
+    notif.querySelector(".notification-close").addEventListener("click", function() {
+      dismiss(notif);
+    });
+
+    setTimeout(function() {
+      dismiss(notif);
+    }, 5000);
+  }
+
+  function dismiss(notif) {
+    notif.classList.remove("show");
+    setTimeout(function() {
+      notif.remove();
+    }, 300);
+  }
+
+  // Hacer funciones disponibles globalmente en caso necesario
+  window.DashboardFunctions = {
+    loadUserInfo: loadUserInfo,
+    setupEventListeners: setupEventListeners,
+    initComponents: initComponents,
+    handleResponsive: handleResponsive
+  };
+
+})();

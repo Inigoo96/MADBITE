@@ -1,7 +1,7 @@
 // menu.js · MADBITE - Carga dinámica y efectos del Menú
 
 // API endpoint (context-path unificado con tu back)
-const API_URL = '/back/api/menu';
+const API_URL = './back/api/menu';
 
 // Mapa de categorías a secciones HTML
 const CATEGORY_SECTION = {

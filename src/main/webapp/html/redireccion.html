@@ -5,330 +5,256 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dashboard – MADBITE</title>
   <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
   />
   <link rel="stylesheet" href="../css/main.css" />
-  <link rel="stylesheet" href="../css/pages/redireccion.css" />
-  <script type="module" src="../js/auth-guard.js" defer></script>
-  <script type="module" src="../js/dashboard.js" defer></script>
+
+  <script src="../js/auth.js"></script>
+  <script type="module" src="../js/auth-guard.js"></script>
+  <script type="module" src="../js/dashboard.js"></script>
 </head>
 <body>
-  <header class="header">
-    <div class="nav-container">
-      <!-- Logo -->
-      <div class="logo-container">
-        <a href="../index.html" class="logo-link" aria-label="MADBITE Home">
-          <img
-            src="../assets/images/logo/logo-completo-ajustadorbg.png"
-            alt="MADBITE Logo"
-            class="logo logo-intact"
-          />
-          <img
-            src="../assets/images/logo/logo-neon-ajustadorbg.png"
-            alt="MADBITE Logo Animation Frame 1"
-            class="logo logo-bitten-1"
-          />
-          <img
-            src="../assets/images/logo/logo-bitten-3-rp (1)-Photoroom.png"
-            alt="MADBITE Logo Animation Frame 2"
-            class="logo logo-bitten-2"
-          />
-          <img
-            src="../assets/images/logo/logo-bitten-4-rp (1)-Photoroom.png"
-            alt="MADBITE Logo Animation Frame 3"
-            class="logo logo-bitten-3"
-          />
-        </a>
-      </div>
+<header class="header">
+  <div class="nav-container">
+    <!-- Logo -->
+    <div class="logo-container">
+      <a href="../index.html" class="logo-link" aria-label="MADBITE Home">
+        <img src="../assets/images/logo/logo-completo-ajustadorbg.png" alt="MADBITE Logo" class="logo logo-intact"/>
+        <img src="../assets/images/logo/logo-neon-ajustadorbg.png" alt="MADBITE Logo Animation Frame 1" class="logo logo-bitten-1"/>
+        <img src="../assets/images/logo/logo-bitten-3-rp (1)-Photoroom.png" alt="MADBITE Logo Animation Frame 2" class="logo logo-bitten-2"/>
+        <img src="../assets/images/logo/logo-bitten-4-rp (1)-Photoroom.png" alt="MADBITE Logo Animation Frame 3" class="logo logo-bitten-3"/>
+      </a>
+    </div>
 
-      <!-- Sidebar collapse toggle (desktop) -->
-      <button
-        id="sidebarToggle"
-        class="sidebar-toggle"
-        aria-label="Toggle sidebar"
-      >
-        <span class="bar"></span><span class="bar"></span
-        ><span class="bar"></span>
-      </button>
+    <!-- Sidebar collapse toggle (desktop) -->
+    <button id="sidebarToggle" class="sidebar-toggle" aria-label="Toggle sidebar">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
 
-      <!-- Mobile menu toggle -->
-      <button
-        id="menuToggle"
-        class="menu-toggle"
-        aria-label="Toggle menu"
-      >
-        <span class="bar"></span><span class="bar"></span
-        ><span class="bar"></span>
-      </button>
+    <!-- Mobile menu toggle -->
+    <button id="menuToggle" class="menu-toggle" aria-label="Toggle menu">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
 
-      <!-- Main navigation / sidebar -->
-      <nav id="sidebar" class="nav-menu" aria-label="Main navigation">
-        <ul class="nav-list">
-          <li class="nav-item active">
-            <a href="redireccion.html">Dashboard</a>
-          </li>
-          <li class="nav-item"><a href="./menu.html">Menu</a></li>
-          <li class="nav-item"><a href="./comite.html">Committee</a></li>
-          <li class="nav-item language-dropdown-container">
-            <div class="language-selector">
-              <div class="selected-language">
-                <span>English</span>
-                <img
-                  src="../assets/images/flags/uk.png"
-                  alt="English"
-                  class="flag-icon"
-                />
-                <i class="fas fa-chevron-down"></i>
-              </div>
-              <ul class="language-dropdown">
-                <li class="language-option" data-lang="es">
-                  <img
-                    src="../assets/images/flags/españa.png"
-                    alt="Español"
-                    class="flag-icon"
-                  />
-                  <span>Español</span>
-                </li>
-                <li class="language-option active" data-lang="en">
-                  <img
-                    src="../assets/images/flags/uk.png"
-                    alt="English"
-                    class="flag-icon"
-                  />
-                  <span>English</span>
-                </li>
-                <li class="language-option" data-lang="fr">
-                  <img
-                    src="../assets/images/flags/francia.png"
-                    alt="Français"
-                    class="flag-icon"
-                  />
-                  <span>Français</span>
-                </li>
-              </ul>
+    <nav id="sidebar" class="nav-menu" aria-label="Main navigation">
+      <ul class="nav-list">
+        <li class="nav-item active"><a href="redireccion.html">Dashboard</a></li>
+        <li class="nav-item"><a href="menu.html">Menu</a></li>
+        <li class="nav-item"><a href="comite.html">Committee</a></li>
+        <li class="nav-item language-dropdown-container">
+          <div class="language-selector">
+            <div class="selected-language">
+              <span>English</span>
+              <img src="../assets/images/flags/uk.png" alt="English" class="flag-icon"/>
+              <i class="fas fa-chevron-down"></i>
             </div>
-          </li>
-          <li class="nav-item">
-            <div class="profile-dropdown" id="profileDropdown">
-              <div class="profile-toggle">
-                <div id="userAvatar" class="profile-avatar">U</div>
-                <div id="userName"  class="profile-name">User</div>
-              </div>
-              <div class="profile-menu">
-                <div class="profile-menu-item">
-                  <i class="fas fa-user"></i>
-                  <span>My Profile</span>
-                </div>
-                <div class="profile-menu-item">
-                  <i class="fas fa-history"></i>
-                  <span>My Orders</span>
-                </div>
-                <div class="profile-menu-item">
-                  <i class="fas fa-cog"></i>
-                  <span>Settings</span>
-                </div>
-                <div
-                  class="profile-menu-item logout"
-                  id="logoutBtn"
-                >
-                  <i class="fas fa-sign-out-alt"></i>
-                  <span>Logout</span>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </nav>
-    </div>
-
-    <!-- Mobile menu overlay -->
-    <div id="menuOverlay" class="menu-overlay"></div>
-  </header>
-
-  <!-- HERO / Welcome -->
-  <section class="dashboard-hero">
-    <div class="dashboard-welcome">
-      <h1 class="dashboard-title">
-        WELCOME TO <span class="text-cyan">MADBITE</span>
-      </h1>
-      <p class="dashboard-subtitle">
-        Your personal space to enjoy exclusive benefits, promotions and order
-        tracking.
-      </p>
-    </div>
-  </section>
-
-  <!-- CARDS SECTION -->
-  <section class="dashboard-sections">
-    <div class="dashboard-card">
-      <div class="dashboard-card-icon"><i class="fas fa-utensils"></i></div>
-      <h3 class="dashboard-card-title">My Orders</h3>
-      <div class="dashboard-card-content">
-        <p>Review your order history and track your current orders.</p>
-      </div>
-      <a href="#" class="dashboard-card-button">View Orders</a>
-    </div>
-
-    <div class="dashboard-card highlight">
-      <div class="dashboard-card-icon"><i class="fas fa-gift"></i></div>
-      <h3 class="dashboard-card-title">Promotions</h3>
-      <div class="dashboard-card-content">
-        <p>
-          Discover exclusive member offers and special promotions on our
-          products.
-        </p>
-      </div>
-      <a href="./promociones.html" class="dashboard-card-button"
-        >View Promotions</a
-      >
-    </div>
-
-    <div class="dashboard-card">
-      <div class="dashboard-card-icon"><i class="fas fa-calendar-alt"></i></div>
-      <h3 class="dashboard-card-title">Reservations</h3>
-      <div class="dashboard-card-content">
-        <p>
-          Book a table at any of our locations and manage your existing
-          reservations.
-        </p>
-      </div>
-      <a href="#" class="dashboard-card-button">Make Reservation</a>
-    </div>
-
-    <div class="dashboard-card">
-      <div class="dashboard-card-icon"><i class="fas fa-heart"></i></div>
-      <h3 class="dashboard-card-title">My Favorites</h3>
-      <div class="dashboard-card-content">
-        <p>
-          Quickly access your favorite burgers and products for easier
-          ordering.
-        </p>
-      </div>
-      <a href="#" class="dashboard-card-button">View Favorites</a>
-    </div>
-
-    <div class="dashboard-card">
-      <div class="dashboard-card-icon"><i class="fas fa-star"></i></div>
-      <h3 class="dashboard-card-title">Loyalty Program</h3>
-      <div class="dashboard-card-content">
-        <p>
-          Check your accumulated points and discover available rewards for
-          redemption.
-        </p>
-      </div>
-      <a href="#" class="dashboard-card-button">View Points</a>
-    </div>
-
-    <div class="dashboard-card highlight">
-      <div class="dashboard-card-icon"><i class="fas fa-user-edit"></i></div>
-      <h3 class="dashboard-card-title">My Profile</h3>
-      <div class="dashboard-card-content">
-        <p>
-          Edit your personal information, contact preferences, and payment
-          options.
-        </p>
-      </div>
-      <a href="#" class="dashboard-card-button">Edit Profile</a>
-    </div>
-  </section>
-
-  
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-brand">
-          <img
-            src="../assets/images/logo/logo-neon-removebg.png"
-            alt="MADBITE Logo"
-            class="footer-logo"
-          />
-          <p class="footer-description">
-            MADBITE is a burger chain with style and attitude. Our handcrafted
-            burgers and premium quality ingredients make the difference.
-          </p>
-          <div class="footer-social">
-            <a
-              href="https://www.instagram.com/madbite_usa/"
-              class="social-icon"
-              aria-label="Instagram"
-            >
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="#" class="social-icon" aria-label="Facebook">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" class="social-icon" aria-label="Twitter">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a
-              href="https://www.tiktok.com/@madbite_usa"
-              class="social-icon"
-              aria-label="TikTok"
-            >
-              <i class="fab fa-tiktok"></i>
-            </a>
+            <ul class="language-dropdown">
+              <li class="language-option" data-lang="es"><img src="../assets/images/flags/españa.png" alt="Español" class="flag-icon"/><span>Español</span></li>
+              <li class="language-option active" data-lang="en"><img src="../assets/images/flags/uk.png" alt="English" class="flag-icon"/><span>English</span></li>
+              <li class="language-option" data-lang="fr"><img src="../assets/images/flags/francia.png" alt="Français" class="flag-icon"/><span>Français</span></li>
+            </ul>
           </div>
-        </div>
+        </li>
+        <li class="nav-item">
+          <div class="profile-dropdown" id="profileDropdown">
+            <div class="user-profile-container">
+              <div id="userAvatar" class="profile-avatar"></div>
+              <span id="userName" class="profile-name"></span>
+            </div>
+            <div class="profile-menu">
+              <div class="profile-menu-item"><i class="fas fa-user"></i><span>My Profile</span></div>
+              <div class="profile-menu-item"><i class="fas fa-history"></i><span>My Orders</span></div>
+              <div class="profile-menu-item"><i class="fas fa-cog"></i><span>Settings</span></div>
+              <div class="profile-menu-item logout" id="logoutBtn"><i class="fas fa-sign-out-alt"></i><span>Logout</span></div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div id="menuOverlay" class="menu-overlay"></div>
+</header>
 
-        <div class="footer-nav">
-          <h3 class="footer-heading">Links</h3>
-          <ul class="footer-links">
-            <li><a href="redireccion.html"><i class="fas fa-chevron-right"></i> Dashboard</a></li>
-            <li><a href="menu.html"><i class="fas fa-chevron-right"></i> Menu</a></li>
-            <li><a href="comite.html"><i class="fas fa-chevron-right"></i> Committee</a></li>
-            <li><a href="../index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
-            <li><a href="../index.html#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
-          </ul>
-        </div>
+<!-- HERO / Welcome -->
+<section class="dashboard-hero">
+  <div class="dashboard-welcome">
+    <h1 class="dashboard-title">
+      WELCOME TO <span class="text-cyan">MADBITE</span>
+    </h1>
+    <p class="dashboard-subtitle">
+      Your personal space to enjoy exclusive benefits, promotions and order
+      tracking.
+    </p>
+  </div>
+</section>
 
-        <div class="footer-nav">
-          <h3 class="footer-heading">Legal</h3>
-          <ul class="footer-links">
-            <li><a href="terminos.html"><i class="fas fa-chevron-right"></i> Terms & Conditions</a></li>
-            <li><a href="politica.html"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
-            <li><a href="cookies.html"><i class="fas fa-chevron-right"></i> Cookie Policy</a></li>
-            <li><a href="faq.html"><i class="fas fa-chevron-right"></i> FAQ</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-newsletter">
-          <h3 class="footer-heading">Newsletter</h3>
-          <p class="newsletter-text">
-            Subscribe to receive news and special offers.
-          </p>
-          <form class="newsletter-form">
-            <input
-              type="email"
-              class="newsletter-input"
-              placeholder="Your email"
-            />
-            <button type="submit" class="newsletter-btn">
-              <i class="fas fa-paper-plane"></i>
-            </button>
-          </form>
-          <p class="form-disclaimer">
-            By subscribing you accept our privacy policy.
-          </p>
-        </div>
-      </div>
+<!-- CARDS SECTION -->
+<section class="dashboard-sections">
+  <div class="dashboard-card">
+    <div class="dashboard-card-icon"><i class="fas fa-utensils"></i></div>
+    <h3 class="dashboard-card-title">My Orders</h3>
+    <div class="dashboard-card-content">
+      <p>Review your order history and track your current orders.</p>
     </div>
-
-    <div class="copyright">
-      <div class="container">
-        &copy; 2025 <span>MADBITE</span>. All rights reserved.
-      </div>
-    </div>
-  </footer>
-
-  <!-- Scroll up -->
-  <div class="scroll-up" id="scrollUp">
-    <i class="fas fa-arrow-up"></i>
+    <a href="#" class="dashboard-card-button">View Orders</a>
   </div>
 
-  <!-- SCRIPTS -->
-  <script src="../js/main.js" defer></script>
-  <script src="../js/logo-animation.js" defer></script>
-  <script src="../js/language-switcher.js" defer></script>
-</body>
-</html>
+  <div class="dashboard-card highlight">
+    <div class="dashboard-card-icon"><i class="fas fa-gift"></i></div>
+    <h3 class="dashboard-card-title">Promotions</h3>
+    <div class="dashboard-card-content">
+      <p>
+        Discover exclusive member offers and special promotions on our
+        products.
+      </p>
+    </div>
+    <a href="promociones.html" class="dashboard-card-button"
+    >View Promotions</a
+    >
+  </div>
+
+  <div class="dashboard-card">
+    <div class="dashboard-card-icon"><i class="fas fa-calendar-alt"></i></div>
+    <h3 class="dashboard-card-title">Reservations</h3>
+    <div class="dashboard-card-content">
+      <p>
+        Book a table at any of our locations and manage your existing
+        reservations.
+      </p>
+    </div>
+    <a href="#" class="dashboard-card-button">Make Reservation</a>
+  </div>
+
+  <div class="dashboard-card">
+    <div class="dashboard-card-icon"><i class="fas fa-heart"></i></div>
+    <h3 class="dashboard-card-title">My Favorites</h3>
+    <div class="dashboard-card-content">
+      <p>
+        Quickly access your favorite burgers and products for easier
+        ordering.
+      </p>
+    </div>
+    <a href="#" class="dashboard-card-button">View Favorites</a>
+  </div>
+
+  <div class="dashboard-card">
+    <div class="dashboard-card-icon"><i class="fas fa-star"></i></div>
+    <h3 class="dashboard-card-title">Loyalty Program</h3>
+    <div class="dashboard-card-content">
+      <p>
+        Check your accumulated points and discover available rewards for
+        redemption.
+      </p>
+    </div>
+    <a href="#" class="dashboard-card-button">View Points</a>
+  </div>
+
+  <div class="dashboard-card highlight">
+    <div class="dashboard-card-icon"><i class="fas fa-user-edit"></i></div>
+    <h3 class="dashboard-card-title">My Profile</h3>
+    <div class="dashboard-card-content">
+      <p>
+        Edit your personal information, contact preferences, and payment
+        options.
+      </p>
+    </div>
+    <a href="#" class="dashboard-card-button">Edit Profile</a>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img
+                src="../assets/images/logo/logo-neon-removebg.png"
+                alt="MADBITE Logo"
+                class="footer-logo"
+        />
+        <p class="footer-description">
+          MADBITE is a burger chain with style and attitude. Our handcrafted
+          burgers and premium quality ingredients make the difference.
+        </p>
+        <div class="footer-social">
+          <a
+                  href="https://www.instagram.com/madbite_usa/"
+                  class="social-icon"
+                  aria-label="Instagram"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="social-icon" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="social-icon" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a
+                  href="https://www.tiktok.com/@madbite_usa"
+                  class="social-icon"
+                  aria-label="TikTok"
+          >
+            <i class="fab fa-tiktok"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-nav">
+        <h3 class="footer-heading">Links</h3>
+        <ul class="footer-links">
+          <li><a href="redireccion.html"><i class="fas fa-chevron-right"></i> Dashboard</a></li>
+          <li><a href="menu.html"><i class="fas fa-chevron-right"></i> Menu</a></li>
+          <li><a href="comite.html"><i class="fas fa-chevron-right"></i> Committee</a></li>
+          <li><a href="../index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+          <li><a href="../index.html#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-nav">
+        <h3 class="footer-heading">Legal</h3>
+        <ul class="footer-links">
+          <li><a href="terminos.html"><i class="fas fa-chevron-right"></i> Terms & Conditions</a></li>
+          <li><a href="politica.html"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+          <li><a href="cookies.html"><i class="fas fa-chevron-right"></i> Cookie Policy</a></li>
+          <li><a href="faq.html"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-newsletter">
+        <h3 class="footer-heading">Newsletter</h3>
+        <p class="newsletter-text">
+          Subscribe to receive news and special offers.
+        </p>
+        <form class="newsletter-form">
+          <input
+                  type="email"
+                  class="newsletter-input"
+                  placeholder="Your email"
+          />
+          <button type="submit" class="newsletter-btn">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+        <p class="form-disclaimer">
+          By subscribing you accept our privacy policy.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="copyright">
+    <div class="container">
+      &copy; 2025 <span>MADBITE</span>. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll up -->
+<div class="scroll-up" id="scrollUp">
+  <i class="fas fa-arrow-up"></i>
+</div>
+
+<!-- SCRIPTS -->
+<!-- Cambiamos la forma de cargar los
