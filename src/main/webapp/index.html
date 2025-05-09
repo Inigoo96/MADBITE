@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+ <!-- HEADER -->
+<header class="header">
+  <div class="nav-container">
+      <!-- Logo with bite animation -->
+      <div class="logo-container">
+          <a href="./index.html" class="logo-link" aria-label="MADBITE Home">
+              <!-- Added appropriate alt text and aria-label for accessibility -->
+              <img src="assets/images/logo/logo-completo-ajustadorbg.png" alt="MADBITE Logo" class="logo logo-intact">
+              <img src="assets/images/logo/logo-neon-ajustadorbg.png" alt="MADBITE Logo - Animation Frame 1" class="logo logo-bitten-1">
+              <img src="assets/images/logo/logo-bitten-3-rp (1)-Photoroom.png" alt="MADBITE Logo - Animation Frame 2" class="logo logo-bitten-2">
+              <img src="assets/images/logo/logo-bitten-4-rp (1)-Photoroom.png" alt="MADBITE Logo - Animation Frame 3" class="logo logo-bitten-3">
+          </a>
+      </div>
+
+      <!-- Hamburger menu toggle for mobile -->
+      <button id="navToggle" aria-label="Toggle menu" role="button" tabindex="0">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+      </button>
+
+      <!-- Navigation menu -->
+      <nav class="nav-menu" id="navMenu" aria-label="Main navigation">
+          <ul class="nav-list">
+              <li class="nav-item"><a href="#home">Inicio</a></li>
+              <li class="nav-item"><a href="#featured">Destacados</a></li>
+              <li class="nav-item"><a href="#about">Nosotros</a></li>
+              <li class="nav-item"><a href="#locations">Locales</a></li>
+              <li class="nav-item"><a href="#contact">Contacto</a></li>
+              <li class="nav-item language-dropdown-container">
+                  <!-- Selector de idioma como elemento de lista -->
+              <div class="language-selector">
+                <div class="selected-language">
+                    <span>Español</span>
+                    <img src="assets/images/flags/españa.png" alt="Español" class="flag-icon">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="language-dropdown">
+                    <li class="language-option active" data-lang="es">
+                        <img src="assets/images/flags/españa.png" alt="Español" class="flag-icon">
+                        <span>Español</span>
+                    </li>
+                    <li class="language-option" data-lang="en">
+                        <img src="assets/images/flags/uk.png" alt="English" class="flag-icon">
+                        <span>English</span>
+                    </li>
+                    <li class="language-option" data-lang="fr">
+                        <img src="assets/images/flags/francia.png" alt="Français" class="flag-icon">
+                        <span>Français</span>
+                    </li>
+                </ul>
+              </div>
+              </li>
+              <li class="nav-item login-item">
+                <button id="loginBtn" class="login-link" aria-label="Iniciar sesión">
+                  <div class="login-circle">
+                    <i class="fas fa-user"></i>
+                  </div>
+                </button>
+              </li>
+          </ul>
+      </nav>
+  </div>
+
+  <!-- Overlay for mobile menu -->
+  <div class="menu-overlay" id="menuOverlay"></div>
+</header>
+        <!-- HERO SECTION MADBITE -->
+        <section class="hero" id="home">
+            <div class="video-container">
+                <video id="videoA" class="video" preload="auto" autoplay muted loop playsinline poster="assets/images/backgrounds/portada_burguer.png">
+                    <source src="assets/videos/complete_hamb.mp4" type="video/mp4">
+                    Tu navegador no soporta vídeo HTML5.
+                </video>
+                <div class="video-overlay"></div>
+            </div>
+
+            <!-- Slogan lateral vertical con redes -->
+            <div class="vertical-slogan">
+                <div class="vertical-slogan-line"></div>
+                <div class="vertical-slogan-text">TASTE THE MADNESS</div>
+                <div class="vertical-slogan-socials">
+                  <a href="https://www.tiktok.com/@madbite_usa" class="social-icon" aria-label="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://www.instagram.com/madbite_usa/" class="social-icon" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                </div>
+            </div>
+
+            <!-- Contenido principal -->
+            <div class="container hero-container">
+                <div class="hero-content">                    
+                    <h1 class="hero-title">
+                        <span class="hero-line">
+                          <span class="hero-word">EL</span>
+                          <span class="hero-word text-cyan" data-text="MORDISCO">MORDISCO</span>
+                        </span>
+                        <span class="hero-line">
+                          <span class="hero-word">QUE</span>
+                          <span class="hero-word text-magenta" data-text="ENLOQUECE">ENLOQUECE</span>
+                        </span>
+                    </h1>                      
+                    
+                    <div class="hero-buttons">
+                        <a href="#featured" class="btn-glitch">DESCUBRE TU TENTACIÓN</a>
+                        <a href="#locations" class="btn-glitch">NUESTROS ESPACIOS</a>
+                    </div>                      
+                </div>
+            </div>
+        </section>
+<!-- ========== FEATURED – Signature Burgers ========== -->
+<section class="featured" id="featured">
+    <div class="container">
+      <h2 class="contact-title">
+        <span class="title-neon">NUESTROS DESTACADOS</span>
+    </h2>
+          
+  
+      <div class="featured-grid">
+        <!-- Card 1 -->
+        <article class="featured-card">
+          <div class="featured-card-image">
+            <span class="featured-badge">BESTSELLER</span>
+            <img src="assets/images/carta/hamburguesas/carne/hamb_carne1.png" alt="The MADBITE Classic">
+          </div>
+          <div class="featured-card-content">
+            <h3 class="featured-card-title">La Classic MADBITE</h3>
+            <p class="featured-card-description">
+              Nuestra hamburguesa clásica con carne premium, queso cheddar, tomate, lechuga y nuestra salsa secreta.
+            </p>
+            <div class="featured-card-footer">
+              <span class="featured-card-price">$12.99</span>
+              <button class="featured-card-button" aria-label="Add The MADBITE Classic">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+  
+        <!-- Card 2 -->
+        <article class="featured-card">
+          <div class="featured-card-image">
+            <span class="featured-badge featured-badge--magenta">NUEVA</span>
+            <img src="assets/images/carta/hamburguesas/pollo/hamb_pollo1.png" alt="Inferno">
+          </div>
+          <div class="featured-card-content">
+            <h3 class="featured-card-title">Inferno Chicken</h3>
+            <p class="featured-card-description">
+              Para los amantes del picante: jalapeños, guacamole picante, queso pepper jack y salsa de habanero.
+            </p>
+            <div class="featured-card-footer">
+              <span class="featured-card-price">$14.99</span>
+              <button class="featured-card-button" aria-label="Add Inferno">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+  
+        <!-- Card 3 -->
+        <article class="featured-card">
+          <div class="featured-card-image">
+            <img src="assets/images/carta/hamburguesas/vegetal/hamb_falafel.png" alt="Falafel Burger">
+          </div>
+          <div class="featured-card-content">
+            <h3 class="featured-card-title">Falafel Burger</h3>
+            <p class="featured-card-description">
+              Burger de falafel casero, hummus, pepino, tomate, cebolla roja y salsa de yogur vegano..
+            </p>
+            <div class="featured-card-footer">
+              <span class="featured-card-price">$13.99</span>
+              <button class="featured-card-button" aria-label="Add Falafel Burger">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+  
+      <div class="menu-btn-container">
+        <a href="./html/menu.html" class="menu-btn">
+          <i class="fas fa-utensils"></i> VER MENÚ COMPLETO
+        </a>
+      </div>
+    </div>
+  </section>
+  
+
+            <!-- SECCIÓN SOBRE NOSOTROS -->
+        <section class="about" id="about">
+            <div class="container">
+              <h2 class="contact-title">
+                <span class="title-neon">SOBRE NOSOTROS</span>
+            </h2>
+                
+                <div class="about-flex">
+                    <!-- Columna de texto -->
+                    <div class="about-content">
+                        <div class="about-text">
+                            <p>MADBITE nació en 2020 con una visión revolucionaria en el mundo de las hamburguesas. Nuestra pasión nos llevó a ser reconocidos en la Guía Michelin Bib Gourmand 2025, un logro que celebra nuestra búsqueda constante de la excelencia gastronómica.</p>
+                            
+                            <p>Nos enorgullece ofrecer carne 100% natural, panes artesanales horneados diariamente y salsas caseras que harán que cada bocado sea una experiencia inolvidable.</p>
+                        </div>
+                        
+                        <!-- Estadísticas -->
+                        <div class="stats-grid">
+                            <!-- Locales -->
+                            <div class="stat-box">
+                                <div class="stat-circle">
+                                    <span class="stat-value">3<span class="stat-plus">+</span></span>
+                                </div>
+                                <div class="stat-label">LOCALES</div>
+                            </div>
+                            
+                            <!-- Hamburguesas -->
+                            <div class="stat-box">
+                                <div class="stat-circle">
+                                    <span class="stat-value">15<span class="stat-plus">+</span></span>
+                                </div>
+                                <div class="stat-label">HAMBURGUESAS</div>
+                            </div>
+                            
+                            <!-- Clientes -->
+                            <div class="stat-box">
+                                <div class="stat-circle">
+                                    <span class="stat-value">10<span class="stat-plus">K+</span></span>
+                                </div>
+                                <div class="stat-label">CLIENTES</div>
+                            </div>
+                            
+                            <!-- Valoración -->
+                            <div class="stat-box">
+                                <div class="stat-circle">
+                                    <span class="stat-value">4.9</span>
+                                </div>
+                                <div class="stat-label">VALORACIÓN</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Columna de imagen -->
+                    <div class="about-image">
+                        <!-- Badge "DESDE 2020" -->
+                        <div class="year-badge" id="yearBadge">
+                            <div class="badge-front">
+                                <span class="badge-text">DESDE</span>
+                                <span class="badge-year">2020</span>
+                            </div>
+                            <div class="badge-back">
+                                <img src="https://lamamarestaurante.com/wp-content/uploads/2025/02/Bib_Gourmand_2025_michelin.png" alt="MADBITE Restaurant">                    </div>
+                        </div>
+                        
+                        <div class="image-container">
+                            <img src="assets/images/restaurantes/rest_3.png" alt="MADBITE Restaurant">
+                            <div class="image-border"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<!-- ========== LOCATIONS ========== -->
+<section class="locations" id="locations">
+    <div class="container">
+      <h2 class="contact-title">
+        <span class="title-neon">NUESTROS LOCALES</span>
+    </h2>
+      
+  
+      <div class="glass-container">
+        <!-- NEW YORK -->
+        <article class="glass" data-text="NEW YORK">
+          <h3 class="location-name"></h3>
+          <img src="assets/images/restaurantes/times-square.png"
+               alt="MADBITE Times Square" class="location-image">
+  
+          <div class="location-content">
+            <p class="location-address">234 W 42nd St, New York, NY</p>
+  
+            <div class="location-hours"><i class="far fa-clock"></i> Mon–Sun: 11:00 AM – 11:00 PM</div>
+            <div class="location-phone"><i class="fas fa-phone-alt"></i> +1 (212) 555-1234</div>
+  
+            <div class="location-actions">
+              <a href="#" class="location-map-btn" data-lat="40.7570" data-lng="-73.9869">
+                <i class="fas fa-map-marker-alt"></i> CÓMO LLEGAR
+              </a>
+              <button class="location-details-btn"
+                      data-name="MADBITE Times Square"
+                      data-address="234 W 42nd St, New York, NY"
+                      data-hours="Mon–Sun: 11:00 AM – 11:00 PM"
+                      data-phone="+1 (212) 555-1234"
+                      data-img="assets/images/restaurantes/times-square.png">
+                <i class="fas fa-info-circle"></i> DETALLES
+              </button>
+            </div>
+          </div>
+        </article>
+  
+        <!-- LOS ÁNGELES -->
+        <article class="glass" data-text="LOS ANGELES">
+          <h3 class="location-name"></h3>
+          <img src="assets/images/restaurantes/venice-beach-2.png"
+               alt="MADBITE Venice Beach" class="location-image">
+  
+          <div class="location-content">
+            <p class="location-address">1205 Abbot Kinney Blvd, Venice, CA</p>
+  
+            <div class="location-hours"><i class="far fa-clock"></i> Mon–Sun: 11:00 AM – 10:00 PM</div>
+            <div class="location-phone"><i class="fas fa-phone-alt"></i> +1 (310) 555-7890</div>
+  
+            <div class="location-actions">
+              <a href="#" class="location-map-btn" data-lat="33.9905" data-lng="-118.4651">
+                <i class="fas fa-map-marker-alt"></i> CÓMO LLEGAR
+              </a>
+              <button class="location-details-btn"
+                      data-name="MADBITE Venice Beach"
+                      data-address="1205 Abbot Kinney Blvd, Venice, CA"
+                      data-hours="Mon–Sun: 11:00 AM – 10:00 PM"
+                      data-phone="+1 (310) 555-7890"
+                      data-img="assets/images/restaurantes/venice-beach-2.png">
+                <i class="fas fa-info-circle"></i> DETALLES
+              </button>
+            </div>
+          </div>
+        </article>
+  
+        <!-- MIAMI -->
+        <article class="glass" data-text="MIAMI">
+          <h3 class="location-name"></h3>
+          <img src="assets/images/restaurantes/miami-beach.png"
+               alt="MADBITE South Beach" class="location-image">
+  
+          <div class="location-content">
+            <p class="location-address">723 Lincoln Rd, Miami Beach, FL</p>
+  
+            <div class="location-hours"><i class="far fa-clock"></i> Mon–Sun: 11:00 AM – 12:00 AM</div>
+            <div class="location-phone"><i class="fas fa-phone-alt"></i> +1 (305) 555-4321</div>
+  
+            <div class="location-actions">
+              <a href="#" class="location-map-btn" data-lat="25.7903" data-lng="-80.1395">
+                <i class="fas fa-map-marker-alt"></i> CÓMO LLEGAR
+              </a>
+              <button class="location-details-btn"
+                      data-name="MADBITE South Beach"
+                      data-address="723 Lincoln Rd, Miami Beach, FL"
+                      data-hours="Mon–Sun: 11:00 AM – 12:00 AM"
+                      data-phone="+1 (305) 555-4321"
+                      data-img="assets/images/restaurantes/miami-beach.png">
+                <i class="fas fa-info-circle"></i> DETALLES
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ===== MODAL – LOCATION DETAILS ===== -->
+  <div id="locationModal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close">&times;</button>
+  
+      <div class="modal-img-wrapper">
+        <img id="modalImg" alt="">
+      </div>
+  
+      <h3 id="modalName"></h3>
+      <p id="modalAddress"><i class="fas fa-map-marker-alt"></i></p>
+      <p id="modalHours"><i class="far fa-clock"></i></p>
+      <p id="modalPhone"><i class="fas fa-phone-alt"></i></p>
+    </div>
+  </div>
+  
+
+
+       <!-- CONTACT SECTION -->
+<section class="contact" id="contact">
+  <div class="container">
+      <h2 class="contact-title">
+          <span class="title-neon" data-i18n="contact.title">CONTÁCTANOS</span>
+      </h2>
+      
+      <div class="contact-container">
+          <div class="contact-info">
+              <div class="contact-item">
+                  <div class="contact-icon">
+                      <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div class="contact-text">
+                      <div class="contact-label" data-i18n="contact.office">Oficina Principal</div>
+                      <div class="contact-value">1250 Broadway, Suite 3300, New York</div>
+                  </div>
+              </div>
+
+              <div class="contact-item">
+                  <div class="contact-icon">
+                      <i class="fas fa-phone-alt"></i>
+                  </div>
+                  <div class="contact-text">
+                      <div class="contact-label" data-i18n="contact.phone">Teléfono</div>
+                      <div class="contact-value">+1 (800) 555-7890</div>
+                  </div>
+              </div>
+
+              <div class="contact-item">
+                  <div class="contact-icon">
+                      <i class="fas fa-envelope"></i>
+                  </div>
+                  <div class="contact-text">
+                      <div class="contact-label" data-i18n="contact.email">Email</div>
+                      <div class="contact-value">hello@madbite.com</div>
+                  </div>
+              </div>
+
+              <div class="contact-map">
+                  <iframe 
+                      src="https://www.google.com/maps/d/embed?mid=1_vu7ATTrPmjFY-NmR8PZbjVP2ZrTfik&hl=es&ehbc=2E312F"
+                      class="map-iframe"
+                      title="Ubicación de MADBITE"
+                      allowfullscreen=""
+                      loading="lazy">
+                  </iframe>
+              </div>
+          </div>
+
+          <div class="contact-form">
+            <form id="contactForm">
+                <div class="form-group">
+                    <div class="field-title" data-i18n="contact.form.name">NOMBRE</div>
+                    <div class="input-wrapper">
+                        <input type="text" id="name" class="form-control" data-i18n-placeholder="contact.form.namePlaceholder" placeholder="Tu nombre" required>
+                        <div class="input-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="form-group">
+                    <div class="field-title" data-i18n="contact.form.email">EMAIL</div>
+                    <div class="input-wrapper">
+                        <input type="email" id="email" class="form-control" data-i18n-placeholder="contact.form.emailPlaceholder" placeholder="Tu email" required>
+                        <div class="input-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="form-group">
+                    <div class="field-title" data-i18n="contact.form.subject">ASUNTO</div>
+                    <div class="input-wrapper">
+                        <input type="text" id="subject" class="form-control" data-i18n-placeholder="contact.form.subjectPlaceholder" placeholder="Asunto" required>
+                        <div class="input-icon">
+                            <i class="fas fa-tag"></i>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="form-group">
+                    <div class="field-title" data-i18n="contact.form.message">MENSAJE</div>
+                    <div class="input-wrapper textarea-wrapper">
+                        <textarea id="message" class="form-control" data-i18n-placeholder="contact.form.messagePlaceholder" placeholder="Tu mensaje" required></textarea>
+                        <div class="input-icon textarea-icon">
+                            <i class="fas fa-comment-alt"></i>
+                        </div>
+                    </div>
+                </div>
+        
+                <button type="submit" class="submit-btn">
+                    <span class="btn-text" data-i18n="contact.form.send">ENVIAR MENSAJE</span>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+      </div>
+  </div>
+</section>
+        <!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+      <div class="footer-content">
+          <!-- Logo y descripción -->
+          <div class="footer-brand">
+              <img src="assets/images/logo/logo-neon-removebg.png" alt="MADBITE Logo" class="footer-logo">
+              <p class="footer-description">MADBITE es una cadena de hamburguesería con estilo y actitud. Nuestras hamburguesas artesanales y nuestros ingredientes de primera calidad hacen la diferencia.</p>
+              <div class="footer-social">
+                
+              <a href="https://www.instagram.com/madbite_usa/" class="social-icon" aria-label="Instagram">
+                  <i class="fab fa-instagram"></i>
+              </a>
+                  <a href="#" class="social-icon" aria-label="Facebook">
+                      <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a href="#" class="social-icon" aria-label="Twitter">
+                      <i class="fab fa-twitter"></i>
+                  </a>
+                  <a href="https://www.tiktok.com/@madbite_usa" class="social-icon" aria-label="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                  
+              </div>
+          </div>
+
+          <!-- Enlaces -->
+          <div class="footer-nav">
+              <h3 class="footer-heading">Enlaces</h3>
+              <ul class="footer-links">
+                  <li><a href="#home"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+                  <li><a href="#featured"><i class="fas fa-chevron-right"></i> Menú</a></li>
+                  <li><a href="#about"><i class="fas fa-chevron-right"></i> Nosotros</a></li>
+                  <li><a href="#locations"><i class="fas fa-chevron-right"></i> Locales</a></li>
+                  <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contacto</a></li>
+              </ul>
+          </div>
+
+          <!-- Legal -->
+          <div class="footer-nav">
+              <h3 class="footer-heading">Legal</h3>
+              <ul class="footer-links">
+                  <li><a href="./html/terminos.html"><i class="fas fa-chevron-right"></i> Términos y Condiciones</a></li>
+                  <li><a href="./html/politica.html"><i class="fas fa-chevron-right"></i> Política de Privacidad</a></li>
+                  <li><a href="./html/cookies.html"><i class="fas fa-chevron-right"></i> Política de Cookies</a></li>
+                  <li><a href="./html/faq.html"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+              </ul>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="footer-newsletter">
+              <h3 class="footer-heading">Newsletter</h3>
+              <p class="newsletter-text">Suscríbete para recibir noticias y ofertas especiales.</p>
+              <form class="newsletter-form">
+                  <input type="email" class="newsletter-input" placeholder="Tu email">
+                  <button type="submit" class="newsletter-btn">
+                      <i class="fas fa-paper-plane"></i>
+                  </button>
+              </form>
+              <p class="form-disclaimer">Al suscribirte aceptas nuestra política de privacidad.</p>
+          </div>
+      </div>
+  </div>
+
+  <div class="copyright">
+      <div class="container">
+          &copy; 2025 <span>MADBITE</span>. Todos los derechos reservados.
+      </div>
+  </div>
+</footer>
+
+        <!-- SCROLL UP BUTTON -->
+        <div class="scroll-up" id="scrollUp">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+
+        <!-- ... Importar JS ... -->
+    <script src="./js/main.js"></script>
+    <script src="./js/logo-animation.js"></script>
+    <script src="./js/nosotros.js"></script>
+    <script src="./js/locations.js"></script>
+    <script src="./js/contact.js"></script>
+    <script src="./js/language-switcher.js"></script>
+    <script type="module">
+      import AuthService from "./js/auth.js";
+      document.addEventListener("DOMContentLoaded", () => {
+        AuthService.attachLogin("loginBtn");
+        AuthService.attachSignUp("signUpBtn");
+        AuthService.init();
+      });
+    </script>
+    
+    </body>
+</html>

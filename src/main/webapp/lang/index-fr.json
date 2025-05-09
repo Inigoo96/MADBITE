@@ -1,0 +1,94 @@
+{
+    "nav": {
+      "home": "Accueil",
+      "featured": "À la une",
+      "about": "À propos",
+      "locations": "Emplacements",
+      "contact": "Contact",
+      "menu": "Menu"
+    },
+    "hero": {
+      "title1": "LA",
+      "title2": "MORSURE",
+      "title3": "QUI",
+      "title4": "REND FOU",
+      "cta1": "DÉCOUVREZ VOTRE TENTATION",
+      "cta2": "NOS ESPACES"
+    },
+    "featured": {
+      "title": "NOS PRODUITS VEDETTES",
+      "card1": {
+        "badge": "BESTSELLER",
+        "title": "Le Classic MADBITE",
+        "description": "Notre burger classique avec viande premium, fromage cheddar, tomate, laitue et notre sauce secrète.",
+        "price": "$12.99"
+      },
+      "card2": {
+        "badge": "NOUVEAU",
+        "title": "Inferno Chicken",
+        "description": "Pour les amateurs de piquant : jalapeños, guacamole épicé, fromage pepper jack et sauce habanero.",
+        "price": "$14.99"
+      },
+      "card3": {
+        "title": "Burger Falafel",
+        "description": "Burger de falafel maison, houmous, concombre, tomate, oignon rouge et sauce au yaourt végétalien.",
+        "price": "$13.99"
+      },
+      "viewMenu": "VOIR LE MENU COMPLET"
+    },
+    "about": {
+      "title": "À PROPOS DE NOUS",
+      "text1": "MADBITE est né en 2020 avec une vision révolutionnaire dans le monde des burgers. Notre passion nous a conduit à être reconnus dans le Guide Michelin Bib Gourmand 2025, une réussite qui célèbre notre recherche constante de l'excellence culinaire.",
+      "text2": "Nous sommes fiers d'offrir de la viande 100% naturelle, des pains artisanaux cuits quotidiennement et des sauces maison qui feront de chaque bouchée une expérience inoubliable.",
+      "stats": {
+        "locations": "EMPLACEMENTS",
+        "burgers": "BURGERS",
+        "clients": "CLIENTS",
+        "rating": "ÉVALUATION"
+      },
+      "since": "DEPUIS",
+      "year": "2020"
+    },
+    "locations": {
+      "title": "NOS EMPLACEMENTS",
+      "newyork": "NEW YORK",
+      "losangeles": "LOS ANGELES",
+      "miami": "MIAMI",
+      "hours": "Lun–Dim: 11h00 – 23h00",
+      "directions": "COMMENT S'Y RENDRE",
+      "details": "DÉTAILS"
+    },
+    "contact": {
+  "title": "CONTACTEZ-NOUS",
+  "office": "Bureau Principal",
+  "phone": "Téléphone",
+  "email": "Email",
+  "form": {
+    "name": "NOM",
+    "namePlaceholder": "Votre nom",
+    "email": "EMAIL",
+    "emailPlaceholder": "Votre email",
+    "subject": "SUJET",
+    "subjectPlaceholder": "Sujet",
+    "message": "MESSAGE",
+    "messagePlaceholder": "Votre message",
+    "send": "ENVOYER MESSAGE",
+    "success": "Message envoyé !",
+    "thankYou": "Merci de nous avoir contactés. Nous vous répondrons dans les plus brefs délais."
+  }
+},
+    "footer": {
+      "description": "MADBITE est une chaîne de restaurants de burgers avec style et attitude. Nos burgers artisanaux et nos ingrédients de première qualité font la différence.",
+      "links": "Liens",
+      "legal": "Légal",
+      "terms": "Conditions Générales",
+      "privacy": "Politique de Confidentialité",
+      "cookies": "Politique de Cookies",
+      "faq": "FAQ",
+      "newsletter": "Newsletter",
+      "subscribeText": "Inscrivez-vous pour recevoir des nouvelles et des offres spéciales.",
+      "emailPlaceholder": "Votre email",
+      "disclaimer": "En vous inscrivant, vous acceptez notre politique de confidentialité.",
+      "copyright": "Tous droits réservés."
+    }
+  }

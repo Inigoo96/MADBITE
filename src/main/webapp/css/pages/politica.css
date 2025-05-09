@@ -1,0 +1,150 @@
+/* Política de Privacidad - Contenido */
+#privacidad {
+    max-width: 960px;
+    margin: 120px auto 60px;
+    padding: 2.5rem;
+    background: rgba(5, 5, 20, 0.8); /* Color oscuro como pediste */
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid rgba(0, 232, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 232, 255, 0.1);
+  }
+  
+  #privacidad h1 {
+    font-size: 2.5rem;
+    color: var(--madbite-cyan);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 10px rgba(0, 232, 255, 0.7), 0 0 20px rgba(0, 232, 255, 0.5);
+    line-height: 1.2;
+  }
+  
+  #privacidad h2 {
+    font-size: 1.8rem;
+    color: var(--madbite-cyan);
+    border-bottom: 2px solid rgba(0, 232, 255, 0.3);
+    padding-bottom: 0.5rem;
+    margin-top: 2.5rem;
+    text-shadow: 0 0 8px rgba(0, 232, 255, 0.4);
+  }
+  
+  #privacidad h3 {
+    font-size: 1.3rem;
+    color: var(--madbite-magenta);
+    margin-top: 1.8rem;
+    text-shadow: 0 0 8px rgba(255, 0, 170, 0.4);
+  }
+  
+  #privacidad p, 
+  #privacidad li {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+  
+  #privacidad strong {
+    color: var(--madbite-orange);
+  }
+  
+  #privacidad em {
+    color: var(--madbite-cyan);
+    font-style: italic;
+  }
+  
+  #privacidad a {
+    color: var(--madbite-cyan);
+    text-decoration: underline;
+    transition: all 0.3s ease;
+  }
+  
+  #privacidad a:hover {
+    color: var(--madbite-magenta);
+    text-shadow: 0 0 10px rgba(255, 0, 170, 0.5);
+  }
+  
+  #privacidad ul, 
+  #privacidad ol {
+    margin: 0 0 1.5rem 1.5rem;
+    padding-left: 1.2rem;
+  }
+  
+  #privacidad ul {
+    list-style: disc;
+  }
+  
+  #privacidad ol {
+    list-style: decimal;
+  }
+  
+  #privacidad li {
+    margin-bottom: 0.7rem;
+  }
+  
+  /* Botón volver */
+  .btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 2.5rem 0 1rem;
+    padding: 0.8rem 1.5rem;
+    background: transparent;
+    border: 2px solid var(--madbite-orange);
+    border-radius: 8px;
+    color: var(--madbite-orange);
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-back:hover {
+    background: var(--madbite-orange);
+    color: var(--madbite-dark);
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(255, 102, 0, 0.4);
+  }
+  
+  .btn-back i {
+    transition: transform 0.3s ease;
+  }
+  
+  .btn-back:hover i {
+    transform: translateX(-5px);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    #privacidad {
+      padding: 1.5rem;
+      margin-top: 100px;
+    }
+    
+    #privacidad h1 {
+      font-size: 2rem;
+    }
+    
+    #privacidad h2 {
+      font-size: 1.5rem;
+    }
+    
+    #privacidad h3 {
+      font-size: 1.2rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    #privacidad {
+      padding: 1.2rem;
+      margin: 80px 15px 30px;
+      border-radius: 10px;
+    }
+    
+    #privacidad h1 {
+      font-size: 1.8rem;
+    }
+    
+    .btn-back {
+      width: 100%;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+  }

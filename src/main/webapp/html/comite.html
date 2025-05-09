@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comité de Empresa</title>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos principales -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/pages/comite.css">
+
+    <script type="module" src="../js/auth-guard.js" defer></script>
+</head>
+<body class="dashboard-body">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <img src="../assets/images/logo/" alt="MADBITE">
+            </div>
+            <button id="sidebarClose" class="sidebar-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="sidebar-content">
+            <div class="sidebar-user">
+                <div class="user-avatar" id="userAvatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-info">
+                    <h3 id="userName">Usuario</h3>
+                    <span id="userRole">Empleado</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="redireccion.html">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="perfil.html">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Mi Perfil</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="comite.html">
+                            <i class="fas fa-users"></i>
+                            <span>Comité de Empresa</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="soporte.html">
+                            <i class="fas fa-headset"></i>
+                            <span>Soporte</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        
+        <div class="sidebar-footer">
+            <button id="logoutBtn" class="sidebar-logout">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Cerrar Sesión</span>
+            </button>
+        </div>
+    </aside>
+    
+    <!-- MAIN CONTENT -->
+    <main class="dashboard-main" id="dashboardMain">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <button id="menuToggle" class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="header-title">Comité de Empresa</h1>
+            </div>
+            
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="action-btn notifications-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </button>
+                    <button class="action-btn messages-btn">
+                        <i class="fas fa-envelope"></i>
+                        <span class="badge">5</span>
+                    </button>
+                </div>
+                
+                <div class="profile-dropdown">
+                    <div class="profile-toggle">
+                        <div class="profile-avatar">
+                            <span id="profileInitials">U</span>
+                        </div>
+                        <span class="profile-name" id="profileName">Usuario</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="dashboard-content">
+            <!-- COMMITTEE BANNER -->
+            <div class="comite-banner">
+                <div class="comite-banner-content">
+                    <h2 class="banner-title">MADBITE Comité de Empresa</h2>
+                    <p class="banner-subtitle">Representando a los empleados desde 2020</p>
+                    <div class="comite-stats">
+                        <div class="comite-stat">
+                            <div class="stat-value" data-count="5">5</div>
+                            <div class="stat-label">Miembros</div>
+                        </div>
+                        <div class="comite-stat">
+                            <div class="stat-value" data-count="85">85%</div>
+                            <div class="stat-label">Participación</div>
+                        </div>
+                        <div class="comite-stat">
+                            <div class="stat-value" data-count="12">12</div>
+                            <div class="stat-label">Acuerdos</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- COMMITTEE ORGANIZATIONAL CHART -->
+            <div class="section-card">
+                <div class="section-header">
+                    <h2><i class="fas fa-sitemap"></i> Organigrama del Comité</h2>
+                </div>
+                <div class="section-content">
+                    <div class="organigrama-container">
+                        <!-- Visual organizational chart -->
+                        <div class="organigrama">
+                            <div class="org-level">
+                                <div class="org-box org-president">
+                                    <div class="org-avatar" data-initials="MG">
+                                        <img src="../assets/avatars/member1.jpg" alt="María González">
+                                    </div>
+                                    <div class="org-info">
+                                        <h3>María González</h3>
+                                        <span>Presidenta</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="org-level">
+                                <div class="org-box org-secretary">
+                                    <div class="org-avatar" data-initials="JM">
+                                        <img src="../assets/avatars/member2.jpg" alt="Juan Martínez">
+                                    </div>
+                                    <div class="org-info">
+                                        <h3>Juan Martínez</h3>
+                                        <span>Secretario</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="org-level">
+                                <div class="org-box org-vocal">
+                                    <div class="org-avatar" data-initials="AR">
+                                        <img src="../assets/avatars/member3.jpg" alt="Ana Rodríguez">
+                                    </div>
+                                    <div class="org-info">
+                                        <h3>Ana Rodríguez</h3>
+                                        <span>Vocal - Cocina</span>
+                                    </div>
+                                </div>
+                                <div class="org-box org-vocal">
+                                    <div class="org-avatar" data-initials="PS">
+                                        <img src="../assets/avatars/member4.jpg" alt="Pedro Sánchez">
+                                    </div>
+                                    <div class="org-info">
+                                        <h3>Pedro Sánchez</h3>
+                                        <span>Vocal - Servicio</span>
+                                    </div>
+                                </div>
+                                <div class="org-box org-vocal">
+                                    <div class="org-avatar" data-initials="CL">
+                                        <img src="../assets/avatars/member5.jpg" alt="Carmen López">
+                                    </div>
+                                    <div class="org-info">
+                                        <h3>Carmen López</h3>
+                                        <span>Vocal - Logística</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Additional information -->
+                        <div class="organigrama-info">
+                            <div class="info-box">
+                                <h3><i class="fas fa-info-circle"></i> ¿Qué es el Comité de Empresa?</h3>
+                                <p>El Comité de Empresa es el órgano representativo y colegiado del conjunto de trabajadores en la empresa para la defensa de sus intereses. Se constituye en empresas con 50 o más trabajadores.</p>
+                                <p>En MADBITE, el comité está formado por 5 miembros elegidos mediante votación democrática entre todos los empleados.</p>
+                            </div>
+                            
+                            <div class="info-box">
+                                <h3><i class="fas fa-tasks"></i> Funciones principales</h3>
+                                <ul class="info-list">
+                                    <li>Recibir información sobre la evolución económica de la empresa</li>
+                                    <li>Conocer los contratos de trabajo y documentos de finiquito</li>
+                                    <li>Ser informado de las sanciones por faltas muy graves</li>
+                                    <li>Recibir información sobre accidentes de trabajo y enfermedades profesionales</li>
+                                    <li>Vigilar el cumplimiento de las normas vigentes en materia laboral, de seguridad social y de empleo</li>
+                                    <li>Participar en la gestión de obras sociales para los empleados</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- COLLECTIVE AGREEMENT -->
+            <div class="section-card">
+                <div class="section-header">
+                    <h2><i class="fas fa-file-signature"></i> Convenio Colectivo y Normativas</h2>
+                </div>
+                <div class="section-content">
+                    <div class="convenio-container">
+                        <div class="convenio-info">
+                            <h3><i class="fas fa-book"></i> Convenio Colectivo de Hostelería</h3>
+                            <p>El convenio colectivo aplicado a MADBITE es el <strong>Convenio Colectivo Regional de Hostelería</strong>, que regula las condiciones laborales específicas del sector.</p>
+                            
+                            <div class="doc-links">
+                                <a href="../docs/convenio-hosteleria.pdf" class="doc-link" target="_blank">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <span>Convenio Colectivo de Hostelería</span>
+                                </a>
+                                <a href="../docs/estatuto-trabajadores.pdf" class="doc-link" target="_blank">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <span>Estatuto de los Trabajadores</span>
+                                </a>
+                                <a href="../docs/ley-prevencion.pdf" class="doc-link" target="_blank">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <span>Ley de Prevención de Riesgos Laborales</span>
+                                </a>
+                                <a href="../docs/plan-igualdad.pdf" class="doc-link" target="_blank">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <span>Plan de Igualdad MADBITE</span>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="convenio-destacados">
+                            <h3><i class="fas fa-star"></i> Aspectos destacados del convenio</h3>
+                            
+                            <div class="tabs-container">
+                                <div class="tabs">
+                                    <button class="tab-btn active" data-tab="permisos">Permisos</button>
+                                    <button class="tab-btn" data-tab="jornada">Jornada</button>
+                                    <button class="tab-btn" data-tab="salarios">Salarios</button>
+                                    <button class="tab-btn" data-tab="vacaciones">Vacaciones</button>
+                                </div>
+                                
+                                <div class="tab-content">
+                                    <div id="permisos" class="tab-pane active">
+                                        <h4><i class="fas fa-calendar-check"></i> Permisos retribuidos</h4>
+                                        <ul class="info-list">
+                                            <li><strong>Matrimonio:</strong> 15 días naturales</li>
+                                            <li><strong>Nacimiento de hijo:</strong> 3 días (5 días si precisa desplazamiento)</li>
+                                            <li><strong>Fallecimiento de familiar hasta 2º grado:</strong> 3 días (5 días si precisa desplazamiento)</li>
+                                            <li><strong>Traslado de domicilio:</strong> 1 día</li>
+                                            <li><strong>Exámenes prenatales:</strong> Tiempo necesario</li>
+                                            <li><strong>Lactancia:</strong> 1 hora diaria hasta los 9 meses del menor</li>
+                                        </ul>
+                                    </div>
+                                    <div id="jornada" class="tab-pane">
+                                        <h4><i class="fas fa-clock"></i> Jornada laboral</h4>
+                                        <ul class="info-list">
+                                            <li><strong>Horas anuales:</strong> 1.792 horas</li>
+                                            <li><strong>Horas semanales:</strong> 40 horas en promedio semanal</li>
+                                            <li><strong>Descanso semanal:</strong> 2 días consecutivos</li>
+                                            <li><strong>Descanso entre jornadas:</strong> Mínimo 12 horas</li>
+                                            <li><strong>Horas extraordinarias:</strong> Máximo 80 horas anuales</li>
+                                            <li><strong>Flexibilidad:</strong> Acuerdo específico de MADBITE para horarios flexibles</li>
+                                        </ul>
+                                    </div>
+                                    <div id="salarios" class="tab-pane">
+                                        <h4><i class="fas fa-money-bill-wave"></i> Estructura salarial</h4>
+                                        <ul class="info-list">
+                                            <li><strong>Salario base:</strong> Según categoría profesional</li>
+                                            <li><strong>Complementos:</strong> Antigüedad, nocturnidad, festivos</li>
+                                            <li><strong>Pagas extras:</strong> 2 pagas anuales</li>
+                                            <li><strong>Plus transporte:</strong> 90€ mensuales</li>
+                                            <li><strong>Plus vestuario:</strong> 50€ mensuales</li>
+                                            <li><strong>Incremento salarial:</strong> IPC + 0,5% anual (acuerdo MADBITE)</li>
+                                        </ul>
+                                    </div>
+                                    <div id="vacaciones" class="tab-pane">
+                                        <h4><i class="fas fa-umbrella-beach"></i> Vacaciones y festivos</h4>
+                                        <ul class="info-list">
+                                            <li><strong>Vacaciones anuales:</strong> 30 días naturales</li>
+                                            <li><strong>Periodos:</strong> 15 días en verano (Jun-Sep) y 15 días resto del año</li>
+                                            <li><strong>Festivos trabajados:</strong> Compensación con 1,75 días de descanso</li>
+                                            <li><strong>Días de asuntos propios:</strong> 2 días al año (acuerdo MADBITE)</li>
+                                            <li><strong>Planificación:</strong> Calendario anual publicado en enero</li>
+                                            <li><strong>Solicitud:</strong> Mínimo con 2 meses de antelación</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- AGREEMENTS AND BENEFITS -->
+            <div class="section-card">
+                <div class="section-header">
+                    <h2><i class="fas fa-handshake"></i> Acuerdos y Beneficios Sociales</h2>
+                </div>
+                <div class="section-content">
+                    <div class="acuerdos-container">
+                        <div class="acuerdos-grid">
+                            <div class="acuerdo-card">
+                                <div class="acuerdo-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="acuerdo-content">
+                                    <h3>Horario flexible</h3>
+                                    <p>Flexibilidad de 30 minutos en entrada y salida, con recuperación semanal. Posibilidad de adaptar los horarios para conciliar la vida familiar.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="acuerdo-card">
+                                <div class="acuerdo-icon">
+                                    <i class="fas fa-coins"></i>
+                                </div>
+                                <div class="acuerdo-content">
+                                    <h3>Mejora salarial</h3>
+                                    <p>Incremento salarial anual de IPC + 0,5%, superando lo establecido en convenio. Bonus semestral por productividad.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="acuerdo-card">
+                                <div class="acuerdo-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div class="acuerdo-content">
+                                    <h3>Formación continua</h3>
+                                    <p>20 horas anuales dentro de la jornada laboral para formación. Cursos de especialización con certificación para desarrollo profesional.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="acuerdo-card">
+                                <div class="acuerdo-icon">
+                                    <i class="fas fa-utensils"></i>
+                                </div>
+                                <div class="acuerdo-content">
+                                    <h3>Comidas gratuitas</h3>
+                                    <p>Menú completo gratuito para todos los empleados durante su jornada laboral. Descuento del 50% para consumo familiar.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="acuerdo-card">
+                                <div class="acuerdo-icon">
+                                    <i class="fas fa-calendar-plus"></i>
+                                </div>
+                                <div class="acuerdo-content">
+                                    <h3>Días adicionales</h3>
+                                    <p>2 días de asuntos propios anuales. Día libre por cumpleaños. Tarde libre en Nochebuena y Nochevieja.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="acuerdo-card">
+                                <div class="acuerdo-icon">
+                                    <i class="fas fa-user-md"></i>
+                                </div>
+                                <div class="acuerdo-content">
+                                    <h3>Seguro médico</h3>
+                                    <p>Seguro médico privado con condiciones ventajosas para empleados. 50% de la cuota financiada por la empresa.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="acuerdo-card">
+                                <div class="acuerdo-icon">
+                                    <i class="fas fa-baby"></i>
+                                </div>
+                                <div class="acuerdo-content">
+                                    <h3>Mejoras de conciliación</h3>
+                                    <p>Ampliación del permiso de paternidad a 8 semanas. Reducción de jornada por cuidado de hijos con elección de horario.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="acuerdo-card">
+                                <div class="acuerdo-icon">
+                                    <i class="fas fa-piggy-bank"></i>
+                                </div>
+                                <div class="acuerdo-content">
+                                    <h3>Plan de ahorro</h3>
+                                    <p>Plan de pensiones con aportación de la empresa del 2% del salario. Adelanto de nómina sin intereses.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="beneficios-adicionales">
+                            <h3><i class="fas fa-plus-circle"></i> Otros beneficios como empleado de MADBITE</h3>
+                            <div class="beneficios-list">
+                                <div class="beneficio-item">
+                                    <i class="fas fa-gift"></i>
+                                    <span>Regalo de aniversario por cada año en la empresa</span>
+                                </div>
+                                <div class="beneficio-item">
+                                    <i class="fas fa-ticket-alt"></i>
+                                    <span>Descuentos en actividades de ocio y entradas a eventos</span>
+                                </div>
+                                <div class="beneficio-item">
+                                    <i class="fas fa-car"></i>
+                                    <span>Transporte compartido entre empleados con incentivo</span>
+                                </div>
+                                <div class="beneficio-item">
+                                    <i class="fas fa-heart"></i>
+                                    <span>Programa de bienestar: clases de yoga y mindfulness</span>
+                                </div>
+                                <div class="beneficio-item">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>Descuento en tarifas de telefonía móvil</span>
+                                </div>
+                                <div class="beneficio-item">
+                                    <i class="fas fa-store"></i>
+                                    <span>Acuerdos con comercios locales para descuentos</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- INFORMATIONAL VIDEO -->
+            <div class="section-card">
+                <div class="section-header">
+                    <h2><i class="fas fa-video"></i> Vídeo Informativo para Empleados</h2>
+                </div>
+                <div class="section-content">
+                    <div class="video-container">
+                        <div class="video-wrapper">
+                            <video controls poster="../assets/videos/video-thumbnail.jpg" id="infoVideo">
+                                <source src="../assets/videos/intro-trabajadores.mp4" type="video/mp4">
+                                Tu navegador no soporta el elemento de vídeo.
+                            </video>
+                        </div>
+                        <div class="video-description">
+                            <h3><i class="fas fa-info-circle"></i> Guía informativa para empleados de MADBITE</h3>
+                            <p>Este vídeo explica todo lo que necesitas saber como empleado de MADBITE: la estructura del comité de empresa, tus derechos laborales, beneficios sociales y cómo funciona la intranet.</p>
+                            <div class="video-topics">
+                                <div class="video-topic">
+                                    <i class="fas fa-users"></i>
+                                    <span>Comité de Empresa</span>
+                                </div>
+                                <div class="video-topic">
+                                    <i class="fas fa-file-contract"></i>
+                                    <span>Derechos Laborales</span>
+                                </div>
+                                <div class="video-topic">
+                                    <i class="fas fa-hand-holding-heart"></i>
+                                    <span>Beneficios Sociales</span>
+                                </div>
+                                <div class="video-topic">
+                                    <i class="fas fa-laptop"></i>
+                                    <span>Uso de la Intranet</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="video-info">
+                        <h3><i class="fas fa-exclamation-circle"></i> Información adicional sobre derechos en caso de finalización de contrato</h3>
+                        <p>A continuación, te proporcionamos información clave sobre tus derechos en diferentes tipos de finalización de la relación laboral:</p>
+                        
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <h4>Despido improcedente</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>Se considera despido improcedente cuando no existe causa justificada o cuando, existiendo causa, no se cumplen los requisitos formales.</p>
+                                    <p><strong>Indemnización:</strong> 33 días por año trabajado con un máximo de 24 mensualidades.</p>
+                                    <p><strong>Salarios de tramitación:</strong> Solo en caso de readmisión, desde la fecha de despido hasta la notificación de la sentencia.</p>
+                                    <p><strong>Plazo para reclamar:</strong> 20 días hábiles desde la notificación del despido.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <h4>Despido objetivo</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>El despido objetivo se basa en causas económicas, técnicas, organizativas o de producción.</p>
+                                    <p><strong>Requisitos:</strong> Comunicación escrita, indemnización y preaviso de 15 días.</p>
+                                    <p><strong>Indemnización:</strong> 20 días por año trabajado con un máximo de 12 mensualidades.</p>
+                                    <p><strong>Derechos adicionales:</strong> 6 horas semanales de permiso para búsqueda de empleo durante el periodo de preaviso.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <h4>Finalización de contrato temporal</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>La finalización de contrato temporal se produce al alcanzarse la fecha pactada o al finalizar la obra o servicio.</p>
+                                    <p><strong>Indemnización:</strong> 12 días por año trabajado.</p>
+                                    <p><strong>Preaviso:</strong> No obligatorio legalmente, pero según convenio puede ser de 15 días.</p>
+                                    <p><strong>Documentación:</strong> Certificado de empresa, finiquito y documentación para prestación por desempleo.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <h4>Baja voluntaria</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>La baja voluntaria es la decisión unilateral del trabajador de finalizar la relación laboral.</p>
+                                    <p><strong>Preaviso:</strong> 15 días según convenio de hostelería.</p>
+                                    <p><strong>Indemnización:</strong> No hay derecho a indemnización.</p>
+                                    <p><strong>Prestación por desempleo:</strong> No hay derecho a prestación por desempleo.</p>
+                                    <p><strong>Recomendación:</strong> Presentar la dimisión por escrito y solicitar copia sellada.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <h4>Modificaciones sustanciales</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>Si la empresa modifica sustancialmente tus condiciones de trabajo (jornada, horario, sistema de remuneración, etc.):</p>
+                                    <p><strong>Opciones:</strong> Aceptar el cambio, extinguir el contrato con indemnización o impugnar la decisión.</p>
+                                    <p><strong>Indemnización por extinción:</strong> 20 días por año trabajado con un máximo de 9 mensualidades.</p>
+                                    <p><strong>Plazo:</strong> 20 días hábiles para impugnar o extinguir desde la notificación de la modificación.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="cta-box">
+                            <h4>¿Necesitas más información o asesoramiento?</h4>
+                            <p>Si tienes dudas sobre tus derechos laborales o necesitas asesoramiento personalizado, no dudes en contactar con el Comité de Empresa.</p>
+                            <div class="cta-buttons">
+                                <a href="mailto:comite@madbite.com" class="cta-btn">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>Contactar por email</span>
+                                </a>
+                                <a href="tel:+34912345678" class="cta-btn">
+                                    <i class="fas fa-phone-alt"></i>
+                                    <span>Llamar al comité</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="dashboard-footer">
+            <div class="footer-content">
+                <p>© 2025 MADBITE - Todos los derechos reservados</p>
+                <div class="footer-links">
+                    <a href="../html/terminos.html">Términos y Condiciones</a>
+                    <a href="../html/politica.html">Política de Privacidad</a>
+                    <a href="../html/cookies.html">Política de Cookies</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+    
+    <!-- MODAL TEMPLATE -->
+    <div id="memberModal" class="member-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">×</button>
+            <div class="modal-header">
+                <h3>Información del miembro</h3>
+                <p class="modal-role">Cargo en el comité</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-info">
+                    <!-- Contenido dinámico -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Estilos inline de respaldo para elementos esenciales (solo se aplicarán si los CSS externos fallan) -->
+    <style>
+        /* Estilos mínimos en caso de fallo de carga de CSS */
+        body.dashboard-body {
+            background-color: #0f1023;
+            color: #f8f8f8;
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .dashboard-header {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dashboard-content {
+            padding: 20px;
+        }
+        
+        .comite-banner {
+            background: linear-gradient(to right, rgba(0, 232, 255, 0.1), rgba(255, 0, 170, 0.1));
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        
+        .section-card {
+            background: rgba(15, 16, 35, 0.7);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .section-header {
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .section-content {
+            padding: 20px;
+        }
+        
+        .dashboard-footer {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+    
+    <!-- Scripts -->
+    <script type="module" src="../js/auth.js"></script>
+    <script type="module" src="../js/comite.js"></script>
+    
+    <!-- Script de respaldo en caso de fallo de carga de los módulos -->
+    <script>
+        // Verificar si los scripts principales se han cargado correctamente
+        window.addEventListener('load', function() {
+            // Comprobar después de 2 segundos si los scripts se han cargado
+            setTimeout(function() {
+                // Si no existe initAccordion en el scope global, los scripts no se cargaron correctamente
+                if (typeof window.initAccordion === 'undefined') {
+                    console.warn('Los scripts principales no se cargaron correctamente. Usando funcionalidad básica de respaldo.');
+                    
+                    // Inicializar acordeones
+                    const accordionItems = document.querySelectorAll('.accordion-item');
+                    if (accordionItems.length) {
+                        accordionItems.forEach(item => {
+                            const header = item.querySelector('.accordion-header');
+                            if (header) {
+                                header.addEventListener('click', () => {
+                                    const isActive = item.classList.contains('active');
+                                    accordionItems.forEach(i => i.classList.remove('active'));
+                                    if (!isActive) item.classList.add('active');
+                                });
+                            }
+                        });
+                        // Activar el primer acordeón
+                        accordionItems[0].classList.add('active');
+                    }
+                    
+                    // Inicializar pestañas
+                    const tabButtons = document.querySelectorAll('.tab-btn');
+                    const tabPanes = document.querySelectorAll('.tab-pane');
+                    if (tabButtons.length && tabPanes.length) {
+                        tabButtons.forEach(button => {
+                            button.addEventListener('click', () => {
+                                tabButtons.forEach(btn => btn.classList.remove('active'));
+                                tabPanes.forEach(pane => pane.classList.remove('active'));
+                                button.classList.add('active');
+                                const targetId = button.getAttribute('data-tab');
+                                const target = document.getElementById(targetId);
+                                if (target) target.classList.add('active');
+                            });
+                        });
+                    }
+                    
+                    // Toggle menú sidebar
+                    const menuToggle = document.getElementById('menuToggle');
+                    const sidebar = document.getElementById('sidebar');
+                    if (menuToggle && sidebar) {
+                        menuToggle.addEventListener('click', () => {
+                            sidebar.classList.toggle('active');
+                        });
+                    }
+                }
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

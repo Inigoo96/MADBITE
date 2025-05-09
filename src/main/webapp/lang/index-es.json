@@ -1,0 +1,94 @@
+{
+    "nav": {
+      "home": "Inicio",
+      "featured": "Destacados",
+      "about": "Nosotros",
+      "locations": "Locales",
+      "contact": "Contacto",
+      "menu": "Menú"
+    },
+    "hero": {
+      "title1": "EL",
+      "title2": "MORDISCO",
+      "title3": "QUE",
+      "title4": "ENLOQUECE",
+      "cta1": "DESCUBRE TU TENTACIÓN",
+      "cta2": "NUESTROS ESPACIOS"
+    },
+    "featured": {
+      "title": "NUESTROS DESTACADOS",
+      "card1": {
+        "badge": "BESTSELLER",
+        "title": "La Classic MADBITE",
+        "description": "Nuestra hamburguesa clásica con carne premium, queso cheddar, tomate, lechuga y nuestra salsa secreta.",
+        "price": "$12.99"
+      },
+      "card2": {
+        "badge": "NUEVA",
+        "title": "Inferno Chicken",
+        "description": "Para los amantes del picante: jalapeños, guacamole picante, queso pepper jack y salsa de habanero.",
+        "price": "$14.99"
+      },
+      "card3": {
+        "title": "Falafel Burger",
+        "description": "Burger de falafel casero, hummus, pepino, tomate, cebolla roja y salsa de yogur vegano.",
+        "price": "$13.99"
+      },
+      "viewMenu": "VER MENÚ COMPLETO"
+    },
+    "about": {
+      "title": "SOBRE NOSOTROS",
+      "text1": "MADBITE nació en 2020 con una visión revolucionaria en el mundo de las hamburguesas. Nuestra pasión nos llevó a ser reconocidos en la Guía Michelin Bib Gourmand 2025, un logro que celebra nuestra búsqueda constante de la excelencia gastronómica.",
+      "text2": "Nos enorgullece ofrecer carne 100% natural, panes artesanales horneados diariamente y salsas caseras que harán que cada bocado sea una experiencia inolvidable.",
+      "stats": {
+        "locations": "LOCALES",
+        "burgers": "HAMBURGUESAS",
+        "clients": "CLIENTES",
+        "rating": "VALORACIÓN"
+      },
+      "since": "DESDE",
+      "year": "2020"
+    },
+    "locations": {
+      "title": "NUESTROS LOCALES",
+      "newyork": "NEW YORK",
+      "losangeles": "LOS ANGELES",
+      "miami": "MIAMI",
+      "hours": "Mon–Sun: 11:00 AM – 11:00 PM",
+      "directions": "CÓMO LLEGAR",
+      "details": "DETALLES"
+    },
+    "contact": {
+  "title": "CONTÁCTANOS",
+  "office": "Oficina Principal",
+  "phone": "Teléfono",
+  "email": "Email",
+  "form": {
+    "name": "NOMBRE",
+    "namePlaceholder": "Tu nombre",
+    "email": "EMAIL",
+    "emailPlaceholder": "Tu email",
+    "subject": "ASUNTO",
+    "subjectPlaceholder": "Asunto",
+    "message": "MENSAJE",
+    "messagePlaceholder": "Tu mensaje",
+    "send": "ENVIAR MENSAJE",
+    "success": "¡Mensaje enviado!",
+    "thankYou": "Gracias por contactarnos. Te responderemos lo antes posible."
+  }
+},
+    "footer": {
+      "description": "MADBITE es una cadena de hamburguesería con estilo y actitud. Nuestras hamburguesas artesanales y nuestros ingredientes de primera calidad hacen la diferencia.",
+      "links": "Enlaces",
+      "legal": "Legal",
+      "terms": "Términos y Condiciones",
+      "privacy": "Política de Privacidad",
+      "cookies": "Política de Cookies",
+      "faq": "FAQ",
+      "newsletter": "Newsletter",
+      "subscribeText": "Suscríbete para recibir noticias y ofertas especiales.",
+      "emailPlaceholder": "Tu email",
+      "disclaimer": "Al suscribirte aceptas nuestra política de privacidad.",
+      "copyright": "Todos los derechos reservados."
+    }
+  }

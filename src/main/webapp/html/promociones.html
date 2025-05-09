@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promotions - MADBITE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/pages/promociones.css">
+
+    <script type="module" src="../js/auth-guard.js" defer></script>
+</head>
+<body>
+    <!-- HEADER - Same as in index.html -->
+    <header class="header">
+        <div class="nav-container">
+            <!-- Logo with bite animation -->
+            <div class="logo-container">
+                <a href="../index.html" class="logo-link" aria-label="MADBITE Home">
+                    <img src="../assets/images/logo/logo-completo-ajustadorbg.png" alt="MADBITE Logo" class="logo logo-intact">
+                    <img src="../assets/images/logo/logo-neon-ajustadorbg.png" alt="MADBITE Logo - Animation Frame 1" class="logo logo-bitten-1">
+                    <img src="../assets/images/logo/logo-bitten-3-rp (1)-Photoroom.png" alt="MADBITE Logo - Animation Frame 2" class="logo logo-bitten-2">
+                    <img src="../assets/images/logo/logo-bitten-4-rp (1)-Photoroom.png" alt="MADBITE Logo - Animation Frame 3" class="logo logo-bitten-3">
+                </a>
+            </div>
+
+            <!-- Hamburger menu toggle for mobile -->
+            <button id="navToggle" aria-label="Toggle menu" role="button" tabindex="0">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <!-- Navigation menu - Adjusted to match other files -->
+            <nav class="nav-menu" id="navMenu" aria-label="Main navigation">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="redireccion.html">Dashboard</a></li>
+                    <li class="nav-item"><a href="menu.html">Menu</a></li>
+                    <li class="nav-item"><a href="comite.html">Committee</a></li>
+                    <li class="nav-item language-dropdown-container">
+                        <!-- Language selector as list item -->
+                        <div class="language-selector">
+                            <div class="selected-language">
+                                <span>English</span>
+                                <img src="../assets/images/flags/uk.png" alt="English" class="flag-icon">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <ul class="language-dropdown">
+                                <li class="language-option" data-lang="es">
+                                    <img src="../assets/images/flags/españa.png" alt="Español" class="flag-icon">
+                                    <span>Español</span>
+                                </li>
+                                <li class="language-option active" data-lang="en">
+                                    <img src="../assets/images/flags/uk.png" alt="English" class="flag-icon">
+                                    <span>English</span>
+                                </li>
+                                <li class="language-option" data-lang="fr">
+                                    <img src="../assets/images/flags/francia.png" alt="Français" class="flag-icon">
+                                    <span>Français</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item login-item">
+                        <button id="loginBtn" class="login-link" aria-label="Log in">
+                            <div class="login-circle">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Overlay for mobile menu -->
+        <div class="menu-overlay" id="menuOverlay"></div>
+    </header>
+
+    <!-- HERO SECTION - Promotions -->
+    <section class="promo-hero">
+        <div class="promo-welcome">
+            <h1 class="promo-title">EXCLUSIVE <span class="neon-magenta-text">PROMOTIONS</span></h1>
+            <p class="promo-subtitle">Discover special offers, discounts, and limited-time promotions exclusively for MADBITE members.</p>
+        </div>
+    </section>
+
+    <!-- FEATURED SECTION -->
+    <section class="promo-destacados">
+        <div class="container">
+            <h2 class="section-title text-center">Featured <span class="title-neon">Promotions</span></h2>
+            
+            <div class="promo-featured-slider">
+                <!-- Featured Promo 1 -->
+                <div class="promo-featured-slide">
+                    <div class="promo-featured-card">
+                        <div class="promo-featured-content">
+                            <div class="promo-featured-tag">LIMITED OFFER!</div>
+                            <h3 class="promo-featured-title">2-FOR-1 BURGERS</h3>
+                            <p class="promo-featured-description">Every Tuesday and Wednesday, get two classic burgers for the price of one.</p>
+                            <div class="promo-featured-details">
+                                <div class="promo-featured-dates">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span>Valid until: 06/30/2025</span>
+                                </div>
+                                <div class="promo-featured-code">
+                                    <span>Code: </span>
+                                    <strong>MADBITE2X1</strong>
+                                </div>
+                            </div>
+                            <a href="#" class="promo-featured-button">REDEEM NOW</a>
+                        </div>
+                        <div class="promo-featured-image">
+                            <img src="../assets/images/carta/promos/promo2x1.png" alt="2-for-1 Promotion">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Promo 2 -->
+                <div class="promo-featured-slide">
+                    <div class="promo-featured-card">
+                        <div class="promo-featured-content">
+                            <div class="promo-featured-tag">NEW!</div>
+                            <h3 class="promo-featured-title">FAMILY PACK COMBO</h3>
+                            <p class="promo-featured-description">4 burgers, 2 sides, and 4 drinks with a 25% discount. Perfect for sharing.</p>
+                            <div class="promo-featured-details">
+                                <div class="promo-featured-dates">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span>Every weekend</span>
+                                </div>
+                                <div class="promo-featured-code">
+                                    <span>Code: </span>
+                                    <strong>MADFAMILY</strong>
+                                </div>
+                            </div>
+                            <a href="#" class="promo-featured-button">REDEEM NOW</a>
+                        </div>
+                        <div class="promo-featured-image">
+                            <img src="../assets/images/carta/promos/promo25.png" alt="Family Pack Promotion">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slider controls -->
+                <div class="promo-slider-controls">
+                    <button class="promo-slider-prev" aria-label="Previous promotion">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="promo-slider-dots">
+                        <span class="promo-slider-dot active"></span>
+                        <span class="promo-slider-dot"></span>
+                    </div>
+                    <button class="promo-slider-next" aria-label="Next promotion">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACTIVE PROMOTIONS SECTION -->
+    <section class="promo-activas">
+        <div class="container">
+            <h2 class="section-title text-center">Active <span class="title-neon">Promotions</span></h2>
+            
+            <div class="promo-filter">
+                <button class="promo-filter-btn active" data-filter="all">All</button>
+                <button class="promo-filter-btn" data-filter="combos">Combos</button>
+                <button class="promo-filter-btn" data-filter="descuentos">Discounts</button>
+                <button class="promo-filter-btn" data-filter="puntos">With Points</button>
+                <button class="promo-filter-btn" data-filter="eventos">Events</button>
+            </div>
+            
+            <div class="promo-grid">
+                <!-- Promotion 1 -->
+                <div class="promo-card" data-category="descuentos">
+                    <div class="promo-card-badge">-25%</div>
+                    <div class="promo-card-image">
+                        <img src="../assets/images/carta/promos/primerpedido.png" alt="First Order Discount">
+                    </div>
+                    <div class="promo-card-content">
+                        <h3 class="promo-card-title">25% OFF YOUR FIRST ORDER</h3>
+                        <p class="promo-card-description">Exclusive discount for new members on their first online order.</p>
+                        <div class="promo-card-details">
+                            <div class="promo-card-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>No expiration date</span>
+                            </div>
+                            <div class="promo-card-code">
+                                <span>Code: </span>
+                                <strong>WELCOME25</strong>
+                            </div>
+                        </div>
+                        <a href="#" class="promo-card-button">REDEEM</a>
+                    </div>
+                </div>
+
+                <!-- Promotion 2 -->
+                <div class="promo-card" data-category="combos">
+                    <div class="promo-card-badge">COMBO</div>
+                    <div class="promo-card-image">
+                        <img src="../assets/images/carta/promos/burguercola.png" alt="Burger + Drink Promo">
+                    </div>
+                    <div class="promo-card-content">
+                        <h3 class="promo-card-title">BURGER + DRINK</h3>
+                        <p class="promo-card-description">Classic MADBITE burger with a drink of your choice for only $9.99.</p>
+                        <div class="promo-card-details">
+                            <div class="promo-card-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>Monday to Friday, 12pm to 4pm</span>
+                            </div>
+                            <div class="promo-card-code">
+                                <span>Code: </span>
+                                <strong>LUNCH</strong>
+                            </div>
+                        </div>
+                        <a href="#" class="promo-card-button">REDEEM</a>
+                    </div>
+                </div>
+
+                <!-- Promotion 3 -->
+                <div class="promo-card" data-category="puntos">
+                    <div class="promo-card-badge">POINTS</div>
+                    <div class="promo-card-image">
+                        <img src="../assets/images/carta/promos/doblepuntos.png" alt="Double Points Promotion">
+                    </div>
+                    <div class="promo-card-content">
+                        <h3 class="promo-card-title">DOUBLE POINTS</h3>
+                        <p class="promo-card-description">Earn double points on all orders placed on Thursdays.</p>
+                        <div class="promo-card-details">
+                            <div class="promo-card-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>Every Thursday</span>
+                            </div>
+                            <div class="promo-card-code">
+                                <span>Automatic when ordering on Thursday</span>
+                            </div>
+                        </div>
+                        <a href="#" class="promo-card-button">MORE INFO</a>
+                    </div>
+                </div>
+
+                <!-- Promotion 4 -->
+                <div class="promo-card" data-category="eventos">
+                    <div class="promo-card-badge">EVENT</div>
+                    <div class="promo-card-image">
+                        <img src="../assets/images/carta/promos/cumple1.png" alt="Birthday Promotion">
+                    </div>
+                    <div class="promo-card-content">
+                        <h3 class="promo-card-title">CELEBRATE YOUR BIRTHDAY</h3>
+                        <p class="promo-card-description">Free dessert and special surprise on your birthday. Come celebrate with us!</p>
+                        <div class="promo-card-details">
+                            <div class="promo-card-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>On your birthday</span>
+                            </div>
+                            <div class="promo-card-code">
+                                <span>Show your ID</span>
+                            </div>
+                        </div>
+                        <a href="#" class="promo-card-button">RESERVE</a>
+                    </div>
+                </div>
+
+                <!-- Promotion 5 -->
+                <div class="promo-card" data-category="descuentos">
+                    <div class="promo-card-badge">-15%</div>
+                    <div class="promo-card-image">
+                        <img src="../assets/images/carta/promos/descuentomovil.png" alt="Mobile App Discount">
+                    </div>
+                    <div class="promo-card-content">
+                        <h3 class="promo-card-title">MOBILE APP DISCOUNT</h3>
+                        <p class="promo-card-description">15% off your first order through our mobile app.</p>
+                        <div class="promo-card-details">
+                            <div class="promo-card-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>Valid until: 07/31/2025</span>
+                            </div>
+                            <div class="promo-card-code">
+                                <span>Code: </span>
+                                <strong>APP15</strong>
+                            </div>
+                        </div>
+                        <a href="#" class="promo-card-button">DOWNLOAD APP</a>
+                    </div>
+                </div>
+
+                <!-- Promotion 6 -->
+                <div class="promo-card" data-category="combos">
+                    <div class="promo-card-badge">COMBO</div>
+                    <div class="promo-card-image">
+                        <img src="../assets/images/carta/promos/nightmenu.png" alt="Night Menu Promotion">
+                    </div>
+                    <div class="promo-card-content">
+                        <h3 class="promo-card-title">NIGHT MENU</h3>
+                        <p class="promo-card-description">Burger, fries, drink, and dessert for only $12.99 after 10pm.</p>
+                        <div class="promo-card-details">
+                            <div class="promo-card-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>Every day from 10pm to midnight</span>
+                            </div>
+                            <div class="promo-card-code">
+                                <span>Code: </span>
+                                <strong>NIGHT</strong>
+                            </div>
+                        </div>
+                        <a href="#" class="promo-card-button">REDEEM</a>
+                    </div>
+                </div>
+
+                <!-- Promotion 7 -->
+                <div class="promo-card" data-category="eventos">
+                    <div class="promo-card-badge">EVENT</div>
+                    <div class="promo-card-image">
+                        <img src="../assets/images/carta/promos/taste.png" alt="Tasting Promotion">
+                    </div>
+                    <div class="promo-card-content">
+                        <h3 class="promo-card-title">NEW FLAVORS TASTING</h3>
+                        <p class="promo-card-description">Exclusive member session: taste our new burgers before their official launch.</p>
+                        <div class="promo-card-details">
+                            <div class="promo-card-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>06/15/2025 - 7:00pm</span>
+                            </div>
+                            <div class="promo-card-code">
+                                <span>Limited spots</span>
+                            </div>
+                        </div>
+                        <a href="#" class="promo-card-button">SIGN UP</a>
+                    </div>
+                </div>
+
+                <!-- Promotion 8 -->
+                <div class="promo-card" data-category="puntos">
+                    <div class="promo-card-badge">POINTS</div>
+                    <div class="promo-card-image">
+                        <img src="../assets/images/carta/promos/500.png" alt="Points Redemption Promotion">
+                    </div>
+                    <div class="promo-card-content">
+                        <h3 class="promo-card-title">500 POINTS = FREE MEAL</h3>
+                        <p class="promo-card-description">Redeem 500 accumulated points for a completely free full meal.</p>
+                        <div class="promo-card-details">
+                            <div class="promo-card-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>Permanent</span>
+                            </div>
+                            <div class="promo-card-code">
+                                <span>In "My Profile" > "Points" section</span>
+                            </div>
+                        </div>
+                        <a href="#" class="promo-card-button">REDEEM POINTS</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Button to load more promotions -->
+            <div class="promo-load-more">
+                <button id="loadMorePromos" class="load-more-btn">
+                    <span>LOAD MORE</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPECIAL PROMOTIONS SECTION -->
+    <section class="promo-especiales">
+        <div class="container">
+            <h2 class="section-title text-center">Special <span class="title-neon">Promotions</span></h2>
+            
+            <div class="promo-especiales-grid">
+                <!-- Special Promotion 1 -->
+                <div class="promo-especial-card">
+                    <div class="promo-especial-content">
+                        <h3 class="promo-especial-title">BIRTHDAY PROMOTION</h3>
+                        <p class="promo-especial-description">Register on our website and claim your free burger on your birthday. Just come with a companion and show your ID.</p>
+                        <div class="promo-especial-dates">
+                            <i class="far fa-calendar-alt"></i>
+                            <span>Valid on your birthday</span>
+                        </div>
+                        <a href="#" class="promo-especial-button">REGISTER NOW</a>
+                    </div>
+                    <div class="promo-especial-image">
+                        <img src="../assets/images/carta/promos/cumple2.png" alt="Birthday Promotion">
+                    </div>
+                </div>
+
+                <!-- Special Promotion 2 -->
+                <div class="promo-especial-card">
+                    <div class="promo-especial-image">
+                        <img src="../assets/images/carta/promos/cava.png" alt="Groups Promotion">
+                    </div>
+                    <div class="promo-especial-content">
+                        <h3 class="promo-especial-title">GROUPS & CELEBRATIONS</h3>
+                        <p class="promo-especial-description">For groups of 8 or more people, enjoy a 20% discount on the entire menu and a complimentary welcome bottle of cava. Book at least 48 hours in advance.</p>
+                        <div class="promo-especial-dates">
+                            <i class="far fa-calendar-alt"></i>
+                            <span>All year (except holidays)</span>
+                        </div>
+                        <a href="#" class="promo-especial-button">BOOK GROUP</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER REGISTRATION SECTION -->
+    <section class="promo-newsletter">
+        <div class="newsletter-container">
+            <div class="newsletter-content">
+                <h3 class="newsletter-title">DON'T WANT TO MISS ANY PROMOS?</h3>
+                <p class="newsletter-description">Subscribe to our newsletter and receive exclusive promotions directly in your email.</p>
+                <form class="newsletter-form-large">
+                    <div class="newsletter-form-group">
+                        <input type="email" class="newsletter-input-large" placeholder="Your email" required>
+                        <button type="submit" class="newsletter-btn-large">
+                            SUBSCRIBE <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="newsletter-form-check">
+                        <input type="checkbox" id="newsletter-terms" required>
+                        <label for="newsletter-terms">I accept the <a href="../html/politica.html">privacy policy</a> and wish to receive commercial communications.</label>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- PROMOTIONS FAQ SECTION -->
+    <section class="promo-faq">
+        <div class="container">
+            <h2 class="section-title text-center">Frequently Asked <span class="title-neon">Questions</span></h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How can I redeem a promotional code?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can redeem your promotional code when placing your order on our website or app. In the shopping cart, you'll find a field to enter the code. You can also show it when placing your order directly at the restaurant.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I combine multiple promotions?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No, promotions cannot be combined with each other. You can apply only one promotion or discount per order, unless otherwise specified in the terms of a specific promotion.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How does the points program work?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>For every dollar spent, you earn 1 point in your account. You can check your points balance in the "My Profile" > "Loyalty Program" section. Once accumulated, you can redeem them for different rewards that you'll find in that same section.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do promotions apply to delivery orders?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most promotions are available for both in-restaurant dining and delivery orders, but some may be exclusive to one mode. You'll find this information detailed in the description of each promotion.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER - Same as in index.html -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Logo and description -->
+                <div class="footer-brand">
+                    <img src="../assets/images/logo/logo-neon-removebg.png" alt="MADBITE Logo" class="footer-logo">
+                    <p class="footer-description">MADBITE is a burger chain with style and attitude. Our handcrafted burgers and premium quality ingredients make the difference.</p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/madbite_usa/" class="social-icon" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@madbite_usa" class="social-icon" aria-label="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+    
+                <!-- Links -->
+                <div class="footer-nav">
+                    <h3 class="footer-heading">Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="../index.html#featured"><i class="fas fa-chevron-right"></i> Menu</a></li>
+                        <li><a href="../index.html#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="../index.html#locations"><i class="fas fa-chevron-right"></i> Locations</a></li>
+                        <li><a href="../index.html#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Legal -->
+                <div class="footer-nav">
+                    <h3 class="footer-heading">Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="terminos.html"><i class="fas fa-chevron-right"></i> Terms & Conditions</a></li>
+                        <li><a href="politica.html"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                        <li><a href="cookies.html"><i class="fas fa-chevron-right"></i> Cookie Policy</a></li>
+                        <li><a href="faq.html"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Newsletter -->
+                <div class="footer-newsletter">
+                    <h3 class="footer-heading">Newsletter</h3>
+                    <p class="newsletter-text">Subscribe to receive news and special offers.</p>
+                    <form class="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="Your email">
+                        <button type="submit" class="newsletter-btn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                    <p class="form-disclaimer">By subscribing you accept our privacy policy.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <div class="container">
+                &copy; 2025 <span>MADBITE</span>. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/logo-animation.js"></script>
+    <script src="../js/legal-translator.js"></script>
+    <script src="../js/promociones.js"></script>
+</body>
+</html>

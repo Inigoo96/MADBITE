@@ -1,0 +1,608 @@
+/* HEADER IMPROVEMENTS */
+/*-------------------------
+   SELECTOR DE IDIOMAS
+--------------------------*/
+.language-dropdown-container{
+  position:relative;
+  z-index:1100;           /* encima de todo el nav */
+}
+
+.language-selector{
+  position:relative;
+  z-index:1200;
+  height:100%;
+  pointer-events:auto;
+}
+
+.selected-language{
+  display:flex;
+  align-items:center;
+  gap:.35rem;
+  cursor:pointer;
+  padding:.5rem .8rem;
+  border-radius:20px;
+  background:rgba(0,0,0,.25);
+  color:var(--madbite-light);
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  font-size:.95rem;
+  transition:var(--transition-primary);
+  height:32px;
+  outline-offset:2px;
+}
+.selected-language:focus-visible{
+  outline:2px solid var(--madbite-cyan);
+}
+.selected-language img{
+  width:20px;height:20px;border-radius:50%;
+}
+.selected-language .fa-chevron-down{
+  font-size:.8rem;
+  margin-left:5px;
+  transition:transform .25s ease;
+}
+
+.language-dropdown{
+  position:absolute;
+  top:110%;
+  right:0;
+  width:150px;
+  background:rgba(0,0,0,.85);
+  border-radius:10px;
+  padding:10px 0;
+  box-shadow:0 5px 15px rgba(0,0,0,.3);
+  opacity:0; visibility:hidden;
+  transform:translateY(-8px);
+  transition:opacity .25s ease, transform .25s ease;
+  pointer-events:none;
+}
+.language-selector.open .language-dropdown{
+  opacity:1; visibility:visible;
+  transform:translateY(0);
+  pointer-events:auto;
+}
+.language-selector.open .fa-chevron-down{
+  transform:rotate(180deg);
+}
+
+.language-option{
+  display:flex; align-items:center;
+  gap:.6rem;
+  padding:8px 15px;
+  cursor:pointer;
+  color:#fff;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  font-size:.9rem;
+  transition:background .25s ease,color .25s ease;
+}
+.language-option img{
+  width:20px;height:20px;border-radius:50%;
+}
+.language-option:hover{
+  background:rgba(0,232,255,.12);
+  color:var(--madbite-cyan);
+}
+.language-option.active{
+  background:rgba(0,232,255,.20);
+  color:var(--madbite-cyan);
+}
+
+/* Estado inicial: FONDO NEGRO CLARO */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: var(--transition-primary);
+  padding: 1rem 0;
+  
+}
+
+.header-scrolled {
+  background-color: rgba(0, 0, 0, 0.7); /* Mismo negro semi-transparente */
+  backdrop-filter: blur(8px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada al hacer scroll */
+  padding: .7rem 0; /* Padding reducido al hacer scroll */
+}
+
+.nav-container{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 2rem;
+  margin:0 auto;
+  z-index:1001;                /* ← NUEVO: por encima del overlay */
+}
+
+/* INTRANET */
+/* Estilo para el botón de intranet */
+.intranet-link {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 0, 170, 0.2);
+  padding: 0.5rem 1rem !important;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 0, 170, 0.3);
+  transition: all 0.3s ease !important;
+}
+
+.intranet-link:hover {
+  background: rgba(255, 0, 170, 0.3);
+  border-color: rgba(255, 0, 170, 0.7);
+  box-shadow: 0 0 15px rgba(255, 0, 170, 0.4);
+}
+
+.intranet-link i {
+  font-size: 0.9rem;
+}
+
+/* Estilo para móvil */
+@media (max-width: 991.98px) {
+  .intranet-link {
+    margin: 0 auto;
+    width: fit-content;
+  }
+}
+
+
+/* Estilos para el botón de login */
+.login-item {
+  /* Ajustar según la posición deseada en la barra de navegación */
+}
+
+.login-link {
+  background-color: transparent !important;
+  border: none;
+}
+
+.login-text {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.95rem;
+  margin-right: 0.5rem;
+}
+
+.login-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--madbite-cyan), var(--madbite-magenta));
+  box-shadow: 0 0 10px rgba(0, 232, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.login-circle i {
+  color: #fff;
+  font-size: 16px;
+}
+
+.login-link:hover {
+  color: var(--madbite-cyan);
+  text-shadow: 0 0 8px rgba(0, 232, 255, 0.5);
+}
+
+.login-link:hover .login-circle {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(0, 232, 255, 0.7);
+}
+
+/* Ajustes responsivos para el botón de login */
+@media (max-width: 991.98px) {
+  .login-item {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .login-link {
+    justify-content: center;
+    padding: 0.8rem 0;
+  }
+  
+  .login-text {
+    font-size: 1.1rem;
+  }
+}
+/*-------------------------
+   OVERLAY DEL MENÚ MÓVIL
+--------------------------*/
+.menu-overlay{
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:rgba(0,0,0,.7);
+  backdrop-filter:blur(3px);
+  z-index:999;
+  opacity:0; visibility:hidden;
+  transition:var(--transition-primary);
+  pointer-events:none;           /* ← NUEVO */
+}
+.menu-overlay.open{
+  opacity:1; visibility:visible;
+  pointer-events:auto;           /* ← NUEVO */
+}
+
+
+/* Logo animations */
+.logo-container {
+  position: relative;
+  z-index: 2;
+}
+
+.logo-link {
+  position: relative;
+  display: block;
+  width: 140px;
+  height: 70px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease-in-out, visibility 0.15s ease-in-out;
+  filter: drop-shadow(0 0 8px rgba(0, 232, 255, 0.6));
+  object-fit: contain;
+}
+
+/* Default logo state */
+.logo-intact {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Bite sequence states */
+.logo-bitten-1,
+.logo-bitten-2,
+.logo-bitten-3 {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Bite animation classes */
+.logo-link.bite-1 .logo-intact {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.logo-link.bite-1 .logo-bitten-1 {
+  opacity: 1;
+  visibility: visible;
+  filter: drop-shadow(0 0 10px rgba(0, 232, 255, 0.7));
+}
+
+.logo-link.bite-2 .logo-intact,
+.logo-link.bite-2 .logo-bitten-1,
+.logo-link.bite-2 .logo-bitten-3 {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.logo-link.bite-2 .logo-bitten-2 {
+  opacity: 1;
+  visibility: visible;
+  filter: drop-shadow(0 0 12px rgba(0, 232, 255, 0.8));
+}
+
+.logo-link.bite-3 .logo-intact,
+.logo-link.bite-3 .logo-bitten-1,
+.logo-link.bite-3 .logo-bitten-2 {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.logo-link.bite-3 .logo-bitten-3 {
+  opacity: 1;
+  visibility: visible;
+  filter: drop-shadow(0 0 15px rgba(255, 0, 170, 0.7)); /* Magenta glow for final bite */
+}
+
+/* Enhanced hover effect */
+.logo-link:hover {
+  transform: scale(1.05);
+}
+
+.logo-link:active {
+  transform: scale(0.95);
+}
+
+/* Responsive adjustments */
+@media (max-width: 767.98px) {
+  .logo-link {
+    width: 120px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .logo-link {
+    width: 110px;
+    height: 55px;
+  }
+}
+
+/* Navigation improvements */
+.nav-list {
+  display: flex;
+  align-items: center; /* Alineación vertical de todos los elementos */
+  gap: 2.5rem; /* Increased spacing between menu items */
+}
+
+.nav-item a {
+  color: var(--madbite-light);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em; /* Increased letter spacing for modern look */
+  position: relative;
+  transition: var(--transition-primary);
+  font-size: 0.95rem; /* Consistent font size */
+  padding: 0.5rem 0; /* Larger hit area for better usability */
+}
+
+/* Enhanced hover animation */
+.nav-item a::after {
+  content: '';
+  position: absolute;
+  bottom: -0.3rem;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--madbite-cyan)); /* Gradient underline */
+  transition: var(--transition-primary);
+  opacity: 0;
+}
+
+.nav-item a:hover {
+  color: var(--madbite-cyan);
+  text-shadow: 0 0 8px rgba(0, 232, 255, 0.5); /* Subtle neon glow on hover */
+}
+
+.nav-item a:hover::after {
+  width: 100%;
+  opacity: 1;
+}
+
+/* Active state */
+.nav-item.active a {
+  color: var(--madbite-cyan);
+  text-shadow: 0 0 8px rgba(0, 232, 255, 0.5);
+}
+
+.nav-item.active a::after {
+  width: 100%;
+  opacity: 1;
+}
+
+/* Efecto hover también para el selector de idiomas */
+.selected-language:hover {
+  color: var(--madbite-cyan);
+  text-shadow: 0 0 8px rgba(0, 232, 255, 0.5);
+}
+
+/* Contenedor del toggle */
+#navToggle {
+  width: 30px;
+  height: 24px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1100;
+}
+
+/* Cada barra básica */
+#navToggle .bar {
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: #00eeff;           /* color de barra */
+  border-radius: 2px;
+  transition: transform .3s ease, opacity .3s ease;
+  padding: 0.15rem;
+  margin: 5px;
+}
+
+/* Estado abierto: convierte en X */
+#navToggle.open .bar:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+#navToggle.open .bar:nth-child(2) {
+  opacity: 0;
+}
+#navToggle.open .bar:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+@media (max-width: 991.98px) {
+  #navToggle {
+    display: flex;
+  }
+  
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%; /* Reducido del 80% */
+    max-width: 280px; /* Reducido de 320px */
+    height: 100vh;
+    background: linear-gradient(135deg, rgba(20, 20, 25, 0.97), rgba(15, 15, 20, 0.97)); /* Negro claro para el menú lateral */
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem; /* Reducido de 2rem */
+    transition: var(--transition-primary);
+    z-index: 1000;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+    border-left: 1px solid rgba(0, 232, 255, 0.3);
+  }
+  
+  .nav-menu.open {
+    right: 0;
+  }
+  
+  .nav-list {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.2rem; /* Reducido de 2rem */
+    margin-bottom: 1.5rem;
+    width: 100%;
+  }
+  
+  .nav-item {
+    width: 100%;
+  }
+  
+  .nav-item a {
+    display: block;
+    padding: 0.6rem 0; /* Reducido de 0.8rem */
+    font-size: 1rem; /* Reducido de 1.1rem */
+  }
+  
+  .nav-item a::after {
+    bottom: 0.3rem;
+  }
+  
+  /* En móvil, el selector de idiomas también centrado */
+  .language-selector-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .selected-language {
+    justify-content: center;
+    width: 150px;
+  }
+  
+  /* Desactiva los clics mientras el overlay está oculto */
+  .menu-overlay{
+    pointer-events:none;
+  }
+
+  /* Vuelve a aceptar clics solo cuando el overlay está abierto */
+  .menu-overlay.open{
+    pointer-events:auto;
+  }
+  
+  .menu-overlay.open {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Prevent scrolling when menu is open */
+  body.menu-open {
+    overflow: hidden;
+  }
+}
+
+/* Small devices adjustments */
+@media (max-width: 575.98px) {
+  .logo-link {
+    width: 120px;
+    height: 60px;
+  }
+  
+  .nav-container {
+    padding: 0 1rem;
+  }
+}
+
+/* Medium devices adjustments */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .logo-link {
+    width: 130px;
+    height: 65px;
+  }
+}
+
+/* === HOTFIX HEADER menu.html  (28-04-2025) ================= */
+.menu-overlay        { pointer-events:none; }
+.menu-overlay.open   { pointer-events:auto; }
+
+.nav-container       { position:relative; z-index:2000; }
+
+/* === CORRECCIONES Z-INDEX (header.css) === */
+.nav-menu {
+  z-index: 1100; /* Asegurar que está por encima del overlay */
+}
+  
+.language-selector {
+  z-index: 1200; /* Asegurar que el dropdown es visible */
+}
+/* ========================================================== */
+
+/* === OPTIMIZACIONES PARA DISPOSITIVOS DE 400px === */
+@media (max-width: 400px) {
+  /* Header más compacto */
+  .header {
+    padding: 0.7rem 0;
+    
+  }
+  
+  /* Logo más pequeño */
+  .logo-link {
+    width: 100px;
+    height: 50px;
+  }
+  
+  /* Navegación más compacta */
+  .nav-container {
+    padding: 0 10px;
+  }
+  
+  /* Botón de hamburguesa más pequeño */
+  #navToggle {
+    width: 24px;
+    height: 20px;
+    margin-right: 0;
+  }
+  
+  #navToggle .bar {
+    height: 3px;
+    margin: 3px;
+    padding: 0.1rem;
+  }
+  
+  /* Menú lateral optimizado */
+  .nav-menu {
+    width: 85%;
+    max-width: 250px;
+    padding: 1.2rem 1rem;
+  }
+  
+  /* Navegación vertical más compacta */
+  .nav-list {
+    gap: 0.8rem;
+  }
+  
+  .nav-item a {
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+  
+  /* Botón de intranet más grande para mejor clic */
+  .intranet-link {
+    padding: 0.6rem 1.2rem !important;
+    min-width: 140px !important;
+  }
+}

@@ -15,17 +15,7 @@
 
     <!-- 2 · FILTROS TRANSVERSALES -->
 
-    <!-- 2-A · CORS: permite orígenes y cabeceras necesarias -->
-    <filter>
-        <filter-name>CorsFilter</filter-name>
-        <filter-class>org.madbite.filter.CorsFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>CorsFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
-    <!-- 2-B · JWT: protege todas las rutas /api/*
+    <!-- 2-A · JWT: protege todas las rutas /api/* -->
     <filter>
         <filter-name>JwtFilter</filter-name>
         <filter-class>org.madbite.filter.JwtFilter</filter-class>
@@ -33,7 +23,7 @@
     <filter-mapping>
         <filter-name>JwtFilter</filter-name>
         <url-pattern>/api/*</url-pattern>
-    </filter-mapping>-->
+    </filter-mapping>
 
     <!-- 3 · SERVLETS REST -->
 
@@ -95,10 +85,20 @@
         <url-pattern>/health</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>TokenDebugServlet</servlet-name>
+        <servlet-class>org.madbite.controller.TokenDebugServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TokenDebugServlet</servlet-name>
+        <url-pattern>/api/debug/token</url-pattern>
+    </servlet-mapping>
+
     <!-- 4 · Welcome page mínima -->
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index.html</welcome-file>
     </welcome-file-list>
+
 
     <!-- 5 · Páginas de error -->
     <error-page>

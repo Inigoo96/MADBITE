@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Processing Login…</title>
+  <style>
+    /* Variables de color MADBITE */
+    :root {
+      --bg-start: #000000;
+      --bg-end:   #111111;
+      --accent-c: #00e8ff;
+      --accent-m: #ff00aa;
+      --text-light: #f0f0f0;
+    }
+
+    /* Reset básico */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+      color: var(--text-light);
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .loader-container {
+      text-align: center;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .logo {
+      width: 100px;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 0 8px var(--accent-c));
+    }
+
+    .spinner {
+      width: 60px;
+      height: 60px;
+      margin: 1.5rem auto;
+      border: 6px solid rgba(255,255,255,0.1);
+      border-top-color: var(--accent-c);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    .message {
+      font-size: 1.25rem;
+      letter-spacing: 0.5px;
+      margin-top: 0.5rem;
+      text-transform: uppercase;
+      color: var(--accent-c);
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="loader-container">
+    <!-- Logo MADBITE -->
+    <img src="../assets/images/logo/logo-neon-removebg.png" alt="MADBITE Logo" class="logo" />
+    <!-- Spinner animado -->
+    <div class="spinner"></div>
+    <!-- Mensaje -->
+    <div class="message">Iniciando sesión, espera…</div>
+  </div>
+
+  <script type="module" src="../js/auth-callback.js" defer></script>
+</body>
+</html>

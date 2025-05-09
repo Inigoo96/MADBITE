@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú Completo | MADBITE</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- CSS Principal -->
+  <link rel="stylesheet" href="../css/main.css">
+  <script type="module" src="../js/auth-guard.js" defer></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="nav-container">
+      <div class="logo-container">
+        <a href="/index.html" class="logo-link" aria-label="MADBITE Home">
+          <img src="../assets/images/logo/logo-completo-ajustadorbg.png" alt="MADBITE Logo" class="logo logo-intact">
+          <img src="../assets/images/logo/logo-neon-ajustadorbg.png" alt="MADBITE Logo Neon" class="logo logo-bitten-1">
+          <img src="../assets/images/logo/logo-bitten-3-rp (1)-Photoroom.png" alt="MADBITE Logo Frame 2" class="logo logo-bitten-2">
+          <img src="../assets/images/logo/logo-bitten-4-rp (1)-Photoroom.png" alt="MADBITE Logo Frame 3" class="logo logo-bitten-3">
+        </a>
+      </div>
+      <button id="navToggle" aria-label="Toggle menu" class="hamburger">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+      <nav class="nav-menu" id="navMenu" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li class="nav-item language-dropdown-container">
+            <!-- language selector omitted for brevity -->
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="menu-overlay" id="menuOverlay"></div>
+  </header>
+
+  <!-- MENÚ PRINCIPAL -->
+  <main class="menu-page">
+    <div class="hero-overlay"></div>
+
+    <section class="menu-hero">
+      <div class="menu-hero-content">
+        <h1 class="menu-hero-title">HAMBURGUESAS <span class="text-cyan">CON ACTITUD</span></h1>
+        <p class="menu-hero-subtitle">Carne 100% vacuno nacional, con un blend único de cortes premium</p>
+        <a href="../assets/images/carta/CARTAMADBITE.pdf" download class="download-btn" id="downloadMenuBtn">
+          <i class="fas fa-utensils"></i> DESCARGAR MENÚ
+        </a>
+      </div>
+    </section>
+
+    <section class="menu-categories">
+      <div class="container">
+        <div class="category-selector">
+          <a href="#hamburguesas" class="category-link active">Vacuno</a>
+          <a href="#pollo" class="category-link">Pollo</a>
+          <a href="#veggie" class="category-link">Veggie</a>
+          <a href="#combos" class="category-link">Combos</a>
+          <a href="#para-picar" class="category-link">Para Picar</a>
+          <a href="#salsas" class="category-link">Salsas</a>
+          <a href="#bebidas" class="category-link">Bebidas</a>
+          <a href="#postres" class="category-link">Postres</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIONES DINÁMICAS -->
+    <section id="hamburguesas" class="menu-section">
+      <div class="container">
+        <h2 class="section-title">Hamburguesas <span class="title-neon">Premium</span></h2>
+        <div class="menu-grid"></div>
+      </div>
+    </section>
+
+    <section id="pollo" class="menu-section">
+      <div class="container">
+        <h2 class="section-title">Pollo <span class="title-neon">Crujiente</span></h2>
+        <div class="menu-grid"></div>
+      </div>
+    </section>
+
+    <section id="veggie" class="menu-section">
+      <div class="container">
+        <h2 class="section-title">Veggie <span class="title-neon">Opciones</span></h2>
+        <div class="menu-grid"></div>
+      </div>
+    </section>
+
+    <section id="para-picar" class="menu-section">
+      <div class="container">
+        <h2 class="section-title">Para <span class="title-neon">Picar</span></h2>
+        <div class="menu-grid"></div>
+      </div>
+    </section>
+
+    <section id="combos" class="menu-section">
+      <div class="container">
+        <h2 class="section-title">Combos <span class="title-neon">Especiales</span></h2>
+        <div class="menu-grid"></div>
+      </div>
+    </section>
+
+    <section id="salsas" class="menu-section">
+      <div class="container">
+        <h2 class="section-title">Salsas <span class="title-neon">Artesanales</span></h2>
+        <div class="menu-grid"></div>
+      </div>
+    </section>
+
+    <section id="bebidas" class="menu-section">
+      <div class="container">
+        <h2 class="section-title">Bebidas <span class="title-neon">Refrescantes</span></h2>
+        <div class="menu-grid"></div>
+      </div>
+    </section>
+
+    <section id="postres" class="menu-section">
+      <div class="container">
+        <h2 class="section-title">Postres <span class="title-neon">Dulces</span></h2>
+        <div class="menu-grid"></div>
+      </div>
+    </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+          <div class="container">
+              <div class="footer-content">
+                  <!-- Logo y descripción -->
+                  <div class="footer-brand">
+                      <img src="../assets/images/logo/logo-neon-removebg.png" alt="MADBITE Logo" class="footer-logo">
+                      <p class="footer-description">MADBITE es una cadena de hamburguesería con estilo y actitud. Nuestras hamburguesas artesanales y nuestros ingredientes de primera calidad hacen la diferencia.</p>
+                      <div class="footer-social">
+                        
+                      <a href="https://www.instagram.com/madbite_usa/" class="social-icon" aria-label="Instagram">
+                          <i class="fab fa-instagram"></i>
+                      </a>
+                          <a href="#" class="social-icon" aria-label="Facebook">
+                              <i class="fab fa-facebook-f"></i>
+                          </a>
+                          <a href="#" class="social-icon" aria-label="Twitter">
+                              <i class="fab fa-twitter"></i>
+                          </a>
+                          <a href="https://www.tiktok.com/@madbite_usa" class="social-icon" aria-label="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                          
+                      </div>
+                  </div>
+        
+                  <!-- Enlaces -->
+                  <div class="footer-nav">
+                      <h3 class="footer-heading">Enlaces</h3>
+                      <ul class="footer-links">
+                          <li><a href="../index.html#home"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+                          <li><a href="../index.html#featured"><i class="fas fa-chevron-right"></i> Menú</a></li>
+                          <li><a href="../index.html#about"><i class="fas fa-chevron-right"></i> Nosotros</a></li>
+                          <li><a href="../index.html#locations"><i class="fas fa-chevron-right"></i> Locales</a></li>
+                          <li><a href="../index.html#contact"><i class="fas fa-chevron-right"></i> Contacto</a></li>
+                      </ul>
+                  </div>
+        
+                  <!-- Legal -->
+                  <div class="footer-nav">
+                      <h3 class="footer-heading">Legal</h3>
+                      <ul class="footer-links">
+                          <li><a href="terminos.html"><i class="fas fa-chevron-right"></i> Términos y Condiciones</a></li>
+                          <li><a href="politica.html"><i class="fas fa-chevron-right"></i> Política de Privacidad</a></li>
+                          <li><a href="cookies.html"><i class="fas fa-chevron-right"></i> Política de Cookies</a></li>
+                          <li><a href="faq.html"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                      </ul>
+                  </div>
+        
+                  <!-- Newsletter -->
+                  <div class="footer-newsletter">
+                      <h3 class="footer-heading">Newsletter</h3>
+                      <p class="newsletter-text">Suscríbete para recibir noticias y ofertas especiales.</p>
+                      <form class="newsletter-form">
+                          <input type="email" class="newsletter-input" placeholder="Tu email">
+                          <button type="submit" class="newsletter-btn">
+                              <i class="fas fa-paper-plane"></i>
+                          </button>
+                      </form>
+                      <p class="form-disclaimer">Al suscribirte aceptas nuestra política de privacidad.</p>
+                  </div>
+              </div>
+          </div>
+        
+          <div class="copyright">
+              <div class="container">
+                  &copy; 2025 <span>MADBITE</span>. Todos los derechos reservados.
+              </div>
+          </div>
+        </footer>
+
+      </main>
+
+      <!-- Carrito flotante y sidebar -->
+      <button id="cart-button" class="cart-button neon">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="cart-count">0</span>
+      </button>
+      <div id="cart-overlay" class="cart-overlay hidden"></div>
+      <aside id="cart-sidebar" class="cart-sidebar hidden neon-bg">
+        <button id="cart-close" class="cart-close" aria-label="Cerrar carrito">&times;</button>
+        <h2 class="cart-title neon-text">Tu carrito</h2>
+        <ul id="cart-items" class="cart-items"></ul>
+        <div class="cart-summary">
+          <span>Total:</span>
+          <span id="cart-total" class="neon-text">$0.00</span>
+        </div>
+        <button id="checkout-btn" class="checkout-btn neon">Ir a pagar</button>
+      </aside>
+  
+      <!-- SCRIPTS -->
+      <script src="../js/main.js" defer></script>
+      <script src="../js/logo-animation.js" defer></script>
+      <script src="../js/menu.js" defer></script>
+      <script src="../js/menu-lenguaje.js" defer></script>
+      <script src="../js/cart.js" defer></script>
+    </body>
+  </html>
+  

@@ -28,7 +28,7 @@ public class CognitoCallbackServlet extends HttpServlet {
 
     private static final String CLIENT_ID      = "6omlacb6fjdnimu8dalu81ft0r";
     private static final String CLIENT_SECRET  = "r3a3i2crbscfmbfr01v36s6mtajc036lohr4ibq4c8ui9918qfp";
-    private static final String REDIRECT_URI   = "http://localhost:3007/html/callback";
+    private static final String REDIRECT_URI   = "http://localhost:8090/back/html/callback.html";
     private static final String TOKEN_ENDPOINT =
             "https://us-east-19ns1g8vpk.auth.us-east-1.amazoncognito.com/oauth2/token";
 
@@ -37,7 +37,7 @@ public class CognitoCallbackServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        // El CorsFilter ya habrá puesto todos los headers necesarios
+        // Configuración de respuesta
         resp.setContentType("application/json;charset=UTF-8");
 
         // Leer y validar JSON de body

@@ -1,0 +1,358 @@
+{
+    "head": {
+      "title": "Menu Complet | MadBite - Burgers avec Attitude"
+    },
+    "nav": {
+      "home": "Accueil",
+      "featured": "À la une",
+      "about": "À propos",
+      "locations": "Emplacements",
+      "contact": "Contact",
+      "menu": "Menu"
+    },
+    "language": {
+      "selected": "Français",
+      "options": {
+        "en": "English",
+        "es": "Español",
+        "fr": "Français"
+      }
+    },
+        "menuHero": {
+      "title": "BURGERS <span class=\"text-cyan\" data-text=\"AVEC ATTITUDE\">AVEC ATTITUDE</span>",
+      "subtitle": "Viande 100% bœuf national, avec un mélange unique de coupes premium",
+      "downloadButton": "<i class='fas fa-utensils'></i> TÉLÉCHARGER LE MENU COMPLET"
+    },
+    "categories": {
+      "burgers": "Burgers",
+      "chicken": "Poulet",
+      "veggie": "Veggie",
+      "sides": "Accompagnements",
+      "desserts": "Desserts",
+      "beverages": "Boissons",
+      "sauces": "Sauces",
+      "combos": "Menus"
+    },
+    "sections": {
+      "burgers": {
+        "title": "Burgers <span class=\"title-neon\">Premium</span>"
+      },
+      "chicken": {
+        "title": "Poulet <span class=\"title-neon\">Croustillant</span>"
+      },
+      "veggie": {
+        "title": "Options <span class=\"title-neon\">Veggie</span>"
+      },
+      "sides": {
+        "title": "<span class=\"title-neon\">Accompagnements</span>"
+      },
+      "desserts": {
+        "title": "Nos <span class=\"title-neon\">Desserts</span>"
+      },
+      "beverages": {
+        "title": "Boissons <span class=\"text-cyan\">Rafraîchissantes</span>"
+      },
+      "sauces": {
+        "title": "Nos <span class=\"text-magenta\">Sauces</span>"
+      },
+      "combos": {
+        "title": "Menus <span class=\"title-neon\">Spéciaux</span>"
+      }
+    },
+    "badges": {
+      "bestseller": "Bestseller",
+      "new": "Nouveau",
+      "spicy": "Épicé",
+      "veggie": "Veggie"
+    },
+    "burgers": {
+      "classic": {
+        "title": "La Classic MADBITE",
+        "description": "Notre burger classique avec viande premium, fromage cheddar, tomate, laitue et notre sauce secrète.",
+        "price": "12,99 €"
+      },
+      "cheese": {
+        "title": "Cheese Lover",
+        "description": "Triple fromage : cheddar, gouda et bleu avec viande premium et bacon croustillant pour les amateurs de fromage.",
+        "price": "14,99 €"
+      },
+      "diablo": {
+        "title": "Diablo",
+        "description": "Explosion d'épices avec jalapeños, guacamole épicé, fromage pepper jack et notre sauce infernale.",
+        "price": "14,99 €"
+      },
+      "bbq": {
+        "title": "BBQ Deluxe",
+        "description": "Saveur fumée avec sauce barbecue maison, oignons caramélisés, bacon et fromage cheddar fondu.",
+        "price": "14,99 €"
+      }
+    },
+    "chicken": {
+      "inferno": {
+        "title": "Inferno Chicken",
+        "description": "Pour les amateurs de piquant : jalapeños, guacamole épicé, fromage pepper jack et sauce habanero.",
+        "price": "14,99 €"
+      },
+      "crispy": {
+        "title": "Crispy Ranch",
+        "description": "Poulet croustillant avec bacon, laitue, tomate, fromage cheddar et notre sauce ranch maison.",
+        "price": "13,99 €"
+      },
+      "buffalo": {
+        "title": "Buffalo Chicken",
+        "description": "Poulet extra croustillant avec sauce buffalo, fromage bleu, céleri croustillant et sauce ranch.",
+        "price": "14,99 €"
+      },
+      "double": {
+        "title": "Double Crispy",
+        "description": "Double filet de poulet extra croustillant, double fromage cheddar, laitue, tomate et sauce bourbon.",
+        "price": "16,99 €"
+      },
+      "asian": {
+        "title": "Spicy Asian",
+        "description": "Poulet mariné à la sauce teriyaki, avec chou asiatique, concombres marinés et mayonnaise sriracha.",
+        "price": "15,99 €"
+      }
+    },
+    "veggie": {
+      "falafel": {
+        "title": "Falafel Burger",
+        "description": "Burger de falafel maison, houmous, concombre, tomate, oignon rouge et sauce au yaourt végétalien.",
+        "price": "13,99 €"
+      },
+      "beyond": {
+        "title": "Beyond Classic",
+        "description": "Burger Beyond Meat avec fromage végétal, laitue, tomate, oignon rouge et notre sauce spéciale végane.",
+        "price": "15,99 €"
+      }
+    },
+    "sides": {
+      "wings": {
+        "title": "Ailes Épicées",
+        "description": "Ailes de poulet avec sauce buffalo, accompagnées de salade fraîche et bâtonnets de carotte.",
+        "price": "10,99 €"
+      },
+      "wings_fries": {
+        "title": "Ailes avec Frites",
+        "description": "Ailes de poulet croustillantes avec nos frites, accompagnées de sauce barbecue.",
+        "price": "12,99 €"
+      },
+      "onion_rings": {
+        "title": "Rondelles d'Oignon",
+        "description": "Rondelles d'oignon croustillantes accompagnées de notre sauce spéciale MADBITE.",
+        "price": "7,99 €"
+      },
+      "caesar": {
+        "title": "Salade César",
+        "description": "Laitue romaine, croûtons, fromage parmesan, poulet grillé et notre vinaigrette césar maison.",
+        "price": "9,99 €"
+      },
+      "fresh_salad": {
+        "title": "Salade Fraîche",
+        "description": "Mélange de laitues, tomates cerises, concombre, oignon rouge, olives et vinaigrette balsamique.",
+        "price": "8,99 €"
+      },
+      "nuggets": {
+        "title": "Nuggets de Poulet",
+        "description": "Délicieux nuggets de poulet maison servis avec sauce barbecue ou miel et moutarde.",
+        "price": "8,99 €"
+      },
+      "wedges": {
+        "title": "Potatoes",
+        "description": "Potatoes épicées avec notre mélange secret d'herbes et d'épices.",
+        "price": "5,99 €"
+      },
+      "fries": {
+        "title": "Frites Rustiques",
+        "description": "Pommes de terre coupées en fines lamelles, frites et assaisonnées de sel et poivre noir fraîchement moulu.",
+        "price": "6,99 €"
+      }
+    },
+    "desserts": {
+      "chocolate": {
+        "title": "Coulant au Chocolat",
+        "description": "Gâteau au chocolat avec cœur coulant et glace à la vanille. Un classique irrésistible.",
+        "price": "7,99 €"
+      },
+      "sundae": {
+        "title": "Sundae MADBITE",
+        "description": "Sélection de glaces avec crème fouettée, sirop au choix, cookies et fruits secs.",
+        "price": "6,99 €"
+      },
+      "cake": {
+        "title": "Gâteau au Chocolat",
+        "description": "Gâteau au chocolat à trois couches avec ganache, servi avec crème fouettée et fruits rouges.",
+        "price": "8,99 €"
+      },
+      "cheesecake": {
+        "title": "Cheesecake",
+        "description": "Cheesecake crémeux classique avec base de biscuit et coulis de fruits rouges.",
+        "price": "7,99 €"
+      },
+      "tiramisu": {
+        "title": "Tiramisu",
+        "description": "Authentique tiramisu italien avec café, mascarpone, biscuits et poudre de cacao.",
+        "price": "8,99 €"
+      }
+    },
+    "beverages": {
+      "sparkling": {
+        "title": "Eau Gazeuse",
+        "description": "Eau minérale gazeuse Vichy Catalán, rafraîchissante et pétillante.",
+        "price": "2,99 €"
+      },
+      "water": {
+        "title": "Eau Minérale",
+        "description": "Eau minérale naturelle Aquafina, purifiée et rafraîchissante.",
+        "price": "1,99 €"
+      },
+      "amber": {
+        "title": "Bière Ambrée",
+        "description": "Bière Ambar classique, avec une saveur équilibrée et des notes maltées.",
+        "price": "4,99 €"
+      },
+      "aquarius_lemon": {
+        "title": "Aquarius Citron",
+        "description": "Boisson rafraîchissante au goût de citron, parfaite pour accompagner votre repas.",
+        "price": "2,99 €"
+      },
+      "aquarius_orange": {
+        "title": "Aquarius Orange",
+        "description": "Boisson rafraîchissante au goût d'orange, idéale pour n'importe quel moment.",
+        "price": "2,99 €"
+      },
+      "budweiser": {
+        "title": "Bière Budweiser",
+        "description": "Bière américaine premium, douce et rafraîchissante avec une touche de houblon.",
+        "price": "4,99 €"
+      },
+      "corona": {
+        "title": "Bière Corona",
+        "description": "Bière mexicaine, légère et rafraîchissante, servie avec une tranche de citron vert.",
+        "price": "4,99 €"
+      },
+      "desperados": {
+        "title": "Bière Desperados",
+        "description": "Bière avec une touche de tequila, saveur unique et rafraîchissante.",
+        "price": "5,49 €"
+      },
+      "estrella": {
+        "title": "Estrella Galicia",
+        "description": "Bière espagnole avec du corps, saveur intense et équilibrée avec une fin amère douce.",
+        "price": "4,99 €"
+      },
+      "coke_zero": {
+        "title": "Coca-Cola Zero",
+        "description": "Soda Coca-Cola sans sucre, avec le goût original de toujours.",
+        "price": "2,99 €"
+      },
+      "coke": {
+        "title": "Coca-Cola",
+        "description": "Le soda cola classique avec son inimitable goût original.",
+        "price": "2,99 €"
+      },
+      "fanta_lemon": {
+        "title": "Fanta Citron",
+        "description": "Soda rafraîchissant au goût de citron, parfait pour les journées chaudes.",
+        "price": "2,99 €"
+      },
+      "fanta_orange": {
+        "title": "Fanta Orange",
+        "description": "Soda au goût d'orange, pétillant et plein de saveur fruitée.",
+        "price": "2,99 €"
+      },
+      "redbull": {
+        "title": "Red Bull",
+        "description": "Boisson énergisante pour vous revitaliser, parfaite pour accompagner vos repas les plus intenses.",
+        "price": "3,99 €"
+      },
+      "sprite": {
+        "title": "Sprite",
+        "description": "Soda transparent au goût citron-citron vert, rafraîchissant et pétillant.",
+        "price": "2,99 €"
+      }
+    },
+    "sauces": {
+      "aioli": {
+        "title": "Aïoli",
+        "description": "Sauce crémeuse à l'ail, parfaite pour accompagner les frites et les viandes grillées.",
+        "price": "1,50 €"
+      },
+      "bbq": {
+        "title": "Barbecue",
+        "description": "Sauce fumée et sucrée, parfaite pour accompagner les burgers et les viandes grillées.",
+        "price": "1,50 €"
+      },
+      "brava": {
+        "title": "Brava",
+        "description": "Sauce épicée traditionnelle espagnole, parfaite pour accompagner les pommes de terre et les viandes.",
+        "price": "1,50 €"
+      },
+      "ketchup": {
+        "title": "Ketchup",
+        "description": "Le ketchup classique à la tomate, sucré et acidulé, parfait pour n'importe quel plat.",
+        "price": "1,00 €"
+      },
+      "secret": {
+        "title": "MADBITE Secret",
+        "description": "Notre sauce secrète exclusive, une combinaison unique de saveurs qui vous rendra fou.",
+        "price": "2,50 €"
+      },
+      "ranch": {
+        "title": "Ranch",
+        "description": "Sauce crémeuse aux herbes, idéale pour accompagner les burgers de poulet et les salades.",
+        "price": "1,50 €"
+      }
+    },
+    "combos": {
+      "classic": {
+        "title": "Menu Classic",
+        "description": "Classic MADBITE + frites + boisson au choix.",
+        "price": "16,99 €"
+      },
+      "cheese": {
+        "title": "Menu Cheese",
+        "description": "Cheese Lover + frites au fromage cheddar + boisson au choix.",
+        "price": "18,99 €"
+      },
+      "diablo": {
+        "title": "Menu Diablo",
+        "description": "Burger Diablo + pommes de terre épicées + boisson au choix.",
+        "price": "19,99 €"
+      },
+      "chicken": {
+        "title": "Menu Crispy Chicken",
+        "description": "Crispy Ranch + frites + boisson au choix.",
+        "price": "17,99 €"
+      },
+      "veggie": {
+        "title": "Menu Veggie",
+        "description": "Falafel Burger + salade + boisson au choix.",
+        "price": "16,99 €"
+      },
+      "family": {
+        "title": "Menu Familial",
+        "description": "4 burgers au choix + 2 entrées + 4 boissons + 2 desserts à partager.",
+        "price": "59,99 €"
+      }
+    },
+    "actions": {
+      "getDirections": "COMMENT S'Y RENDRE",
+      "details": "DÉTAILS",
+      "viewFullMenu": "VOIR LE MENU COMPLET"
+    },
+    "footer": {
+      "description": "MADBITE est une chaîne de restaurants de burgers avec style et attitude. Nos burgers artisanaux et nos ingrédients de première qualité font la différence.",
+      "links": "Liens",
+      "legal": "Légal",
+      "terms": "Conditions Générales",
+      "privacy": "Politique de Confidentialité",
+      "cookies": "Politique de Cookies",
+      "faq": "FAQ",
+      "newsletter": "Newsletter",
+      "subscribeText": "Inscrivez-vous pour recevoir des nouvelles et des offres spéciales.",
+      "emailPlaceholder": "Votre email",
+      "disclaimer": "En vous inscrivant, vous acceptez notre politique de confidentialité.",
+      "copyright": "Tous droits réservés."
+    }
+  }

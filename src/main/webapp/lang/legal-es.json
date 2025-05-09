@@ -1,0 +1,305 @@
+{
+    "global": {
+      "header": {
+        "nav": {
+          "home": "Inicio",
+          "featured": "Destacados",
+          "about": "Nosotros",
+          "locations": "Locales",
+          "contact": "Contacto",
+          "menu": "Menú"
+        },
+        "languageSelector": {
+          "es": "Español",
+          "en": "English",
+          "fr": "Français"
+        }
+      },
+      "footer": {
+        "description": "MADBITE es una cadena de hamburguesería con estilo y actitud. Nuestras hamburguesas artesanales y nuestros ingredientes de primera calidad hacen la diferencia.",
+        "headings": ["Enlaces", "Legal", "Newsletter"],
+        "links": ["Inicio", "Menú", "Nosotros", "Locales", "Contacto", "Términos y Condiciones", "Política de Privacidad", "Política de Cookies", "FAQ"],
+        "newsletterText": "Suscríbete para recibir noticias y ofertas especiales.",
+        "emailPlaceholder": "Tu email",
+        "formDisclaimer": "Al suscribirte aceptas nuestra política de privacidad.",
+        "copyright": "&copy; 2025 <span>MADBITE</span>. Todos los derechos reservados."
+      },
+      "backButton": "Volver"
+    },
+    "cookies": {
+      "title": "Política de Cookies - MADBITE - Hamburguesas con Actitud",
+      "heading": "Política de Cookies",
+      "updateDate": "<strong>Última actualización:</strong> 24 de abril de 2025",
+      "company": {
+        "name": "MADBITE BURGER, LLC.",
+        "address": "1250 Broadway, Suite 3300<br>New York, NY 10001<br>EIN: 87-5432109",
+        "website": "https://www.madbite.com"
+      },
+      "sections": [
+        {"title": "MADBITE BURGER, LLC."},
+        {"title": "INFORMACIÓN GENERAL SOBRE COOKIES"},
+        {"title": "COOKIES UTILIZADAS POR MADBITE"},
+        {"title": "CONSENTIMIENTO"},
+        {"title": "GESTIÓN DE COOKIES"},
+        {"title": "INFORMACIÓN ADICIONAL"}
+      ],
+      "subsections": [
+        {"title": "En función de su caducidad:"},
+        {"title": "En función de su procedencia:"},
+        {"title": "Cookies de análisis y Google Analytics"},
+        {"title": "Información sobre ventas y marketing"}
+      ],
+      "paragraphs": [
+        "<span class=\"update-date\"><strong>Última actualización:</strong> 24 de abril de 2025</span>",
+        "1250 Broadway, Suite 3300<br>New York, NY 10001<br>EIN: 87-5432109",
+        "https://www.madbite.com",
+        "De conformidad con la normativa aplicable en materia de servicios de la sociedad de la información y comercio electrónico, mediante la presente Política de Cookies MADBITE BURGER, LLC te informa de que su sitio web www.madbite.com o cualquier otra denominación que pueda tener en el futuro (en adelante, el \"Sitio Web\") utiliza cookies, ficheros informáticos que se almacenan en tu dispositivo durante tu navegación y que contienen generalmente un número que permite identificar tu dispositivo.",
+        "Por regla general, existen los siguientes tipos de cookies:",
+        "Las finalidades para las que MADBITE utiliza cookies en el Sitio Web pueden resumirse, generalmente, como sigue:",
+        "Salvo en el caso de las cookies técnicas y analíticas anónimas, el uso de cookies tiene un efecto sobre tu privacidad, dado que por regla general permite relacionar su contenido con la dirección IP de conexión y con otros datos de carácter personal relativos a ti, como los aportados voluntariamente.",
+        "Mediante la aceptación de la presente Política de Cookies, estás aceptando la generación de cookies para las finalidades arriba mencionadas, en aquellos casos en que dicho consentimiento sea preciso.",
+        "No obstante, lo anterior, en caso de que desees con posterioridad eliminar las cookies que se hayan almacenado en tu dispositivo y que necesariamente precisen de tu consentimiento, podrás hacerlo usando las herramientas que te proporcione tu navegador a dichos efectos. En este sentido, podrás encontrar información adicional a través de los siguientes enlaces:",
+        "Si no aceptas las cookies o las rechazas posteriormente, las funcionalidades del Sitio Web podrán verse mermadas.",
+        "Este sitio utiliza Google Analytics, un servicio de análisis web de Google Inc. (1600 Amphitheatre Parkway, Mountain View, CA 94043, EE. UU.), abreviado como \"Google\". Google Analytics utiliza archivos de texto, las denominadas cookies. Las cookies se guardan en tu ordenador y generan información referente al uso que tú haces de nuestro sitio web.",
+        "Dicha información se transfiere a EE. UU. para almacenarla en un servidor de Google. En este sitio web hay activada una anonimización de IP, es decir, que Google acorta tu IP dentro de los Estados miembros de la Unión Europea o de otros Estados del Acuerdo sobre el Espacio Económico Europeo.",
+        "Google utiliza la información generada para crear evaluaciones e informes sobre el uso y la actividad en el sitio web, así como para ofrecer más servicios relacionados con el uso del sitio web y de internet.",
+        "La dirección IP facilitada por tu navegador en el marco de Google Analytics no se recopila junto con otros datos de Google. Puedes impedir el uso y el almacenamiento de cookies mediante el ajuste correspondiente de tu navegador. Sin embargo, si lo haces, debes saber que es posible que no puedas utilizar completamente todas las funciones de este sitio web.",
+        "Asimismo, puedes impedir el envío a Google de los datos generados por las cookies relativos al uso que tú haces del sitio web (incluida tu dirección IP), así como el procesamiento de los mismos por parte de Google. Para ello, deberás descargar e instalar un plug-in para tu navegador, disponible en el siguiente enlace: <a href=\"https://tools.google.com/dlpage/gaoptout?hl=es\" target=\"_blank\">Extensión de navegador para desactivar Google Analytics</a>.",
+        "MADBITE recaba datos de contacto, información sobre preferencias y datos sobre la utilización de las webs y las comunicaciones; también puede utilizar información sobre ventas y servicios que el usuario le haya facilitado a través de las web para determinar aquellas ofertas y novedades que pueden resultarle más interesantes y para contactar con el usuario en relación con dichas ofertas, en función de sus preferencias en materia de marketing (y que puede modificar a través de los portales web).",
+        "Los tratamientos relativos a promociones y publicidad sólo se efectúan cuando el usuario ha consentido a los mismos."
+      ],
+      "listItems": [
+        "<strong>Sesión:</strong> Caducan al finalizar la sesión de navegación.",
+        "<strong>Persistencia:</strong> No caducan al finalizar la sesión, sino que permanecen durante un tiempo determinado.",
+        "<strong>Propias:</strong> Habilitadas por el sitio web por el que navegas.",
+        "<strong>Terceros:</strong> Proceden de otros sitios web."
+      ],
+      "cookieTable": {
+        "headers": ["Tipo de Cookie", "Finalidad", "Duración"],
+        "rows": [
+          ["Cookies técnicas", "Permiten el funcionamiento básico del sitio web y sus funcionalidades esenciales, como la autenticación, el mantenimiento de la sesión o el recordatorio de preferencias básicas.", "Sesión / Permanentes (hasta 1 año)"],
+          ["Cookies analíticas", "Son utilizadas para recabar estadísticas de actividad del usuario. Entre otros, se analizan el número de usuarios que visitan el Sitio Web, el número de páginas visitadas, así como la actividad de los usuarios en el Sitio Web y su frecuencia de utilización. La información recopilada siempre es anónima de tal forma que no se podrá establecer un vínculo entre ésta y la persona física a quién se refiere.", "Permanentes (hasta 2 años)"],
+          ["Cookies de preferencias o personalización", "Permiten recordar información para que el usuario acceda al servicio con determinadas características que pueden diferenciar su experiencia de la de otros usuarios, como, por ejemplo, el idioma, el aspecto o contenido del carrito de la compra.", "Permanentes (hasta 1 año)"],
+          ["Cookies de publicidad", "Permiten la gestión de los espacios publicitarios incluidos en el sitio web basados en criterios como el contenido editado o la frecuencia en la que se muestran los anuncios.", "Permanentes (hasta 1 año)"],
+          ["Cookies de publicidad comportamental", "Permiten desarrollar un perfil específico para mostrar publicidad en función del mismo, por ejemplo, para presentarle ofertas que puedan resultarle más interesantes en función de sus hábitos de navegación.", "Permanentes (hasta 1 año)"]
+        ]
+      },
+      "browserLinks": [
+        "<a href=\"https://support.mozilla.org/es/products/firefox/protect-your-privacy/cookies\" target=\"_blank\">Firefox</a>",
+        "<a href=\"https://support.microsoft.com/es-es/windows/eliminar-y-administrar-cookies-168dab11-0753-043d-7c16-ede5947fc64d\" target=\"_blank\">Microsoft Edge</a>",
+        "<a href=\"https://support.google.com/chrome/answer/95647?hl=es\" target=\"_blank\">Google Chrome</a>",
+        "<a href=\"https://support.apple.com/es-es/guide/safari/sfri11471/mac\" target=\"_blank\">Safari</a>",
+        "<a href=\"https://help.opera.com/en/latest/web-preferences/#cookies\" target=\"_blank\">Opera</a>"
+      ]
+    },
+    "faq": {
+      "title": "Preguntas Frecuentes - MADBITE - Hamburguesas con Actitud",
+      "heading": "Preguntas Frecuentes",
+      "searchPlaceholder": "Buscar en las preguntas frecuentes...",
+      "categories": ["Todas", "Pedidos", "Productos", "Locales", "Fidelización", "Otros"],
+      "sections": [
+        {"title": "Sobre nuestros pedidos"},
+        {"title": "Sobre nuestros productos"},
+        {"title": "Sobre nuestros locales"},
+        {"title": "Programa de fidelización MY MADBITE"},
+        {"title": "Otras preguntas"}
+      ],
+      "questions": [
+        {
+          "q": "¿Cómo puedo hacer un pedido online?",
+          "a": "<p>Puedes realizar un pedido a través de nuestra web en la sección \"Menú\" o descargando nuestra aplicación móvil disponible para iOS y Android. El proceso es sencillo:</p><ol><li>Selecciona tus productos favoritos</li><li>Añádelos al carrito</li><li>Elige si prefieres recogerlo (MADBITE Pick-Up) o que te lo enviemos (MADBITE Delivery)</li><li>Selecciona tu método de pago</li><li>¡Listo! Recibirás un email de confirmación con los detalles de tu pedido</li></ol>"
+        },
+        {
+          "q": "¿Puedo cancelar mi pedido?",
+          "a": "<p>Sí, es posible cancelar tu pedido dependiendo del tipo y del tiempo transcurrido:</p><ul><li><strong>Pedidos programados para delivery:</strong> Puedes cancelarlos hasta 1 hora antes de la franja horaria elegida.</li><li><strong>Pedidos para recoger:</strong> Puedes cancelarlos hasta 30 minutos antes de la hora de recogida.</li></ul><p>Para cancelar, accede a tu cuenta en nuestra web o app, ve a \"Mis pedidos\" y selecciona la opción de cancelación. También puedes contactarnos por teléfono al número que aparece en tu confirmación de pedido.</p>"
+        },
+        {
+          "q": "¿Cuánto tiempo tarda en llegar mi pedido?",
+          "a": "<p>El tiempo estimado de entrega es de 25-35 minutos, dependiendo de la distancia y el tráfico. En momentos de alta demanda, puede haber un tiempo adicional que se te informará antes de confirmar el pedido.</p><p>Puedes seguir el estado de tu pedido en tiempo real a través de nuestra app o web en la sección \"Seguimiento de pedido\".</p>"
+        },
+        {
+          "q": "¿Qué métodos de pago aceptan?",
+          "a": "<p>Aceptamos los siguientes métodos de pago:</p><ul><li>Tarjetas de crédito y débito (Visa, Mastercard, American Express)</li><li>PayPal</li><li>Apple Pay</li><li>Google Pay</li><li>Vales de regalo MADBITE</li><li>Efectivo (solo en restaurante o al repartidor, en pedidos inferiores a $50)</li></ul>"
+        },
+        {
+          "q": "¿Sus hamburguesas son 100% carne de vacuno?",
+          "a": "<p>Sí, nuestras hamburguesas tradicionales están elaboradas con carne 100% de vacuno premium, sin aditivos ni conservantes. Cada día picamos la carne en nuestros locales para garantizar la máxima frescura y sabor.</p><p>También ofrecemos opciones de hamburguesas de pollo, pescado y vegetarianas/veganas para adaptarnos a todos los gustos y necesidades dietéticas.</p>"
+        },
+        {
+          "q": "¿Tienen opciones para personas con alergias o intolerancias?",
+          "a": "<p>Sí, ofrecemos diferentes opciones para personas con alergias o intolerancias alimentarias. En nuestra web y app puedes consultar la información detallada sobre alérgenos de cada producto.</p><p>Disponemos de:</p><ul><li>Panes sin gluten (pueden contener trazas)</li><li>Opciones sin lactosa</li><li>Alternativas vegetarianas y veganas</li></ul><p>Te recomendamos que, al realizar tu pedido, indiques tus alergias o intolerancias en la sección de comentarios para que nuestro equipo tome las precauciones necesarias.</p>"
+        },
+        {
+          "q": "¿Se pueden personalizar las hamburguesas?",
+          "a": "<p>¡Absolutamente! En MADBITE creemos en la libertad de crear tu hamburguesa perfecta. Puedes personalizar cualquier hamburguesa de nuestro menú:</p><ul><li>Añadiendo o quitando ingredientes</li><li>Cambiando el tipo de pan</li><li>Eligiendo el punto de cocción de la carne</li><li>Añadiendo extras como bacon, queso extra, huevo, etc.</li></ul><p>Algunas personalizaciones pueden tener un costo adicional que se mostrará en el proceso de pedido.</p>"
+        },
+        {
+          "q": "¿Dónde están ubicados sus restaurantes?",
+          "a": "<p>Actualmente contamos con restaurantes en varias ubicaciones estratégicas en tres ciudades principales:</p><ul><li><strong>Nueva York:</strong> Manhattan (Times Square, Upper East Side), Brooklyn (Williamsburg)</li><li><strong>Los Ángeles:</strong> Downtown, Venice Beach, Santa Monica</li><li><strong>Miami:</strong> South Beach, Brickell</li></ul><p>Puedes consultar las direcciones exactas, horarios y servicios de cada local en la sección \"Locales\" de nuestra web o app.</p>"
+        },
+        {
+          "q": "¿Cuál es el horario de apertura?",
+          "a": "<p>Nuestros restaurantes están abiertos de 11:00 AM a 10:00 PM (horario local) todos los días del año, excepto el Día de Acción de Gracias y el día de Navidad.</p><p>El servicio de delivery opera en el mismo horario, con últimos pedidos hasta 30 minutos antes del cierre. Algunos locales pueden tener horarios extendidos hasta las 12:00 AM en fines de semana y festivos.</p>"
+        },
+        {
+          "q": "¿Cómo funciona el programa MY MADBITE?",
+          "a": "<p>MY MADBITE es nuestro programa de fidelización que te permite acumular puntos por cada compra y canjearlos por productos, descuentos y experiencias exclusivas. Funciona así:</p><ul><li>Por cada $1 gastado, obtienes 10 puntos</li><li>Al registrarte, recibes 500 puntos de bienvenida</li><li>Existen niveles (Regular, Silver, Gold y Platinum) con beneficios crecientes</li><li>Los puntos son válidos durante 12 meses desde su obtención</li></ul>"
+        },
+        {
+          "q": "¿Qué puedo obtener con mis puntos MY MADBITE?",
+          "a": "<p>Con tus puntos MY MADBITE puedes obtener diferentes recompensas:</p><ul><li><strong>1000 puntos:</strong> Bebida o patatas gratis</li><li><strong>2000 puntos:</strong> Hamburguesa clásica gratis</li><li><strong>3000 puntos:</strong> Cualquier hamburguesa de la carta</li><li><strong>5000 puntos:</strong> Menú completo para dos personas</li></ul>"
+        },
+        {
+          "q": "¿Cómo puedo trabajar en MADBITE?",
+          "a": "<p>Estamos siempre buscando personas apasionadas por la gastronomía y la atención al cliente para unirse a nuestro equipo. Para aplicar a una posición:</p><ol><li>Visita la sección \"Trabaja con nosotros\" en nuestra web</li><li>Revisa las posiciones disponibles en los diferentes locales</li><li>Completa el formulario adjuntando tu CV y carta de presentación</li></ol><p>También puedes enviar tu CV directamente a <a href=\"mailto:careers@madbite.com\">careers@madbite.com</a>.</p>"
+        },
+        {
+          "q": "¿Qué medidas de sostenibilidad están implementando?",
+          "a": "<p>En MADBITE estamos comprometidos con la sostenibilidad y hemos implementado varias iniciativas:</p><ul><li>Packaging 100% compostable y biodegradable</li><li>Eliminación de plásticos de un solo uso</li><li>Colaboración con proveedores locales para reducir la huella de carbono</li><li>Programa de reciclaje y compostaje en todos nuestros locales</li></ul>"
+        }
+      ]
+    },
+    "privacy": {
+      "title": "Política de Privacidad - MADBITE - Hamburguesas con Actitud",
+      "heading": "Política de Privacidad",
+      "updateDate": "<strong>Última actualización:</strong> 24 de abril de 2025",
+      "company": {
+        "name": "MADBITE BURGER, LLC.",
+        "address": "1250 Broadway, Suite 3300<br>New York, NY 10001<br>EIN: 87-5432109",
+        "website": "https://www.madbite.com"
+      },
+      "sections": [
+        {"title": "MADBITE BURGER, LLC."},
+        {"title": "PROTECCIÓN DE DATOS DE CARÁCTER PERSONAL"},
+        {"title": "RESPONSABLE DEL TRATAMIENTO DE LOS DATOS PERSONALES"},
+        {"title": "DELEGADO DE PROTECCIÓN DE DATOS"},
+        {"title": "DURACIÓN DEL ALMACENAMIENTO DE LOS DATOS"},
+        {"title": "FINALIDADES DEL TRATAMIENTO DE DATOS"},
+        {"title": "LEGITIMACIÓN PARA EL TRATAMIENTO DE LOS DATOS"},
+        {"title": "COMUNICACIÓN DE DATOS"},
+        {"title": "SUS DERECHOS DE PROTECCIÓN DE DATOS"}
+      ],
+      "subsections": [
+        {"title": "Google Analytics"},
+        {"title": "Perfilado de ofertas"}
+      ],
+      "paragraphs": [
+        "<span class=\"update-date\"><strong>Última actualización:</strong> 24 de abril de 2025</span>",
+        "1250 Broadway, Suite 3300<br>New York, NY 10001<br>EIN: 87-5432109",
+        "https://www.madbite.com",
+        "Informamos a los usuarios del uso de la app y/o web de MADBITE BURGER, LLC a través de esta Política de Privacidad sobre el tratamiento y protección de los datos de carácter personal de los usuarios que puedan ser recabados mediante su navegación o contratación de servicios que realicen en este portal. El uso de esta web por parte del usuario conlleva la aceptación por su parte de esta Política de Privacidad.",
+        "MADBITE BURGER, LLC adopta las medidas necesarias para garantizar la seguridad, integridad y confidencialidad de los datos conforme a lo establecido en las leyes federales y estatales aplicables, incluyendo la Ley de Privacidad del Consumidor de California (CCPA), la Ley de Privacidad de Virginia (VCDPA), y otras regulaciones estatales similares.",
+        "Mediante los formularios de registro del presente sitio web o el envío de correo electrónico se recogen y tratan datos personales de cada usuario, el tratamiento de los cuales se rige por la presente Política de Privacidad. Estos datos son necesarios para la gestión y mantenimiento de algunos de los servicios prestados por MADBITE BURGER, LLC.",
+        "El responsable del tratamiento de los datos personales que el usuario facilite al acceder y utilizar el sitio web es, en calidad de propietario, MADBITE BURGER, LLC con EIN: 87-5432109, domicilio social en 1250 Broadway, Suite 3300, New York, NY 10001, inscrita en el Registro de Sociedades del Estado de Delaware con el número 7891234.",
+        "MADBITE BURGER, LLC se compromete a aplicar las medidas de seguridad informática previstas en la normativa aplicable, con el objetivo de impedir el acceso o uso indebido de los datos, su manipulación, deterioro o pérdida.",
+        "Datos del DPD: PRIVACY COMPLIANCE ADVISORS",
+        "Datos de contacto: Eric Johnson<br>Medio de contacto: <a href=\"https://madbite.com/privacy-portal\">https://madbite.com/privacy-portal</a>",
+        "Sus datos personales serán conservados durante el tiempo necesario para cumplir la finalidad para la cual se recogieron. Si sus datos se utilizan para varias finalidades que nos obligan a conservarlos durante plazos diferentes, aplicaremos el plazo de conservación más largo.",
+        "En todo caso, limitamos el acceso a sus datos sólo a aquellas personas que necesiten utilizarla para el desempeño de sus funciones.",
+        "Nuestros plazos de conservación de datos están basados en necesidades de negocio, por lo que en relación con aquellos datos personales que ya no sean necesarios bien quedará limitado el acceso a los mismos al cumplimiento de obligaciones estrictamente legales o bien se destruirán de forma segura.",
+        "<strong>Finalidades de marketing:</strong> por lo que respecta al uso de su información con fines de marketing, conservaremos esa información para dicho propósito durante los dos años siguientes a la fecha en que obtuvimos por última vez su autorización para dirigirle comunicaciones de marketing, salvo que usted nos solicite que le excluyamos de las mismas revocando el consentimiento prestado.",
+        "<strong>Finalidades relacionadas con la ejecución de un contrato:</strong> por lo que respecta al uso de su información para la gestión de alguna obligación contractual que tengamos con usted, conservaremos esos datos durante el período de vigencia del contrato y durante los siete años siguientes, para poder atender a posibles consultas o reclamaciones posteriores.",
+        "<strong>Finalidades relacionadas con el cumplimiento de obligaciones legales y regulatorias:</strong> determinada información deberá mantenerse durante los plazos exigidos por la normativa específica que resulte de aplicación (fiscal, mercantil, prevención de fraude, etc.).",
+        "<strong>Finalidades de video vigilancia:</strong> 30 días",
+        "Las operaciones, gestiones y procedimientos técnicos, ya sean realizados de forma automatizada como no automatizada, que posibiliten la recogida, almacenamiento, modificación, transferencia y otras acciones sobre datos de carácter personal, tienen la consideración de tratamiento de datos personales.",
+        "En MADBITE BURGER, LLC tratamos los datos personales que el usuario nos facilita a través de nuestra app y/o web con el fin de:",
+        "Los campos de los registros se deben cumplimentar obligatoriamente para que MADBITE BURGER, LLC pueda cumplir con las finalidades mencionadas con anterioridad.",
+        "El usuario puede oponerse al envío de comunicaciones comerciales en cualquier momento mediante el enlace de cancelación de suscripción incluido en cada comunicación o enviando un mensaje de correo electrónico a <a href=\"mailto:optout@madbite.com\">optout@madbite.com</a>.",
+        "El tratamiento de los datos personales que proporciona el usuario se realiza en base a las siguientes bases jurídicas que legitiman el mismo:",
+        "El consentimiento libre, específico, informado e inequívoco, ya que tras la lectura de la presente Política de Privacidad el usuario queda informado y, en caso de estar conforme, puede aceptarla mediante una declaración o una clara acción afirmativa, como el marcado de una casilla que se dispone al efecto.",
+        "En el caso de que el interesado no facilite los citados datos o éstos sean erróneos o inexactos, no podremos atender su solicitud, resultando imposible proporcionarle la información solicitada o llevar a cabo la contratación de los servicios. Por tanto, el responsable del tratamiento, MADBITE BURGER, LLC quedará exonerado de toda responsabilidad que pudiera derivarse de la no ejecución del encargo profesional o de las consecuencias que se deriven de estas informaciones inexactas o erróneas.",
+        "MADBITE BURGER, LLC se apoya en diversos proveedores de servicios para poder ofrecer los productos y servicios mencionados. Aunque en las transmisiones de datos a través de internet o desde una web no es posible garantizar una protección absoluta contra intrusiones, tanto nosotros como nuestros subcontratistas y socios de negocio nos esforzamos al máximo en mantener las medidas de protección física, electrónica y procedimental necesarias para garantizar la protección de su información.",
+        "Todos sus datos se guardan en servidores seguros (o copias físicas seguras) de nuestra propiedad o de nuestros subcontratistas o socios de negocio, y para acceder a ellos y utilizarlos se aplican nuestros criterios y políticas de seguridad.",
+        "Solo comunicamos datos a proveedores necesarios para la prestación de los diferentes servicios cumpliendo con lo establecido en las leyes de protección de datos aplicables.",
+        "Este sitio utiliza Google Analytics, un servicio de análisis web de Google Inc. (1600 Amphitheatre Parkway, Mountain View, CA 94043, EE. UU.), abreviado como \"Google\". Google Analytics utiliza archivos de texto, las denominadas cookies. Las cookies se guardan en su ordenador y generan información referente al uso que usted hace de nuestro sitio web.",
+        "Dicha información se transfiere a EE. UU. para almacenarla en un servidor de Google. En este sitio web hay activada una anonimización de IP, es decir, que Google acorta su IP dentro de los Estados miembros de la Unión Europea o de otros Estados del Acuerdo sobre el Espacio Económico Europeo.",
+        "Google utiliza la información generada para crear evaluaciones e informes sobre el uso y la actividad en el sitio web, así como para ofrecer más servicios relacionados con el uso del sitio web y de internet.",
+        "La dirección IP facilitada por su navegador en el marco de Google Analytics no se recopila junto con otros datos de Google. Puede impedir el uso y el almacenamiento de cookies mediante el ajuste correspondiente de su navegador. Sin embargo, si lo hace, debe saber que es posible que no pueda utilizar completamente todas las funciones de este sitio web.",
+        "Asimismo, puede impedir el envío a Google de los datos generados por las cookies relativos al uso que usted hace del sitio web (incluida su dirección IP), así como el procesamiento de los mismos por parte de Google. Para ello, deberá descargar e instalar un plug-in para su navegador, disponible en el siguiente enlace: <a href=\"https://tools.google.com/dlpage/gaoptout\">Extensión de navegador para desactivar Google Analytics</a>.",
+        "Podemos perfilar nuestra oferta utilizando para ello los datos transaccionales que disponemos, por ejemplo, en redes sociales o utilizando tecnología de píxel para ofrecer publicidad personalizada.",
+        "Para la atención de derechos, puede contactar con el Delegado de Protección de Datos:",
+        "Datos del DPD: PRIVACY COMPLIANCE ADVISORS<br>Datos de contacto: Eric Johnson<br>Medio de contacto: <a href=\"https://madbite.com/privacy-portal\">https://madbite.com/privacy-portal</a>",
+        "Le recordamos que usted tiene derecho a solicitar:",
+        "Para el efectivo ejercicio de estos derechos, el usuario deberá acreditar su identidad facilitando su nombre y apellidos, fotocopia del documento de identidad o documento identificativo equivalente que acredite su identidad, petición en la que se concrete la solicitud, dirección a efectos de notificaciones, y fecha y firma del solicitante.",
+        "Si reside en California, Virginia, Colorado, Connecticut, o Utah, puede tener derechos adicionales bajo las leyes estatales de privacidad aplicables.",
+        "Asimismo, el usuario podrá presentar una reclamación ante la autoridad de protección de datos correspondiente, como la Federal Trade Commission (FTC) o la autoridad de protección de datos del estado donde resida."
+      ],
+      "listItems": [
+      "Incluirlos en nuestra base de datos de clientes",
+      "Gestionar la relación comercial solicitada",
+      "Utilizar esta información como medio de contacto",
+      "Procesar y gestionar pedidos",
+      "Personalizar la experiencia del usuario",
+      "Gestionar el programa de fidelización MY MADBITE",
+      "Gestionar el envío de la información que nos sea solicitada",
+      "Responder a consultas o cuestiones",
+      "Facilitar ofertas de servicios y/o productos de interés",
+      "Usted ha manifestado su consentimiento (se le ha presentado un formulario de consentimiento para que autorice el tratamiento de sus datos con determinadas finalidades; usted puede revocar el consentimiento prestado en todo momento);",
+      "El tratamiento de sus datos es necesario para la gestión y mantenimiento de un contrato suscrito con usted;",
+      "El tratamiento de sus datos es necesario para cumplir con nuestras obligaciones legales;",
+      "Utilizamos sus datos para conseguir un interés legítimo y nuestros motivos para hacerlo compensen los posibles perjuicios para sus derechos a la protección de sus datos;",
+      "Para atender sus consultas.",
+      "Más detalles sobre el uso que hacemos de su información",
+      "Una copia de la información que nos ha facilitado",
+      "Corregir inexactitudes en la información que mantenemos",
+      "Borrar información para cuyo uso ya no tengamos base jurídica",
+      "Revocar su consentimiento para el tratamiento de sus datos con esos fines",
+      "Oponerse a cualquier tratamiento de sus datos",
+      "Restringir la manera en que utilizamos sus datos mientras se investiga una reclamación"
+    ]
+  },
+  "terms": {
+    "title": "Términos y Condiciones - MADBITE - Hamburguesas con Actitud",
+    "heading": "Términos y Condiciones de Uso y Contratación",
+    "updateDate": "<strong>Última actualización:</strong> 24 de abril de 2025",
+    "company": {
+      "name": "MADBITE BURGER, LLC.",
+      "address": "1250 Broadway, Suite 3300<br>New York, NY 10001<br>EIN: 87-5432109",
+      "website": "https://www.madbite.com"
+    },
+    "sections": [
+      {"title": "1. Identidad del titular"},
+      {"title": "2. Objeto y ámbito de aplicación"},
+      {"title": "3. Acceso y uso de la plataforma"},
+      {"title": "4. Servicios MADBITE Delivery y MADBITE Pick‑Up"},
+      {"title": "5. Garantías y responsabilidad"},
+      {"title": "6. Propiedad intelectual e industrial"},
+      {"title": "7. Protección de datos y cookies"},
+      {"title": "8. Duración y suspensión del servicio"},
+      {"title": "9. Ley aplicable y jurisdicción"},
+      {"title": "10. Promociones y programa de fidelización MY MADBITE"}
+    ],
+    "subsections": [
+      {"title": "4.1 Horarios"},
+      {"title": "4.2 Proceso de compra"},
+      {"title": "4.3 Cancelaciones y devoluciones"}
+    ],
+    "paragraphs": [
+      "<span class=\"update-date\"><strong>Última actualización:</strong> 24 de abril de 2025</span>",
+      "La titular de la plataforma es <span class=\"madbite\">MADBITE BURGER, LLC.</span> (en adelante, «MADBITE»), con EIN 87-5432109 y domicilio social en 1250 Broadway, Suite 3300, New York, NY 10001, inscrita en el Registro de Sociedades del Estado de Delaware con el número 7891234. Puede contactar con nosotros en <a href=\"mailto:hello@madbite.com\">hello@madbite.com</a> o en el teléfono +1 (800) 555-7890.",
+      "Estas Condiciones regulan: (i) el acceso y uso del Portal y la App; y (ii) la compraventa de productos y servicios que MADBITE ofrece bajo las modalidades <em>MADBITE Delivery</em> (envío a domicilio) y <em>MADBITE Pick‑Up</em> (recogida en restaurante).",
+      "Salvo indicación distinta en el restaurante elegido, nuestro servicio opera de 11:00 AM a 10:00 PM (horario local) todos los días del año, excepto el Día de Acción de Gracias y el día de Navidad.",
+      "MADBITE no se hace responsable de los daños derivados de: (a) uso inadecuado del Portal/App; (b) presencia de virus introducidos por terceros; (c) información procedente de sitios externos enlazados. La responsabilidad máxima de MADBITE en ningún caso excederá el importe efectivamente pagado por el usuario.",
+      "La marca MADBITE Burger®, su logotipo y el diseño visual neon‑punk (paleta #00F0FF, #FF5D00, #FF00CD, etc.) son propiedad exclusiva de MADBITE o licenciados, protegidos por las leyes de propiedad intelectual de los Estados Unidos y tratados internacionales. El usuario dispone de una licencia personal, no transferible y no exclusiva para visualizar el contenido; queda prohibida su reproducción con fines comerciales.",
+      "El tratamiento de datos personales se rige por nuestra <a href=\"privacidad.html\">Política de Privacidad</a>, de conformidad con la CCPA (California Consumer Privacy Act) y otras legislaciones estatales aplicables. Utilizamos cookies técnicas y analíticas; puede gestionar sus preferencias en el banner de consentimiento.",
+      "La plataforma se presta por tiempo indefinido. MADBITE podrá suspenderla total o parcialmente por motivos técnicos, de seguridad o fuerza mayor, avisando cuando resulte razonablemente posible.",
+      "Estas Condiciones se interpretan conforme a la legislación del Estado de Nueva York, sin consideración de sus disposiciones sobre conflicto de leyes. Cualquier disputa será sometida exclusivamente a los tribunales federales o estatales ubicados en el condado de Nueva York, Estado de Nueva York.",
+      "Las promociones activas y el programa MY MADBITE se rigen por sus propias bases, accesibles en <a href=\"promociones.html\">promociones.html</a>. El programa de fidelidad cumple con todas las regulaciones aplicables de la FTC (Federal Trade Commission)."
+    ],
+    "listItems": [
+      "Edad mínima: 13 años (21 para comprar bebidas alcohólicas). Para menores de 13, se requiere consentimiento de progenitores o tutores conforme a la ley COPPA.",
+      "El simple acceso al Portal/App implica la aceptación íntegra de las Condiciones.",
+      "MADBITE no garantiza la disponibilidad ininterrumpida de la plataforma ni se responsabiliza de cortes de conexión a Internet ajenos a su control.",
+      "Está prohibido utilizar la plataforma para fines empresariales sin autorización previa por escrito.",
+      "Registro y autenticación.",
+      "Selección de productos y confirmación de cesta.",
+      "Elección de modalidad (Delivery o Pick‑Up) y horario.",
+      "Pago seguro con tarjeta bancaria, PayPal, Apple Pay, Google Pay o vales de regalo MADBITE ⸺ se aceptan todas las principales tarjetas de crédito.",
+      "Recepción de e‑mail de confirmación.",
+      "<strong>Pedidos programados Delivery:</strong> cancelables hasta 1 h antes de la franja elegida.",
+      "<strong>Pedidos programados Pick‑Up:</strong> cancelables hasta 30 min antes.",
+      "Por la naturaleza perecedera de los productos, no existe derecho de desistimiento una vez preparado el pedido, de acuerdo con la normativa del Estado de Nueva York.",
+      "Reembolsos: se abonarán usando el mismo método de pago. Plazo estimado 3‑5 días laborables."
+    ]
+  }
+}

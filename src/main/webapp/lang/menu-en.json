@@ -1,0 +1,358 @@
+{
+    "head": {
+      "title": "Full Menu"
+    },
+    "nav": {
+      "home": "Home",
+      "featured": "Featured",
+      "about": "About Us",
+      "locations": "Locations",
+      "contact": "Contact",
+      "menu": "Menu"
+    },
+    "language": {
+      "selected": "English",
+      "options": {
+        "en": "English",
+        "es": "Español",
+        "fr": "Français"
+      }
+    },
+    "menuHero": {
+    "title": "BURGERS <span class=\"text-cyan\" data-text=\"WITH ATTITUDE\">WITH ATTITUDE</span>",
+    "subtitle": "100% national beef, with a unique blend of premium cuts",
+    "downloadButton": "<i class='fas fa-utensils'></i> DOWNLOAD FULL MENU"
+  },
+    "categories": {
+      "burgers": "Burgers",
+      "chicken": "Chicken",
+      "veggie": "Veggie",
+      "sides": "Sides",
+      "desserts": "Desserts",
+      "beverages": "Beverages",
+      "sauces": "Sauces",
+      "combos": "Combos"
+    },
+    "sections": {
+      "burgers": {
+        "title": "Premium <span class=\"title-neon\">Burgers</span>"
+      },
+      "chicken": {
+        "title": "Crispy <span class=\"title-neon\">Chicken</span>"
+      },
+      "veggie": {
+        "title": "<span class=\"title-neon\">Veggie</span> Options"
+      },
+      "sides": {
+        "title": "<span class=\"title-neon\">Sides</span>"
+      },
+      "desserts": {
+        "title": "Our <span class=\"title-neon\">Desserts</span>"
+      },
+      "beverages": {
+        "title": "Refreshing <span class=\"text-cyan\">Beverages</span>"
+      },
+      "sauces": {
+        "title": "Our <span class=\"text-magenta\">Sauces</span>"
+      },
+      "combos": {
+        "title": "Special <span class=\"title-neon\">Combos</span>"
+      }
+    },
+    "badges": {
+      "bestseller": "Bestseller",
+      "new": "New",
+      "spicy": "Spicy",
+      "veggie": "Veggie"
+    },
+    "burgers": {
+      "classic": {
+        "title": "La Classic MADBITE",
+        "description": "Our classic burger with premium beef, cheddar cheese, tomato, lettuce, and our secret sauce.",
+        "price": "$12.99"
+      },
+      "cheese": {
+        "title": "Cheese Lover",
+        "description": "Triple cheese: cheddar, gouda, and blue cheese with premium beef and crispy bacon for cheese lovers.",
+        "price": "$14.99"
+      },
+      "diablo": {
+        "title": "Diablo",
+        "description": "Explosion of spice with jalapeños, spicy guacamole, pepper jack cheese, and our infernal sauce.",
+        "price": "$14.99"
+      },
+      "bbq": {
+        "title": "BBQ Deluxe",
+        "description": "Smoky flavor with homemade barbecue sauce, caramelized onions, bacon, and melted cheddar cheese.",
+        "price": "$14.99"
+      }
+    },
+    "chicken": {
+      "inferno": {
+        "title": "Inferno Chicken",
+        "description": "For spicy lovers: jalapeños, spicy guacamole, pepper jack cheese, and habanero sauce.",
+        "price": "$14.99"
+      },
+      "crispy": {
+        "title": "Crispy Ranch",
+        "description": "Crispy chicken with bacon, lettuce, tomato, cheddar cheese, and our homemade ranch sauce.",
+        "price": "$13.99"
+      },
+      "buffalo": {
+        "title": "Buffalo Chicken",
+        "description": "Extra crispy chicken with buffalo sauce, blue cheese, crispy celery, and ranch sauce.",
+        "price": "$14.99"
+      },
+      "double": {
+        "title": "Double Crispy",
+        "description": "Double extra crispy chicken fillet, double cheddar cheese, lettuce, tomato, and bourbon sauce.",
+        "price": "$16.99"
+      },
+      "asian": {
+        "title": "Spicy Asian",
+        "description": "Chicken marinated in teriyaki sauce, with Asian cabbage, pickled cucumbers, and sriracha mayonnaise.",
+        "price": "$15.99"
+      }
+    },
+    "veggie": {
+      "falafel": {
+        "title": "Falafel Burger",
+        "description": "Homemade falafel burger, hummus, cucumber, tomato, red onion, and vegan yogurt sauce.",
+        "price": "$13.99"
+      },
+      "beyond": {
+        "title": "Beyond Classic",
+        "description": "Beyond Meat burger with vegan cheese, lettuce, tomato, red onion, and our special vegan sauce.",
+        "price": "$15.99"
+      }
+    },
+    "sides": {
+      "wings": {
+        "title": "Spicy Wings",
+        "description": "Chicken wings with buffalo sauce, accompanied by fresh salad and carrot sticks.",
+        "price": "$10.99"
+      },
+      "wings_fries": {
+        "title": "Wings with Fries",
+        "description": "Crispy chicken wings with our fries, accompanied by barbecue sauce.",
+        "price": "$12.99"
+      },
+      "onion_rings": {
+        "title": "Onion Rings",
+        "description": "Crispy onion rings accompanied by our special MADBITE sauce.",
+        "price": "$7.99"
+      },
+      "caesar": {
+        "title": "Caesar Salad",
+        "description": "Romaine lettuce, croutons, Parmesan cheese, grilled chicken, and our homemade Caesar dressing.",
+        "price": "$9.99"
+      },
+      "fresh_salad": {
+        "title": "Fresh Salad",
+        "description": "Mix of lettuces, cherry tomatoes, cucumber, red onion, olives, and balsamic dressing.",
+        "price": "$8.99"
+      },
+      "nuggets": {
+        "title": "Chicken Nuggets",
+        "description": "Delicious homemade chicken nuggets served with barbecue or honey mustard sauce.",
+        "price": "$8.99"
+      },
+      "wedges": {
+        "title": "Potato Wedges",
+        "description": "Spiced potato wedges with our secret blend of herbs and spices.",
+        "price": "$5.99"
+      },
+      "fries": {
+        "title": "Rustic Fries",
+        "description": "Potatoes cut into thin strips, fried and seasoned with freshly ground salt and black pepper.",
+        "price": "$6.99"
+      }
+    },
+    "desserts": {
+      "chocolate": {
+        "title": "Chocolate Coulant",
+        "description": "Chocolate cake with liquid heart and vanilla ice cream. An irresistible classic.",
+        "price": "$7.99"
+      },
+      "sundae": {
+        "title": "MADBITE Sundae",
+        "description": "Selection of ice creams with whipped cream, syrup of your choice, cookies, and nuts.",
+        "price": "$6.99"
+      },
+      "cake": {
+        "title": "Chocolate Cake",
+        "description": "Three-layer chocolate cake with ganache, served with whipped cream and red berries.",
+        "price": "$8.99"
+      },
+      "cheesecake": {
+        "title": "Cheesecake",
+        "description": "Classic creamy cheesecake with cookie base and red berry coulis.",
+        "price": "$7.99"
+      },
+      "tiramisu": {
+        "title": "Tiramisu",
+        "description": "Authentic Italian tiramisu with coffee, mascarpone, ladyfingers, and cocoa powder.",
+        "price": "$8.99"
+      }
+    },
+    "beverages": {
+      "sparkling": {
+        "title": "Sparkling Water",
+        "description": "Vichy Catalán sparkling mineral water, refreshing with bubbles.",
+        "price": "$2.99"
+      },
+      "water": {
+        "title": "Mineral Water",
+        "description": "Aquafina natural mineral water, purified and refreshing.",
+        "price": "$1.99"
+      },
+      "amber": {
+        "title": "Amber Beer",
+        "description": "Classic Ambar beer, with balanced flavor and malty notes.",
+        "price": "$4.99"
+      },
+      "aquarius_lemon": {
+        "title": "Aquarius Lemon",
+        "description": "Refreshing lemon-flavored drink, perfect to accompany your meal.",
+        "price": "$2.99"
+      },
+      "aquarius_orange": {
+        "title": "Aquarius Orange",
+        "description": "Refreshing orange-flavored drink, ideal for any moment.",
+        "price": "$2.99"
+      },
+      "budweiser": {
+        "title": "Budweiser Beer",
+        "description": "Premium American beer, smooth and refreshing with a touch of hops.",
+        "price": "$4.99"
+      },
+      "corona": {
+        "title": "Corona Beer",
+        "description": "Mexican beer, light and refreshing, served with a slice of lime.",
+        "price": "$4.99"
+      },
+      "desperados": {
+        "title": "Desperados Beer",
+        "description": "Beer with a touch of tequila, unique and refreshing flavor.",
+        "price": "$5.49"
+      },
+      "estrella": {
+        "title": "Estrella Galicia",
+        "description": "Spanish beer with body, intense and balanced flavor with a soft bitter finish.",
+        "price": "$4.99"
+      },
+      "coke_zero": {
+        "title": "Coca-Cola Zero",
+        "description": "Sugar-free Coca-Cola soft drink, with the original flavor as always.",
+        "price": "$2.99"
+      },
+      "coke": {
+        "title": "Coca-Cola",
+        "description": "The classic cola soft drink with its unmistakable original flavor.",
+        "price": "$2.99"
+      },
+      "fanta_lemon": {
+        "title": "Fanta Lemon",
+        "description": "Refreshing lemon-flavored soft drink, perfect for hot days.",
+        "price": "$2.99"
+      },
+      "fanta_orange": {
+        "title": "Fanta Orange",
+        "description": "Orange-flavored soft drink, bubbly and full of fruity flavor.",
+        "price": "$2.99"
+      },
+      "redbull": {
+        "title": "Red Bull",
+        "description": "Energy drink to revitalize you, perfect to accompany your most intense meals.",
+        "price": "$3.99"
+      },
+      "sprite": {
+        "title": "Sprite",
+        "description": "Clear soft drink with lime-lemon flavor, refreshing and bubbly.",
+        "price": "$2.99"
+      }
+    },
+    "sauces": {
+      "aioli": {
+        "title": "Alioli",
+        "description": "Creamy garlic sauce, perfect for accompanying fries and grilled meats.",
+        "price": "$1.50"
+      },
+      "bbq": {
+        "title": "Barbecue",
+        "description": "Smoky and sweet sauce, perfect for accompanying burgers and grilled meats.",
+        "price": "$1.50"
+      },
+      "brava": {
+        "title": "Brava",
+        "description": "Traditional Spanish spicy sauce, perfect for accompanying potatoes and meats.",
+        "price": "$1.50"
+      },
+      "ketchup": {
+        "title": "Ketchup",
+        "description": "The classic tomato ketchup, sweet and tangy, perfect for any dish.",
+        "price": "$1.00"
+      },
+      "secret": {
+        "title": "MADBITE Secret",
+        "description": "Our exclusive secret sauce, a unique combination of flavors that will drive you crazy.",
+        "price": "$2.50"
+      },
+      "ranch": {
+        "title": "Ranch",
+        "description": "Creamy herb sauce, ideal for accompanying chicken burgers and salads.",
+        "price": "$1.50"
+      }
+    },
+    "combos": {
+      "classic": {
+        "title": "Classic Combo",
+        "description": "Classic MADBITE + french fries + soft drink of your choice.",
+        "price": "$16.99"
+      },
+      "cheese": {
+        "title": "Cheese Combo",
+        "description": "Cheese Lover + fries with cheddar cheese + soft drink of your choice.",
+        "price": "$18.99"
+      },
+      "diablo": {
+        "title": "Diablo Combo",
+        "description": "Diablo Burger + spicy potatoes + soft drink of your choice.",
+        "price": "$19.99"
+      },
+      "chicken": {
+        "title": "Crispy Chicken Combo",
+        "description": "Crispy Ranch + french fries + soft drink of your choice.",
+        "price": "$17.99"
+      },
+      "veggie": {
+        "title": "Veggie Combo",
+        "description": "Falafel Burger + salad + drink of your choice.",
+        "price": "$16.99"
+      },
+      "family": {
+        "title": "Family Combo",
+        "description": "4 burgers of your choice + 2 appetizers + 4 drinks + 2 desserts to share.",
+        "price": "$59.99"
+      }
+    },
+    "actions": {
+      "getDirections": "GET DIRECTIONS",
+      "details": "DETAILS",
+      "viewFullMenu": "VIEW FULL MENU"
+    },
+    "footer": {
+      "description": "MADBITE is a burger chain with style and attitude. Our artisan burgers and premium ingredients make the difference.",
+      "links": "Links",
+      "legal": "Legal",
+      "terms": "Terms & Conditions",
+      "privacy": "Privacy Policy",
+      "cookies": "Cookies Policy",
+      "faq": "FAQ",
+      "newsletter": "Newsletter",
+      "subscribeText": "Subscribe to receive news and special offers.",
+      "emailPlaceholder": "Your email",
+      "disclaimer": "By subscribing you accept our privacy policy.",
+      "copyright": "All rights reserved."
+    }
+  }

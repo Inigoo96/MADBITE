@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MADBITE Intranet | Employee Area</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/pages/redireccion.css">
+    <!-- AWS SDK -->
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1092.0.min.js"></script>
+    <!-- Amazon Cognito SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/amazon-cognito-identity-js@6.3.7/dist/amazon-cognito-identity.min.js"></script>
+    <!-- Chart.js for graphics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dashboard-body">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <img src="../assets/images/logo/logo-neon-removebg.png" alt="MADBITE Logo">
+            </div>
+            <h3 class="sidebar-title">Intranet <span>MADBITE</span></h3>
+            <button id="sidebarToggle" class="sidebar-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <div class="sidebar-user">
+            <div class="user-avatar">
+                <img src="../assets/avatar-placeholder.jpg" alt="User avatar" id="userAvatar">
+                <span class="user-status"></span>
+            </div>
+            <div class="user-info">
+                <h4 class="user-name" id="userName">Loading...</h4>
+                <p class="user-role" id="userRole">Employee</p>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul class="sidebar-menu">
+                <li class="sidebar-item active">
+                    <a href="redireccion.html" class="sidebar-link">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="comite.html" class="sidebar-link">
+                        <i class="fas fa-users"></i>
+                        <span>Employee Committee</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="convenio.html" class="sidebar-link">
+                        <i class="fas fa-file-signature"></i>
+                        <span>Collective Agreement</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="acuerdos.html" class="sidebar-link">
+                        <i class="fas fa-handshake"></i>
+                        <span>Agreements & Benefits</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="documentos.html" class="sidebar-link">
+                        <i class="fas fa-folder-open"></i>
+                        <span>Documents</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="perfil.html" class="sidebar-link">
+                        <i class="fas fa-user-cog"></i>
+                        <span>My Profile</span>
+                    </a>
+                </li>
+                <li class="sidebar-item sidebar-logout">
+                    <a href="#" class="sidebar-link" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Log Out</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <p>&copy; 2025 MADBITE</p>
+        </div>
+    </aside>
+    
+    <!-- MAIN CONTENT -->
+    <main class="dashboard-main" id="dashboardMain">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <button id="menuToggle" class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="header-title">Employee Area</h1>
+            </div>
+            
+            <div class="header-right">
+                <div class="notification-dropdown">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <div class="notification-menu">
+                        <div class="notification-header">
+                            <h3>Notifications</h3>
+                            <a href="#" class="mark-all-read">Mark all as read</a>
+                        </div>
+                        <ul class="notification-list">
+                            <li class="notification-item unread">
+                                <div class="notification-icon">
+                                    <i class="fas fa-bullhorn"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <p class="notification-text">New agreement with management</p>
+                                    <p class="notification-time">2 hours ago</p>
+                                </div>
+                            </li>
+                            <li class="notification-item unread">
+                                <div class="notification-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <p class="notification-text">New collective agreement update</p>
+                                    <p class="notification-time">1 day ago</p>
+                                </div>
+                            </li>
+                            <li class="notification-item unread">
+                                <div class="notification-icon">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <p class="notification-text">Upcoming committee meeting</p>
+                                    <p class="notification-time">2 days ago</p>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="notification-footer">
+                            <a href="notificaciones.html">View all</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="user-dropdown">
+                    <button class="user-dropdown-btn">
+                        <img src="../assets/avatar-placeholder.jpg" alt="Avatar" class="user-dropdown-avatar" id="userDropdownAvatar">
+                        <span class="user-dropdown-name" id="userDropdownName">Loading...</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="user-dropdown-menu">
+                        <a href="perfil.html" class="dropdown-item">
+                            <i class="fas fa-user"></i>
+                            <span>My Profile</span>
+                        </a>
+                        <a href="ajustes.html" class="dropdown-item">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item" id="dropdownLogout">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Log Out</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="dashboard-content">
+            <!-- WELCOME AND VIDEO -->
+            <div class="welcome-section">
+                <div class="welcome-card">
+                    <div class="welcome-header">
+                        <h2>Welcome to MADBITE Intranet</h2>
+                        <p>Here you'll find all the relevant information for MADBITE employees.</p>
+                    </div>
+                    
+                    <div class="welcome-video">
+                        <div class="video-container">
+                            <video controls poster="../assets/video-thumbnail.jpg">
+                                <source src="../assets/videos/intro-trabajadores.mp4" type="video/mp4">
+                                Your browser does not support the video element.
+                            </video>
+                        </div>
+                        <div class="video-description">
+                            <h3>Informational video for employees</h3>
+                            <p>Learn everything you need to know about the intranet, the employee committee, and your labor rights.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- INFORMATION CARDS -->
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Employee Committee</h3>
+                        <p class="card-text">Information about the organizational structure, representatives, and functions of the committee.</p>
+                        <a href="comite.html" class="card-link">View details <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="card-icon">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Collective Agreement</h3>
+                        <p class="card-text">Access the collective agreement, Workers' Statute, and other regulations.</p>
+                        <a href="convenio.html" class="card-link">View details <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="card-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Agreements and Benefits</h3>
+                        <p class="card-text">Discover the agreements reached with management and benefits for employees.</p>
+                        <a href="acuerdos.html" class="card-link">View details <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="card-icon">
+                        <i class="fas fa-folder-open"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Important Documents</h3>
+                        <p class="card-text">Access important documents such as forms, requests, and manuals.</p>
+                        <a href="documentos.html" class="card-link">View details <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- NEWS AND CALENDAR -->
+            <div class="news-calendar-section">
+                <div class="news-section">
+                    <div class="section-header">
+                        <h2>Latest News</h2>
+                        <a href="noticias.html" class="view-all">View all</a>
+                    </div>
+                    
+                    <div class="news-container">
+                        <div class="news-item">
+                            <div class="news-date">
+                                <span class="day">05</span>
+                                <span class="month">May</span>
+                            </div>
+                            <div class="news-content">
+                                <h3 class="news-title">New update to the collective agreement</h3>
+                                <p class="news-excerpt">The collective agreement has been updated with improvements in paid leave and work-life balance.</p>
+                                <a href="noticias/convenio-actualizado.html" class="news-link">Read more</a>
+                            </div>
+                        </div>
+                        
+                        <div class="news-item">
+                            <div class="news-date">
+                                <span class="day">28</span>
+                                <span class="month">Apr</span>
+                            </div>
+                            <div class="news-content">
+                                <h3 class="news-title">Results of the employee committee elections</h3>
+                                <p class="news-excerpt">The results of the employee committee elections held last week have been published.</p>
+                                <a href="noticias/resultados-elecciones.html" class="news-link">Read more</a>
+                            </div>
+                        </div>
+                        
+                        <div class="news-item">
+                            <div class="news-date">
+                                <span class="day">15</span>
+                                <span class="month">Apr</span>
+                            </div>
+                            <div class="news-content">
+                                <h3 class="news-title">New agreement with management on working hours</h3>
+                                <p class="news-excerpt">An agreement has been reached with management to make arrival and departure times more flexible.</p>
+                                <a href="noticias/acuerdo-horarios.html" class="news-link">Read more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="calendar-section">
+                    <div class="section-header">
+                        <h2>Upcoming Events</h2>
+                        <a href="calendario.html" class="view-all">View calendar</a>
+                    </div>
+                    
+                    <div class="calendar-container">
+                        <div class="event-item">
+                            <div class="event-date">
+                                <span class="day">10</span>
+                                <span class="month">May</span>
+                            </div>
+                            <div class="event-content">
+                                <h3 class="event-title">Employee committee meeting</h3>
+                                <p class="event-details">
+                                    <span class="event-time"><i class="far fa-clock"></i> 10:00 - 12:00</span>
+                                    <span class="event-location"><i class="fas fa-map-marker-alt"></i> Boardroom</span>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="event-item">
+                            <div class="event-date">
+                                <span class="day">15</span>
+                                <span class="month">May</span>
+                            </div>
+                            <div class="event-content">
+                                <h3 class="event-title">Training on labor rights</h3>
+                                <p class="event-details">
+                                    <span class="event-time"><i class="far fa-clock"></i> 16:00 - 18:00</span>
+                                    <span class="event-location"><i class="fas fa-map-marker-alt"></i> Training room</span>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="event-item">
+                            <div class="event-date">
+                                <span class="day">20</span>
+                                <span class="month">May</span>
+                            </div>
+                            <div class="event-content">
+                                <h3 class="event-title">Equality plan presentation</h3>
+                                <p class="event-details">
+                                    <span class="event-time"><i class="far fa-clock"></i> 11:00 - 13:00</span>
+                                    <span class="event-location"><i class="fas fa-map-marker-alt"></i> Main auditorium</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="dashboard-footer">
+            <div class="footer-content">
+                <p>© 2025 MADBITE - All rights reserved</p>
+                <div class="footer-links">
+                    <a href="terminos.html">Terms and Conditions</a>
+                    <a href="politica.html">Privacy Policy</a>
+                    <a href="cookies.html">Cookie Policy</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+    
+    <!-- Scripts -->
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/auth.js"></script>
+</body>
+</html>

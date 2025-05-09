@@ -1,0 +1,358 @@
+{
+    "head": {
+      "title": "Menú Completo | MadBite - Hamburguesas con Actitud"
+    },
+    "nav": {
+      "home": "Inicio",
+      "featured": "Destacados",
+      "about": "Nosotros",
+      "locations": "Locales",
+      "contact": "Contacto",
+      "menu": "Menú"
+    },
+    "language": {
+      "selected": "Español",
+      "options": {
+        "en": "English",
+        "es": "Español",
+        "fr": "Français"
+      }
+    },
+    "menuHero": {
+    "title": "HAMBURGUESAS <span class=\"text-cyan\">CON ACTITUD</span>",
+    "subtitle": "Carne 100% vacuno nacional, con un blend único de cortes premium",
+    "downloadButton": "<i class='fas fa-utensils'></i> DESCARGAR MENÚ COMPLETO"
+  },
+    "categories": {
+      "burgers": "Hamburguesas",
+      "chicken": "Pollo",
+      "veggie": "Veggie",
+      "sides": "Para Picar",
+      "desserts": "Postres",
+      "beverages": "Bebidas",
+      "sauces": "Salsas",
+      "combos": "Combos"
+    },
+    "sections": {
+      "burgers": {
+        "title": "Hamburguesas <span class=\"title-neon\">Premium</span>"
+      },
+      "chicken": {
+        "title": "Pollo <span class=\"title-neon\">Crujiente</span>"
+      },
+      "veggie": {
+        "title": "Opciones <span class=\"title-neon\">Veggie</span>"
+      },
+      "sides": {
+        "title": "Para <span class=\"title-neon\">Picar</span>"
+      },
+      "desserts": {
+        "title": "Nuestros <span class=\"title-neon\">Postres</span>"
+      },
+      "beverages": {
+        "title": "Bebidas <span class=\"text-cyan\">Refrescantes</span>"
+      },
+      "sauces": {
+        "title": "Nuestras <span class=\"text-magenta\">Salsas</span>"
+      },
+      "combos": {
+        "title": "Combos <span class=\"title-neon\">Especiales</span>"
+      }
+    },
+    "badges": {
+      "bestseller": "Bestseller",
+      "new": "Nueva",
+      "spicy": "Picante",
+      "veggie": "Veggie"
+    },
+    "burgers": {
+      "classic": {
+        "title": "La Classic MADBITE",
+        "description": "Nuestra hamburguesa clásica con carne premium, queso cheddar, tomate, lechuga y nuestra salsa secreta.",
+        "price": "$12.99"
+      },
+      "cheese": {
+        "title": "Cheese Lover",
+        "description": "Triple queso: cheddar, gouda y azul con carne premium y bacon crujiente para los amantes del queso.",
+        "price": "$14.99"
+      },
+      "diablo": {
+        "title": "Diablo",
+        "description": "Explosión de picante con jalapeños, guacamole spicy, queso pepper jack y nuestra salsa infernal.",
+        "price": "$14.99"
+      },
+      "bbq": {
+        "title": "BBQ Deluxe",
+        "description": "Sabor ahumado con salsa barbacoa casera, cebolla caramelizada, bacon y queso cheddar fundido.",
+        "price": "$14.99"
+      }
+    },
+    "chicken": {
+      "inferno": {
+        "title": "Inferno Chicken",
+        "description": "Para los amantes del picante: jalapeños, guacamole picante, queso pepper jack y salsa de habanero.",
+        "price": "$14.99"
+      },
+      "crispy": {
+        "title": "Crispy Ranch",
+        "description": "Pollo crujiente con bacon, lechuga, tomate, queso cheddar y nuestra salsa ranch casera.",
+        "price": "$13.99"
+      },
+      "buffalo": {
+        "title": "Buffalo Chicken",
+        "description": "Pollo extra crujiente con salsa buffalo, queso azul, apio crujiente y salsa ranch.",
+        "price": "$14.99"
+      },
+      "double": {
+        "title": "Double Crispy",
+        "description": "Doble filete de pollo extra crujiente, doble queso cheddar, lechuga, tomate y salsa bourbon.",
+        "price": "$16.99"
+      },
+      "asian": {
+        "title": "Spicy Asian",
+        "description": "Pollo marinado en salsa teriyaki, con repollo asiático, pepinillos encurtidos y mayonesa de sriracha.",
+        "price": "$15.99"
+      }
+    },
+    "veggie": {
+      "falafel": {
+        "title": "Falafel Burger",
+        "description": "Burger de falafel casero, hummus, pepino, tomate, cebolla roja y salsa de yogur vegano.",
+        "price": "$13.99"
+      },
+      "beyond": {
+        "title": "Beyond Classic",
+        "description": "Beyond Meat burger con queso vegano, lechuga, tomate, cebolla roja y nuestra salsa especial vegana.",
+        "price": "$15.99"
+      }
+    },
+    "sides": {
+      "wings": {
+        "title": "Alitas Picantes",
+        "description": "Alitas de pollo con salsa buffalo, acompañadas de ensalada fresca y bastones de zanahoria.",
+        "price": "$10.99"
+      },
+      "wings_fries": {
+        "title": "Alitas con Patatas",
+        "description": "Alitas de pollo crujientes con nuestras patatas fritas, acompañadas de salsa barbacoa.",
+        "price": "$12.99"
+      },
+      "onion_rings": {
+        "title": "Aros de Cebolla",
+        "description": "Aros de cebolla crujientes acompañados de nuestra salsa especial MADBITE.",
+        "price": "$7.99"
+      },
+      "caesar": {
+        "title": "Ensalada César",
+        "description": "Lechuga romana, croutons, queso parmesano, pollo a la parrilla y nuestra salsa césar casera.",
+        "price": "$9.99"
+      },
+      "fresh_salad": {
+        "title": "Ensalada Fresh",
+        "description": "Mix de lechugas, tomate cherry, pepino, cebolla roja, aceitunas y aderezo balsámico.",
+        "price": "$8.99"
+      },
+      "nuggets": {
+        "title": "Nuggets de Pollo",
+        "description": "Deliciosos nuggets de pollo caseros servidos con salsa barbacoa o miel y mostaza.",
+        "price": "$8.99"
+      },
+      "wedges": {
+        "title": "Patatas Gajo",
+        "description": "Patatas gajo especiadas con nuestra mezcla secreta de hierbas y especias.",
+        "price": "$5.99"
+      },
+      "fries": {
+        "title": "Patatas Rústicas",
+        "description": "Patatas cortadas en tiras finas, fritas y sazonadas con sal y pimienta negra recién molida.",
+        "price": "$6.99"
+      }
+    },
+    "desserts": {
+      "chocolate": {
+        "title": "Coulant de Chocolate",
+        "description": "Bizcocho de chocolate con corazón líquido y helado de vainilla. Todo un clásico irresistible.",
+        "price": "$7.99"
+      },
+      "sundae": {
+        "title": "Sundae MADBITE",
+        "description": "Selección de helados con nata montada, sirope a elegir, cookies y frutos secos.",
+        "price": "$6.99"
+      },
+      "cake": {
+        "title": "Tarta de Chocolate",
+        "description": "Tarta de tres capas de chocolate con ganache, servida con crema batida y frutos rojos.",
+        "price": "$8.99"
+      },
+      "cheesecake": {
+        "title": "Tarta de Queso",
+        "description": "Clásica tarta de queso cremosa con base de galleta y coulis de frutos rojos.",
+        "price": "$7.99"
+      },
+      "tiramisu": {
+        "title": "Tiramisú",
+        "description": "Auténtico tiramisú italiano con café, mascarpone, bizcochos y cacao en polvo.",
+        "price": "$8.99"
+      }
+    },
+    "beverages": {
+      "sparkling": {
+        "title": "Agua con Gas",
+        "description": "Agua mineral con gas Vichy Catalán, refrescante y con burbujas.",
+        "price": "$2.99"
+      },
+      "water": {
+        "title": "Agua Mineral",
+        "description": "Agua mineral natural Aquafina, purificada y refrescante.",
+        "price": "$1.99"
+      },
+      "amber": {
+        "title": "Cerveza Ámbar",
+        "description": "Cerveza Ambar clásica, con sabor equilibrado y notas maltosas.",
+        "price": "$4.99"
+      },
+      "aquarius_lemon": {
+        "title": "Aquarius Limón",
+        "description": "Bebida refrescante con sabor a limón, perfecta para acompañar tu comida.",
+        "price": "$2.99"
+      },
+      "aquarius_orange": {
+        "title": "Aquarius Naranja",
+        "description": "Bebida refrescante con sabor a naranja, ideal para cualquier momento.",
+        "price": "$2.99"
+      },
+      "budweiser": {
+        "title": "Cerveza Budweiser",
+        "description": "Cerveza americana premium, suave y refrescante con un toque de lúpulo.",
+        "price": "$4.99"
+      },
+      "corona": {
+        "title": "Cerveza Corona",
+        "description": "Cerveza mexicana, ligera y refrescante, servida con una rodaja de limón.",
+        "price": "$4.99"
+      },
+      "desperados": {
+        "title": "Cerveza Desperados",
+        "description": "Cerveza con un toque de tequila, sabor único y refrescante.",
+        "price": "$5.49"
+      },
+      "estrella": {
+        "title": "Estrella Galicia",
+        "description": "Cerveza española con cuerpo, sabor intenso y equilibrado con un final amargo suave.",
+        "price": "$4.99"
+      },
+      "coke_zero": {
+        "title": "Coca-Cola Zero",
+        "description": "Refresco Coca-Cola sin azúcar, con el sabor original de siempre.",
+        "price": "$2.99"
+      },
+      "coke": {
+        "title": "Coca-Cola",
+        "description": "El clásico refresco de cola con su inconfundible sabor original.",
+        "price": "$2.99"
+      },
+      "fanta_lemon": {
+        "title": "Fanta Limón",
+        "description": "Refresco refrescante con sabor a limón, perfecto para días calurosos.",
+        "price": "$2.99"
+      },
+      "fanta_orange": {
+        "title": "Fanta Naranja",
+        "description": "Refresco con sabor a naranja, burbujeante y lleno de sabor frutal.",
+        "price": "$2.99"
+      },
+      "redbull": {
+        "title": "Red Bull",
+        "description": "Bebida energética para revitalizarte, perfecta para acompañar tus comidas más intensas.",
+        "price": "$3.99"
+      },
+      "sprite": {
+        "title": "Sprite",
+        "description": "Refresco transparente con sabor a lima-limón, refrescante y burbujeante.",
+        "price": "$2.99"
+      }
+    },
+    "sauces": {
+      "aioli": {
+        "title": "Alioli",
+        "description": "Salsa cremosa de ajo, perfecta para acompañar patatas y carnes a la parrilla.",
+        "price": "$1.50"
+      },
+      "bbq": {
+        "title": "Barbacoa",
+        "description": "Salsa ahumada y dulce, perfecta para acompañar hamburguesas y carnes a la parrilla.",
+        "price": "$1.50"
+      },
+      "brava": {
+        "title": "Brava",
+        "description": "Salsa picante tradicional española, perfecta para acompañar patatas y carnes.",
+        "price": "$1.50"
+      },
+      "ketchup": {
+        "title": "Ketchup",
+        "description": "El clásico ketchup de tomate, dulce y ácido, perfecto para cualquier plato.",
+        "price": "$1.00"
+      },
+      "secret": {
+        "title": "MADBITE Secret",
+        "description": "Nuestra salsa secreta exclusiva, una combinación única de sabores que te volverá loco.",
+        "price": "$2.50"
+      },
+      "ranch": {
+        "title": "Ranch",
+        "description": "Salsa cremosa de hierbas, ideal para acompañar hamburguesas de pollo y ensaladas.",
+        "price": "$1.50"
+      }
+    },
+    "combos": {
+      "classic": {
+        "title": "Combo Classic",
+        "description": "Classic MADBITE + patatas fritas + refresco a elegir.",
+        "price": "$16.99"
+      },
+      "cheese": {
+        "title": "Combo Cheese",
+        "description": "Cheese Lover + patatas con queso cheddar + refresco a elegir.",
+        "price": "$18.99"
+      },
+      "diablo": {
+        "title": "Combo Diablo",
+        "description": "Hamburguesa Diablo + patatas bravas + refresco a elegir.",
+        "price": "$19.99"
+      },
+      "chicken": {
+        "title": "Combo Crispy Chicken",
+        "description": "Crispy Ranch + patatas fritas + refresco a elegir.",
+        "price": "$17.99"
+      },
+      "veggie": {
+        "title": "Combo Veggie",
+        "description": "Falafel Burger + ensalada + bebida a elegir.",
+        "price": "$16.99"
+      },
+      "family": {
+        "title": "Combo Familiar",
+        "description": "4 hamburguesas a elegir + 2 entrantes + 4 bebidas + 2 postres a compartir.",
+        "price": "$59.99"
+      }
+    },
+    "actions": {
+      "getDirections": "CÓMO LLEGAR",
+      "details": "DETALLES",
+      "viewFullMenu": "VER MENÚ COMPLETO"
+    },
+    "footer": {
+      "description": "MADBITE es una cadena de hamburguesería con estilo y actitud. Nuestras hamburguesas artesanales y nuestros ingredientes de primera calidad hacen la diferencia.",
+      "links": "Enlaces",
+      "legal": "Legal",
+      "terms": "Términos y Condiciones",
+      "privacy": "Política de Privacidad",
+      "cookies": "Política de Cookies",
+      "faq": "FAQ",
+      "newsletter": "Newsletter",
+      "subscribeText": "Suscríbete para recibir noticias y ofertas especiales.",
+      "emailPlaceholder": "Tu email",
+      "disclaimer": "Al suscribirte aceptas nuestra política de privacidad.",
+      "copyright": "Todos los derechos reservados."
+    }
+  }

@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Preguntas Frecuentes</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="../css/main.css">
+    </head>
+    <body>
+        <!-- HEADER -->
+        <header class="header">
+            <div class="nav-container">
+                <!-- Logo with bite animation -->
+                <div class="logo-container">
+                    <a href="#" class="logo-link" aria-label="MADBITE Home">
+                        <!-- Added appropriate alt text and aria-label for accessibility -->
+                        <img src="../assets/images/logo/logo-completo-ajustadorbg.png" alt="MADBITE Logo" class="logo logo-intact">
+                        <img src="../assets/images/logo/logo-neon-ajustadorbg.png" alt="MADBITE Logo - Animation Frame 1" class="logo logo-bitten-1">
+                        <img src="../assets/images/logo/logo-bitten-3-rp (1)-Photoroom.png" alt="MADBITE Logo - Animation Frame 2" class="logo logo-bitten-2">
+                        <img src="../assets/images/logo/logo-bitten-4-rp (1)-Photoroom.png" alt="MADBITE Logo - Animation Frame 3" class="logo logo-bitten-3">
+                    </a>
+                </div>
+          
+                <!-- Hamburger menu toggle for mobile -->
+                <button id="navToggle" aria-label="Toggle menu" role="button" tabindex="0">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+          
+                <!-- Navigation menu -->
+                <nav class="nav-menu" id="navMenu" aria-label="Main navigation">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="../index.html#home">Inicio</a></li>
+                        <li class="nav-item"><a href="../index.html#featured">Destacados</a></li>
+                        <li class="nav-item"><a href="../index.html#about">Nosotros</a></li>
+                        <li class="nav-item"><a href="../index.html#locations">Locales</a></li>
+                        <li class="nav-item"><a href="../index.html#contact">Contacto</a></li>
+                        <li class="nav-item"><a href="menu.html" class="menu-highlight">Menú</a></li>
+                        <li class="nav-item language-dropdown-container">
+                            <!-- Selector de idioma como elemento de lista -->
+                        <div class="language-selector">
+                          <div class="selected-language">
+                              <span>Español</span>
+                              <img src="../assets/images/flags/españa.png" alt="Español" class="flag-icon">
+                              <i class="fas fa-chevron-down"></i>
+                          </div>
+                          <ul class="language-dropdown">
+                              <li class="language-option active" data-lang="es">
+                                  <img src="../assets/images/flags/españa.png" alt="Español" class="flag-icon">
+                                  <span>Español</span>
+                              </li>
+                              <li class="language-option" data-lang="en">
+                                  <img src="../assets/images/flags/uk.png" alt="English" class="flag-icon">
+                                  <span>English</span>
+                              </li>
+                              <li class="language-option" data-lang="fr">
+                                  <img src="../assets/images/flags/francia.png" alt="Français" class="flag-icon">
+                                  <span>Français</span>
+                              </li>
+                          </ul>
+                        </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+          
+            <!-- Overlay for mobile menu -->
+            <div class="menu-overlay" id="menuOverlay"></div>
+          </header>
+        
+        <!-- CONTENIDO PRINCIPAL - FAQ -->
+        <main id="faq" class="container">
+            <h1>Preguntas Frecuentes</h1>
+            
+            <!-- Buscador -->
+            <div class="faq-search">
+                <i class="fas fa-search"></i>
+                <input type="text" id="faqSearch" placeholder="Buscar en las preguntas frecuentes...">
+            </div>
+            
+            <!-- Categorías -->
+            <div class="faq-categories">
+                <button class="faq-category active" id="btn-all">Todas</button>
+                <button class="faq-category" id="btn-pedidos">Pedidos</button>
+                <button class="faq-category" id="btn-productos">Productos</button>
+                <button class="faq-category" id="btn-locales">Locales</button>
+                <button class="faq-category" id="btn-fidelizacion">Fidelización</button>
+                <button class="faq-category" id="btn-otros">Otros</button>
+            </div>
+            
+            <section class="faq-section" id="pedidos-section">
+                <h2>Sobre nuestros pedidos</h2>
+                
+                <div class="faq-item" data-category="pedidos">
+                    <div class="faq-question">
+                        ¿Cómo puedo hacer un pedido online?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Puedes realizar un pedido a través de nuestra web en la sección "Menú" o descargando nuestra aplicación móvil disponible para iOS y Android. El proceso es sencillo:</p>
+                            <ol>
+                                <li>Selecciona tus productos favoritos</li>
+                                <li>Añádelos al carrito</li>
+                                <li>Elige si prefieres recogerlo (MADBITE Pick-Up) o que te lo enviemos (MADBITE Delivery)</li>
+                                <li>Selecciona tu método de pago</li>
+                                <li>¡Listo! Recibirás un email de confirmación con los detalles de tu pedido</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="pedidos">
+                    <div class="faq-question">
+                        ¿Puedo cancelar mi pedido?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Sí, es posible cancelar tu pedido dependiendo del tipo y del tiempo transcurrido:</p>
+                            <ul>
+                                <li><strong>Pedidos programados para delivery:</strong> Puedes cancelarlos hasta 1 hora antes de la franja horaria elegida.</li>
+                                <li><strong>Pedidos para recoger:</strong> Puedes cancelarlos hasta 30 minutos antes de la hora de recogida.</li>
+                            </ul>
+                            <p>Para cancelar, accede a tu cuenta en nuestra web o app, ve a "Mis pedidos" y selecciona la opción de cancelación. También puedes contactarnos por teléfono al número que aparece en tu confirmación de pedido.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="pedidos">
+                    <div class="faq-question">
+                        ¿Cuánto tiempo tarda en llegar mi pedido?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>El tiempo estimado de entrega es de 25-35 minutos, dependiendo de la distancia y el tráfico. En momentos de alta demanda, puede haber un tiempo adicional que se te informará antes de confirmar el pedido.</p>
+                            <p>Puedes seguir el estado de tu pedido en tiempo real a través de nuestra app o web en la sección "Seguimiento de pedido".</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="pedidos">
+                    <div class="faq-question">
+                        ¿Qué métodos de pago aceptan?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Aceptamos los siguientes métodos de pago:</p>
+                            <ul>
+                                <li>Tarjetas de crédito y débito (Visa, Mastercard, American Express)</li>
+                                <li>PayPal</li>
+                                <li>Apple Pay</li>
+                                <li>Google Pay</li>
+                                <li>Vales de regalo MADBITE</li>
+                                <li>Efectivo (solo en restaurante o al repartidor, en pedidos inferiores a $50)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="faq-section" id="productos-section">
+                <h2>Sobre nuestros productos</h2>
+                
+                <div class="faq-item" data-category="productos">
+                    <div class="faq-question">
+                        ¿Sus hamburguesas son 100% carne de vacuno?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Sí, nuestras hamburguesas tradicionales están elaboradas con carne 100% de vacuno premium, sin aditivos ni conservantes. Cada día picamos la carne en nuestros locales para garantizar la máxima frescura y sabor.</p>
+                            <p>También ofrecemos opciones de hamburguesas de pollo, pescado y vegetarianas/veganas para adaptarnos a todos los gustos y necesidades dietéticas.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="productos">
+                    <div class="faq-question">
+                        ¿Tienen opciones para personas con alergias o intolerancias?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Sí, ofrecemos diferentes opciones para personas con alergias o intolerancias alimentarias. En nuestra web y app puedes consultar la información detallada sobre alérgenos de cada producto.</p>
+                            <p>Disponemos de:</p>
+                            <ul>
+                                <li>Panes sin gluten (pueden contener trazas)</li>
+                                <li>Opciones sin lactosa</li>
+                                <li>Alternativas vegetarianas y veganas</li>
+                            </ul>
+                            <p>Te recomendamos que, al realizar tu pedido, indiques tus alergias o intolerancias en la sección de comentarios para que nuestro equipo tome las precauciones necesarias.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="productos">
+                    <div class="faq-question">
+                        ¿Se pueden personalizar las hamburguesas?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>¡Absolutamente! En MADBITE creemos en la libertad de crear tu hamburguesa perfecta. Puedes personalizar cualquier hamburguesa de nuestro menú:</p>
+                            <ul>
+                                <li>Añadiendo o quitando ingredientes</li>
+                                <li>Cambiando el tipo de pan</li>
+                                <li>Eligiendo el punto de cocción de la carne</li>
+                                <li>Añadiendo extras como bacon, queso extra, huevo, etc.</li>
+                            </ul>
+                            <p>Algunas personalizaciones pueden tener un costo adicional que se mostrará en el proceso de pedido.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="faq-section" id="locales-section">
+                <h2>Sobre nuestros locales</h2>
+                
+                <div class="faq-item" data-category="locales">
+                    <div class="faq-question">
+                        ¿Dónde están ubicados sus restaurantes?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Actualmente contamos con restaurantes en varias ubicaciones estratégicas en tres ciudades principales:</p>
+                            <ul>
+                                <li><strong>Nueva York:</strong> Manhattan (Times Square, Upper East Side), Brooklyn (Williamsburg)</li>
+                                <li><strong>Los Ángeles:</strong> Downtown, Venice Beach, Santa Monica</li>
+                                <li><strong>Miami:</strong> South Beach, Brickell</li>
+                            </ul>
+                            <p>Puedes consultar las direcciones exactas, horarios y servicios de cada local en la sección "Locales" de nuestra web o app.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="locales">
+                    <div class="faq-question">
+                        ¿Cuál es el horario de apertura?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Nuestros restaurantes están abiertos de 11:00 AM a 10:00 PM (horario local) todos los días del año, excepto el Día de Acción de Gracias y el día de Navidad.</p>
+                            <p>El servicio de delivery opera en el mismo horario, con últimos pedidos hasta 30 minutos antes del cierre. Algunos locales pueden tener horarios extendidos hasta las 12:00 AM en fines de semana y festivos.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="faq-section" id="fidelizacion-section">
+                <h2>Programa de fidelización MY MADBITE</h2>
+                
+                <div class="faq-item" data-category="fidelizacion">
+                    <div class="faq-question">
+                        ¿Cómo funciona el programa MY MADBITE?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>MY MADBITE es nuestro programa de fidelización que te permite acumular puntos por cada compra y canjearlos por productos, descuentos y experiencias exclusivas. Funciona así:</p>
+                            <ul>
+                                <li>Por cada $1 gastado, obtienes 10 puntos</li>
+                                <li>Al registrarte, recibes 500 puntos de bienvenida</li>
+                                <li>Existen niveles (Regular, Silver, Gold y Platinum) con beneficios crecientes</li>
+                                <li>Los puntos son válidos durante 12 meses desde su obtención</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="fidelizacion">
+                    <div class="faq-question">
+                        ¿Qué puedo obtener con mis puntos MY MADBITE?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Con tus puntos MY MADBITE puedes obtener diferentes recompensas:</p>
+                            <ul>
+                                <li><strong>1000 puntos:</strong> Bebida o patatas gratis</li>
+                                <li><strong>2000 puntos:</strong> Hamburguesa clásica gratis</li>
+                                <li><strong>3000 puntos:</strong> Cualquier hamburguesa de la carta</li>
+                                <li><strong>5000 puntos:</strong> Menú completo para dos personas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="faq-section" id="otros-section">
+                <h2>Otras preguntas</h2>
+                
+                <div class="faq-item" data-category="otros">
+                    <div class="faq-question">
+                        ¿Cómo puedo trabajar en MADBITE?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Estamos siempre buscando personas apasionadas por la gastronomía y la atención al cliente para unirse a nuestro equipo. Para aplicar a una posición:</p>
+                            <ol>
+                                <li>Visita la sección "Trabaja con nosotros" en nuestra web</li>
+                                <li>Revisa las posiciones disponibles en los diferentes locales</li>
+                                <li>Completa el formulario adjuntando tu CV y carta de presentación</li>
+                            </ol>
+                            <p>También puedes enviar tu CV directamente a <a href="mailto:careers@madbite.com">careers@madbite.com</a>.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="otros">
+                    <div class="faq-question">
+                        ¿Qué medidas de sostenibilidad están implementando?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>En MADBITE estamos comprometidos con la sostenibilidad y hemos implementado varias iniciativas:</p>
+                            <ul>
+                                <li>Packaging 100% compostable y biodegradable</li>
+                                <li>Eliminación de plásticos de un solo uso</li>
+                                <li>Colaboración con proveedores locales para reducir la huella de carbono</li>
+                                <li>Programa de reciclaje y compostaje en todos nuestros locales</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <a href="../index.html" class="btn-back"><i class="fas fa-chevron-left"></i> Volver</a>
+        </main>
+
+        <!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <!-- Logo y descripción -->
+            <div class="footer-brand">
+                <img src="../assets/images/logo/logo-neon-removebg.png" alt="MADBITE Logo" class="footer-logo">
+                <p class="footer-description">MADBITE es una cadena de hamburguesería con estilo y actitud. Nuestras hamburguesas artesanales y nuestros ingredientes de primera calidad hacen la diferencia.</p>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/madbite_usa/" class="social-icon" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@madbite_usa" class="social-icon" aria-label="TikTok">
+                          <i class="fab fa-tiktok"></i>
+                      </a>
+                </div>
+            </div>
+  
+            <!-- Enlaces -->
+            <div class="footer-nav">
+                <h3 class="footer-heading">Enlaces</h3>
+                <ul class="footer-links">
+                    <li><a href="../index.html#home"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+                    <li><a href="../index.html#featured"><i class="fas fa-chevron-right"></i> Menú</a></li>
+                    <li><a href="../index.html#about"><i class="fas fa-chevron-right"></i> Nosotros</a></li>
+                    <li><a href="../index.html#locations"><i class="fas fa-chevron-right"></i> Locales</a></li>
+                    <li><a href="../index.html#contact"><i class="fas fa-chevron-right"></i> Contacto</a></li>
+                </ul>
+            </div>
+  
+            <!-- Legal -->
+            <div class="footer-nav">
+                <h3 class="footer-heading">Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="../html/terminos.html"><i class="fas fa-chevron-right"></i> Términos y Condiciones</a></li>
+                    <li><a href="../html/politica.html"><i class="fas fa-chevron-right"></i> Política de Privacidad</a></li>
+                    <li><a href="../html/cookies.html"><i class="fas fa-chevron-right"></i> Política de Cookies</a></li>
+                    <li><a href="../html/faq.html"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                </ul>
+            </div>
+  
+            <!-- Newsletter -->
+            <div class="footer-newsletter">
+                <h3 class="footer-heading">Newsletter</h3>
+                <p class="newsletter-text">Suscríbete para recibir noticias y ofertas especiales.</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Tu email">
+                    <button type="submit" class="newsletter-btn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+                <p class="form-disclaimer">Al suscribirte aceptas nuestra política de privacidad.</p>
+            </div>
+        </div>
+    </div>
+  
+    <div class="copyright">
+        <div class="container">
+            &copy; 2025 <span>MADBITE</span>. Todos los derechos reservados.
+        </div>
+    </div>
+  </footer>
+
+        <!-- SCROLL UP BUTTON -->
+        <div class="scroll-up" id="scrollUp">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+      
+        <!-- SCRIPTS -->
+        <script src="../js/main.js"></script>
+        <script src="../js/logo-animation.js"></script>
+        <script src="../js/legal-translator.js"></script>
+        <script>
+            // Script para activar/desactivar el botón de scroll up
+            window.addEventListener('scroll', function() {
+                const scrollUpBtn = document.getElementById('scrollUp');
+                if (window.pageYOffset > 300) {
+                    scrollUpBtn.classList.add('active');
+                } else {
+                    scrollUpBtn.classList.remove('active');
+                }
+            });
+            
+            // Funcionalidad del botón scroll up
+            document.getElementById('scrollUp').addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Toggle menu para móvil
+            document.getElementById('navToggle').addEventListener('click', function() {
+                document.getElementById('navMenu').classList.toggle('open');
+                document.getElementById('menuOverlay').classList.toggle('open');
+                this.classList.toggle('open');
+            });
+            
+            document.getElementById('menuOverlay').addEventListener('click', function() {
+                document.getElementById('navMenu').classList.remove('open');
+                document.getElementById('menuOverlay').classList.remove('open');
+                document.getElementById('navToggle').classList.remove('open');
+            });
+            
+            // FUNCIONALIDAD DE LOS FILTROS DE FAQ
+            document.addEventListener('DOMContentLoaded', function() {
+                // Elemento para mostrar/ocultar las respuestas
+                const faqItems = document.querySelectorAll('.faq-item');
+                
+                // Funcionalidad de acordeón
+                faqItems.forEach(item => {
+                    const question = item.querySelector('.faq-question');
+                    const answer = item.querySelector('.faq-answer');
+                    const content = item.querySelector('.faq-answer-content');
+                    
+                    // Inicialmente configuramos las respuestas como cerradas
+                    answer.style.maxHeight = '0';
+                    content.style.opacity = '0';
+                    
+                    question.addEventListener('click', function() {
+                        // Toggle la clase active para el estilo
+                        item.classList.toggle('active');
+                        
+                        // Si está activo, mostrar la respuesta
+                        if (item.classList.contains('active')) {
+                            // Calculamos la altura del contenido para animación
+                            answer.style.maxHeight = content.scrollHeight + 40 + 'px'; // Añadimos padding
+                            content.style.opacity = '1';
+                            content.style.transform = 'translateY(0)';
+                        } else {
+                            // Si no está activo, ocultar la respuesta
+                            answer.style.maxHeight = '0';
+                            content.style.opacity = '0';
+                            content.style.transform = 'translateY(-10px)';
+                        }
+                    });
+                });
+                
+                // Funcionalidad de filtrado por categorías
+                const btnAll = document.getElementById('btn-all');
+                const btnPedidos = document.getElementById('btn-pedidos');
+                const btnProductos = document.getElementById('btn-productos');
+                const btnLocales = document.getElementById('btn-locales');
+                const btnFidelizacion = document.getElementById('btn-fidelizacion');
+                const btnOtros = document.getElementById('btn-otros');
+                
+                // Función para mostrar todos los items
+                function showAllItems() {
+                    faqItems.forEach(item => {
+                        item.style.display = 'block';
+                    });
+                    
+                    document.querySelectorAll('.faq-section').forEach(section => {
+                        section.style.display = 'block';
+                    });
+                }
+                
+                // Función para ocultar todos los items
+                function hideAllItems() {
+                    faqItems.forEach(item => {
+                        item.style.display = 'none';
+                    });
+                }
+                
+                // Función para filtrar por categoría
+                function filterByCategory(category) {
+                    // Primero ocultar todos
+                    hideAllItems();
+                    
+                    // Luego mostrar solo los de esta categoría
+                    const filteredItems = document.querySelectorAll(`.faq-item[data-category="${category}"]`);
+                    filteredItems.forEach(item => {
+                        item.style.display = 'block';
+                    });
+                    
+                    // Verificar qué secciones tienen elementos visibles
+                    document.querySelectorAll('.faq-section').forEach(section => {
+                        const visibleItems = section.querySelectorAll(`.faq-item[data-category="${category}"]`).length;
+                        section.style.display = visibleItems > 0 ? 'block' : 'none';
+                    });
+                }
+                
+                // Función para actualizar la clase active en los botones
+                function setActiveButton(button) {
+                    // Quitar clase active de todos los botones
+                    document.querySelectorAll('.faq-category').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    // Agregar clase active al botón clickeado
+                    button.classList.add('active');
+                }
+                
+                // Asignación de eventos a los botones
+                btnAll.addEventListener('click', function() {
+                    setActiveButton(this);
+                    showAllItems();
+                });
+                
+                btnPedidos.addEventListener('click', function() {
+                    setActiveButton(this);
+                    filterByCategory('pedidos');
+                });
+                
+                btnProductos.addEventListener('click', function() {
+                    setActiveButton(this);
+                    filterByCategory('productos');
+                });
+                
+                btnLocales.addEventListener('click', function() {
+                    setActiveButton(this);
+                    filterByCategory('locales');
+                });
+                
+                btnFidelizacion.addEventListener('click', function() {
+                    setActiveButton(this);
+                    filterByCategory('fidelizacion');
+                });
+                
+                btnOtros.addEventListener('click', function() {
+                    setActiveButton(this);
+                    filterByCategory('otros');
+                });
+                
+                // Función de búsqueda
+                const searchInput = document.getElementById('faqSearch');
+                
+                searchInput.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase().trim();
+                    
+                    // Si el campo está vacío, mostrar todos
+                    if (searchTerm === '') {
+                        setActiveButton(btnAll);
+                        showAllItems();
+                        return;
+                    }
+                    
+                    // Ocultar todos primero
+                    hideAllItems();
+                    
+                    // Buscar en preguntas y respuestas
+                    faqItems.forEach(item => {
+                        const question = item.querySelector('.faq-question').textContent.toLowerCase();
+                        const answer = item.querySelector('.faq-answer-content').textContent.toLowerCase();
+                        
+                        if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                            item.style.display = 'block';
+                        }
+                    });
+                    
+                    // Verificar qué secciones tienen elementos visibles
+                    document.querySelectorAll('.faq-section').forEach(section => {
+                        const visibleItems = section.querySelectorAll('.faq-item[style="display: block"]').length;
+                        section.style.display = visibleItems > 0 ? 'block' : 'none';
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

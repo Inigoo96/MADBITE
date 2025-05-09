@@ -1,3 +1,4 @@
+// src/main/java/org/madbite/dao/CarritoDao.java
 package org.madbite.dao;
 
 import org.madbite.model.LineaPedido;
@@ -14,27 +15,29 @@ public class CarritoDao {
     }
 
     public int crearLinea(int pedidoId, int productoId, int cantidad) throws SQLException {
-        var sql = """
+        String sql = """
             INSERT INTO pedido_linea
                 (pedido_id, producto_id, cantidad, precio_unitario)
             VALUES (?, ?, ?, (SELECT precio FROM producto WHERE id = ?))
             RETURNING id
             """;
-        try (var c = ds.getConnection();
-             var ps = c.prepareStatement(sql)) {
+        try (Connection c = ds.getConnection();
+             PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setInt(1, pedidoId);
             ps.setInt(2, productoId);
             ps.setInt(3, cantidad);
             ps.setInt(4, productoId);
-            try (var rs = ps.executeQuery()) {
-                rs.next();
-                return rs.getInt(1);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1);
+                }
+                throw new SQLException("No se devolvió ID al crear línea");
             }
         }
     }
 
     public List<LineaPedido> listarLineas(String cognitoSub) throws SQLException {
-        var sql = """
+        String sql = """
             SELECT l.id,
                    p.id   AS prod_id,
                    p.nombre,
@@ -46,13 +49,13 @@ public class CarritoDao {
              WHERE pe.cognito_sub = ?
                AND pe.estado = 'nuevo'
             """;
-        var out = new ArrayList<LineaPedido>();
-        try (var c = ds.getConnection();
-             var ps = c.prepareStatement(sql)) {
+        List<LineaPedido> out = new ArrayList<>();
+        try (Connection c = ds.getConnection();
+             PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setString(1, cognitoSub);
-            try (var rs = ps.executeQuery()) {
+            try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                    var linea = new LineaPedido();
+                    LineaPedido linea = new LineaPedido();
                     linea.setId(rs.getInt("id"));
                     linea.setProductoId(rs.getInt("prod_id"));
                     linea.setNombreProducto(rs.getString("nombre"));
@@ -66,9 +69,9 @@ public class CarritoDao {
     }
 
     public void actualizarLinea(int lineaId, int cantidad) throws SQLException {
-        var sql = "UPDATE pedido_linea SET cantidad = ? WHERE id = ?";
-        try (var c = ds.getConnection();
-             var ps = c.prepareStatement(sql)) {
+        String sql = "UPDATE pedido_linea SET cantidad = ? WHERE id = ?";
+        try (Connection c = ds.getConnection();
+             PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setInt(1, cantidad);
             ps.setInt(2, lineaId);
             ps.executeUpdate();
@@ -76,9 +79,9 @@ public class CarritoDao {
     }
 
     public void eliminarLinea(int lineaId) throws SQLException {
-        var sql = "DELETE FROM pedido_linea WHERE id = ?";
-        try (var c = ds.getConnection();
-             var ps = c.prepareStatement(sql)) {
+        String sql = "DELETE FROM pedido_linea WHERE id = ?";
+        try (Connection c = ds.getConnection();
+             PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setInt(1, lineaId);
             ps.executeUpdate();
         }

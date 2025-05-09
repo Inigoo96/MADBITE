@@ -1,0 +1,149 @@
+.scroll-up {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    background: var(--madbite-cyan);
+    color: var(--madbite-dark);
+    border-radius: 50%;
+    box-shadow: var(--neon-shadow-cyan);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25rem;
+    cursor: pointer;
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: var(--transition-primary);
+  }
+  
+  .scroll-up.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  .scroll-up:hover {
+    background: var(--madbite-magenta);
+    color: var(--madbite-light);
+    transform: translateY(-5px);
+    box-shadow: var(--neon-shadow-magenta);
+  }
+  
+  /* Efectos de neón */
+  .neon-text {
+    text-shadow: 0 0 5px var(--madbite-cyan), 0 0 10px var(--madbite-cyan), 0 0 20px var(--madbite-cyan);
+  }
+  
+  .neon-text-magenta {
+    text-shadow: 0 0 5px var(--madbite-magenta), 0 0 10px var(--madbite-magenta), 0 0 20px var(--madbite-magenta);
+  }
+  
+  .neon-text-orange {
+    text-shadow: 0 0 5px var(--madbite-orange), 0 0 10px var(--madbite-orange), 0 0 20px var(--madbite-orange);
+  }
+  
+  .neon-box {
+    position: relative;
+  }
+  
+  .neon-box::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: inherit;
+    background: linear-gradient(45deg, var(--madbite-cyan), var(--madbite-magenta), var(--madbite-orange), var(--madbite-cyan));
+    background-size: 400% 400%;
+    z-index: -1;
+    animation: neonBorder 5s ease infinite;
+    filter: blur(5px);
+  }
+  
+  @keyframes neonPulse {
+    0% {
+      text-shadow: 0 0 5px var(--madbite-cyan), 0 0 10px var(--madbite-cyan), 0 0 20px var(--madbite-cyan);
+    }
+    50% {
+      text-shadow: 0 0 5px var(--madbite-cyan), 0 0 10px var(--madbite-cyan), 0 0 20px var(--madbite-cyan), 0 0 40px var(--madbite-cyan);
+    }
+    100% {
+      text-shadow: 0 0 5px var(--madbite-cyan), 0 0 10px var(--madbite-cyan), 0 0 20px var(--madbite-cyan);
+    }
+  }
+  
+  @keyframes neonBorder {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* Animación al hacer scroll */
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Efecto hover para tarjetas */
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--box-shadow-lg);
+  }
+  
+  /* Animación de rotación */
+  .rotate-animation {
+    animation: rotate 20s linear infinite;
+  }
+  
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Efecto parallax sutil */
+  .parallax {
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  /* Animación de loading dots */
+  .loading-dots::after {
+    content: '.';
+    animation: dotAnimation 1.5s infinite;
+  }
+  
+  @keyframes dotAnimation {
+    0%, 20% {
+      content: '.';
+    }
+    40% {
+      content: '..';
+    }
+    60%, 100% {
+      content: '...';
+    }
+  }

@@ -88,13 +88,11 @@
             <version>2.0.9</version>
         </dependency>
 
-        <!-- Nimbus JOSE + JWT -->
         <dependency>
-            <groupId>com.nimbusds</groupId>
-            <artifactId>nimbus-jose-jwt</artifactId>
-            <version>10.2</version>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>4.4.0</version>
         </dependency>
-
 
     </dependencies>
 

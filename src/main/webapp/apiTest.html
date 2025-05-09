@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>API Test</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    button { padding: .5rem 1rem; font-size: 1rem; }
+    pre { background: #f4f4f4; padding: 1rem; margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <h1>Prueba de conexión al back</h1>
+  <button id="apiTest">Llamar a /back/api/test</button>
+  <pre id="apiResult">Aquí aparecerá la respuesta...</pre>
+
+  <script type="module">
+    const btn = document.getElementById('apiTest');
+    const pre = document.getElementById('apiResult');
+    // Ajusta la URL según tu context path:
+    const apiUrl = 'http://localhost:8080/back/api/test';
+
+    btn.addEventListener('click', async () => {
+      pre.textContent = 'Cargando...';
+      try {
+        const res = await fetch(apiUrl, { method: 'GET' });
+        if (!res.ok) throw new Error(res.status + ' ' + res.statusText);
+        const data = await res.json();
+        pre.textContent = JSON.stringify(data, null, 2);
+      } catch (err) {
+        console.error(err);
+        pre.textContent = 'Error: ' + err;
+      }
+    });
+  </script>
+</body>
+</html>
