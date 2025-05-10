@@ -1,7 +1,18 @@
+# Maven / Java
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+
+# Node / Yarn (frontend)
+# Ignora node_modules en tu carpeta webapp
+/src/main/webapp/node_modules/
+
+# Si en algún momento usas npm en la raíz:
+package-lock.json
+
+# (Pero conserva yarn.lock en el repo)
+!src/main/webapp/yarn.lock
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
