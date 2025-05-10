@@ -97,7 +97,8 @@
   "scripts": {
     "dev": "vite",
     "serve": "vite preview",
-    "test": "echo \"No tests yet\" && exit 0"
+    "test": "echo \"No tests yet\" && exit 0",
+    "build": "vite build"
   },
   "optionalDependencies": {
     "@rollup/rollup-win32-x64-msvc": "^4.40.2"
