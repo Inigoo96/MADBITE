@@ -264,90 +264,12 @@
   <i class="fas fa-arrow-up"></i>
 </div>
 
-<!-- Script para asegurar que el perfil se carga correctamente -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(() => {
-          if (!window.AuthService?.isAuthenticated()) return;
-          const avatar = document.getElementById("userAvatar");
-          const nameEl = document.getElementById("userName");
-          if (nameEl && (nameEl.textContent === "" || nameEl.textContent === "Usuario")) {
-            window.DashboardFunctions?.loadUserInfo();
-          }
-    }, 10_000);
+  <!-- Script para asegurar que el perfil se carga correctamente -->
+  window.DashboardFunctions = {
+  loadUserInfo,
+  setupEventListeners,
+  initComponents
+  };
 
-    // Verificar periódicamente si los elementos de perfil están presentes
-    let profileCheckInterval = setInterval(function() {
-      const avatarEl = document.getElementById('userAvatar');
-      const nameEl = document.getElementById('userName');
-
-      // Si hay datos de usuario pero los elementos no tienen contenido, intentar cargarlos
-      if (avatarEl && nameEl && window.AuthService && window.AuthService.isAuthenticated()) {
-        const userData = window.AuthService.getUserData() || {};
-
-        // Nombre de usuario
-        if (nameEl.textContent === '' || nameEl.textContent === 'Usuario') {
-          let displayName = "Usuario";
-          if (userData.name) {
-            displayName = userData.name;
-          } else if (userData.given_name && userData.family_name) {
-            displayName = userData.given_name + " " + userData.family_name;
-          } else if (userData.email) {
-            displayName = userData.email.split("@")[0];
-          } else if (userData.sub) {
-            displayName = userData.sub;
-          }
-          nameEl.textContent = displayName;
-        }
-
-        // Avatar
-        if (!avatarEl.classList.contains('has-image') && !avatarEl.textContent) {
-          const pictureUrl = userData.picture || null;
-
-          if (pictureUrl) {
-            const img = document.createElement("img");
-            img.src = pictureUrl;
-            img.alt = nameEl.textContent + " avatar";
-            img.onload = function() {
-              avatarEl.innerHTML = '';
-              avatarEl.appendChild(img);
-              avatarEl.classList.add("has-image");
-            };
-            img.onerror = function() {
-              avatarEl.textContent = nameEl.textContent.charAt(0).toUpperCase();
-            };
-          } else {
-            avatarEl.textContent = nameEl.textContent.charAt(0).toUpperCase();
-          }
-        }
-
-        // Si ambos elementos tienen contenido, detener el intervalo
-        if ((avatarEl.classList.contains('has-image') || avatarEl.textContent) &&
-            nameEl.textContent !== '' && nameEl.textContent !== 'Usuario') {
-          clearInterval(profileCheckInterval);
-        }
-      }
-    }, 500);
-
-    // Detener el intervalo después de 10 segundos en cualquier caso
-    setTimeout(function() {
-      clearInterval(profileCheckInterval);
-    }, 10000);
-
-    // Configurar el comportamiento del botón de logout
-    const logoutBtn = document.getElementById('logoutBtn');
-    if (logoutBtn) {
-      logoutBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        if (window.AuthService) {
-          window.AuthService.logout();
-        } else {
-          // Fallback si AuthService no está disponible
-          window.location.href = '../index.html';
-        }
-      });
-    }
-  });
-</script>
 </body>
 </html>

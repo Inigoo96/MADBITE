@@ -79,30 +79,39 @@
     }
   }
 
-  function loadUserInfo() {
-    log("Cargando información de usuario");
-    const user = window.AuthService.getUserData();
-    if (!user) return log("Sin datos de usuario");
+    function loadUserInfo() {
+      if (!AuthService.isAuthenticated()) return;
 
-    let displayName = user.name || (user.given_name && user.family_name && `${user.given_name} ${user.family_name}`) || (user.email && user.email.split("@")[0]) || user.sub || "Usuario";
-    const pictureUrl = user.picture || null;
+      const user = AuthService.getUserData();
+      const nameEl   = document.getElementById('userName');
+      const avatarEl = document.getElementById('userAvatar');
 
-    const avatarEl = document.getElementById("userAvatar");
-    if (avatarEl) {
-      avatarEl.innerHTML = "";
-      if (pictureUrl) {
+      // Priorizamos name → given_name+family_name → email local-part → username → sub
+      const displayName = user.name
+        || (user.given_name && user.family_name && `${user.given_name} ${user.family_name}`)
+        || (user.email && user.email.split('@')[0])
+        || user.username
+        || user.sub
+        || 'Usuario';
+
+      nameEl.textContent = displayName;
+
+      if (user.picture) {
         const img = new Image();
-        img.src = pictureUrl;
+        img.src = user.picture;
         img.alt = `${displayName} avatar`;
-        img.onerror = () => (avatarEl.textContent = displayName.charAt(0).toUpperCase());
-        img.onload  = () => avatarEl.appendChild(img);
+        img.onload = () => {
+          avatarEl.innerHTML = '';
+          avatarEl.appendChild(img);
+          avatarEl.classList.add('has-image');
+        };
+        img.onerror = () => {
+          avatarEl.textContent = displayName.charAt(0).toUpperCase();
+        };
       } else {
         avatarEl.textContent = displayName.charAt(0).toUpperCase();
       }
     }
-    const nameEl = document.getElementById("userName");
-    if (nameEl) nameEl.textContent = displayName;
-  }
 
   function setupEventListeners() {
     log("Configurando event listeners");

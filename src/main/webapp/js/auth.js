@@ -225,7 +225,36 @@
 
     getAccessToken() { return sessionStorage.getItem("access_token"); },
     attachLogin (id = "loginBtn")   { document.getElementById(id)?.addEventListener("click", () => this.login()); },
-    attachSignUp(id = "signUpBtn")  { document.getElementById(id)?.addEventListener("click", () => this.signUp()); }
+    attachSignUp(id = "signUpBtn")  { document.getElementById(id)?.addEventListener("click", () => this.signUp()); },
+
+    /* ---------------------------------------------------------------------- */
+    /* 4.8 · Get ID-token raw y claims del usuario                            */
+    /* ---------------------------------------------------------------------- */
+    getIdToken() {
+      return sessionStorage.getItem("id_token") || null;
+    },
+
+    getUserData() {
+      const token = this.getIdToken();
+      if (!token) return {};
+      try {
+        const claims = jwt_decode(token);
+        return {
+            email: claims.email,
+            email_verified: claims.email_verified,
+            family_name: claims.family_name,
+            given_name: claims.names,
+            name: claims.names,
+            phone_number: claims.phoneNumbers,
+            picture: claims.picture,
+            username: claims.sub
+        };
+      } catch (e) {
+        log.error('Decodificación JWT fallida', e);
+        return {};
+      }
+}
+
   };
 
   /* ---------------------------------------------------------------------- */
