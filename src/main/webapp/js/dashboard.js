@@ -82,11 +82,11 @@
     function loadUserInfo() {
       if (!AuthService.isAuthenticated()) return;
 
-      const user = AuthService.getUserData();
+      const user     = AuthService.getUserData();
       const nameEl   = document.getElementById('userName');
       const avatarEl = document.getElementById('userAvatar');
 
-      // Priorizamos name → given_name+family_name → email local-part → username → sub
+      // Construir displayName con la prioridad corporativa
       const displayName = user.name
         || (user.given_name && user.family_name && `${user.given_name} ${user.family_name}`)
         || (user.email && user.email.split('@')[0])
@@ -96,6 +96,11 @@
 
       nameEl.textContent = displayName;
 
+      // Fallback inicial
+      avatarEl.textContent = displayName.charAt(0).toUpperCase();
+      avatarEl.classList.remove('has-image');
+
+      // Reemplazar con foto si el claim picture existe y carga OK
       if (user.picture) {
         const img = new Image();
         img.src = user.picture;
@@ -105,13 +110,10 @@
           avatarEl.appendChild(img);
           avatarEl.classList.add('has-image');
         };
-        img.onerror = () => {
-          avatarEl.textContent = displayName.charAt(0).toUpperCase();
-        };
-      } else {
-        avatarEl.textContent = displayName.charAt(0).toUpperCase();
+        // onerror mantiene la inicial
       }
     }
+
 
   function setupEventListeners() {
     log("Configurando event listeners");

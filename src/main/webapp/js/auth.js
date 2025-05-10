@@ -240,14 +240,15 @@
       try {
         const claims = jwt_decode(token);
         return {
-            email: claims.email,
-            email_verified: claims.email_verified,
-            family_name: claims.family_name,
-            given_name: claims.names,
-            name: claims.names,
-            phone_number: claims.phoneNumbers,
-            picture: claims.picture,
-            username: claims.sub
+          sub:            claims.sub,
+          username:       claims.sub,
+          email:          claims.email,
+          email_verified: claims.email_verified,
+          given_name:     claims.names || '',
+          name:           claims.names || '',
+          family_name:    claims.family_name,
+          phone_number:   claims.phoneNumbers || '',
+          picture:        claims.picture
         };
       } catch (e) {
         log.error('Decodificación JWT fallida', e);
