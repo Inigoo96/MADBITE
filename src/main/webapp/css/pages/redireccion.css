@@ -1,5 +1,10 @@
 /* dashboard.css - Unificado para MADBITE Dashboard */
-
+:root {
+  --madbite-cyan: #00e8ff;
+  --madbite-magenta: #ff00aa;
+  --madbite-dark: #000000;
+  --madbite-light: #ffffff;
+}
 /* HERO SECTION */
 .dashboard-hero {
     background: linear-gradient(
@@ -22,23 +27,37 @@
     padding: 20px;
   }
   
-  .dashboard-title {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    font-weight: 800;
-    text-transform: uppercase;
-  }
+ .dashboard-title {
+   font-size: 5rem;
+   margin-bottom: 1rem;
+   font-weight: 900;
+   text-transform: uppercase;
+   text-align: center;
+   line-height: 1.2;
+   letter-spacing: 1px;
+ }
   
   .dashboard-title .text-cyan {
-    color: var(--madbite-cyan);
-    text-shadow: 0 0 10px rgba(0, 232, 255, 0.7);
-  }
+    position: relative;
+      display: inline-block;
+      color: var(--madbite-cyan); /* Color base cyan en lugar de transparente */
+      /* Eliminado el webkit-text-stroke que creaba el contorno blanco */
+      text-shadow:
+        0 0 5px var(--madbite-cyan),
+        0 0 10px var(--madbite-cyan),
+        0 0 15px var(--madbite-cyan),
+        0 0 20px var(--madbite-cyan); /* Más capas de sombra para compensar */
+      transition: all 0.3s ease;
+    }
+
   
-  .dashboard-subtitle {
-    font-size: 1.25rem;
-    margin-bottom: 2rem;
-    opacity: 0.9;
-  }
+ .dashboard-subtitle {
+   font-size: 1.25rem;
+   margin-bottom: 2rem;
+   opacity: 0.9;
+   text-align: center;
+   line-height: 1.5;
+ }
   
   /* CARDS */
   .dashboard-sections {
@@ -456,11 +475,23 @@
   }
   
   @media (max-width: 576px) {
-    .stats-grid {
-      gap: 20px;
-    }
     .dashboard-title {
       font-size: 2rem;
     }
+
+    .dashboard-subtitle {
+      font-size: 1.1rem;
+    }
   }
+
+  @media (max-width: 400px) {
+    .dashboard-title {
+      font-size: 3rem;
+    }
+
+    .dashboard-subtitle {
+      font-size: 1rem;
+    }
+  }
+
   
