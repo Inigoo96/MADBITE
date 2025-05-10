@@ -4,8 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dashboard – MADBITE</title>
+
+  <!-- Scripts en orden correcto con defer para mejor rendimiento -->
   <!-- Asegurarnos de cargar primero jwt-decode -->
   <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+  <script src="../js/auth.js" defer></script>
+  <script src="../js/auth-guard.js" defer></script>
+  <script src="../js/dashboard.js" defer></script>
 
   <!-- Cargar Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -13,10 +18,7 @@
   <!-- Estilos CSS -->
   <link rel="stylesheet" href="../css/main.css" />
 
-  <!-- Scripts en orden correcto con defer para mejor rendimiento -->
-  <script src="../js/auth.js" defer></script>
-  <script src="../js/auth-guard.js" defer></script>
-  <script src="../js/dashboard.js" defer></script>
+
 </head>
 <body>
 <header class="header">
@@ -265,6 +267,15 @@
 <!-- Script para asegurar que el perfil se carga correctamente -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(() => {
+          if (!window.AuthService?.isAuthenticated()) return;
+          const avatar = document.getElementById("userAvatar");
+          const nameEl = document.getElementById("userName");
+          if (nameEl && (nameEl.textContent === "" || nameEl.textContent === "Usuario")) {
+            window.DashboardFunctions?.loadUserInfo();
+          }
+    }, 10_000);
+
     // Verificar periódicamente si los elementos de perfil están presentes
     let profileCheckInterval = setInterval(function() {
       const avatarEl = document.getElementById('userAvatar');

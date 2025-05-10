@@ -2,84 +2,56 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Procesando autenticación...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Procesando autenticación…</title>
 
-  <!-- Cargar jwt-decode primero -->
+  <!-- 1 · Dependencias JS en orden estricto -->
   <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
-
-  <!-- Luego solo los scripts necesarios para el callback -->
   <script src="../js/auth.js" defer></script>
   <script src="../js/auth-callback.js" defer></script>
 
+  <!-- 2 · Estilos minimalistas -->
   <style>
-    /* Estilos simplificados para la página de callback */
+    :root { color-scheme: dark; }
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: #111;
-      color: #f0f0f0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
+      margin: 0; display: grid; place-items: center; height: 100vh;
+      font-family: Arial, sans-serif; background:#111; color:#f0f0f0;
     }
-
-    .callback-container {
-      text-align: center;
-      padding: 2rem;
-      border-radius: 8px;
-      background-color: #222;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    .box {
+      text-align:center; padding:2rem; border-radius:8px; background:#222;
+      box-shadow:0 4px 12px rgba(0,0,0,.5);
     }
-
     .spinner {
-      width: 50px;
-      height: 50px;
-      border: 5px solid rgba(0, 232, 255, 0.3);
-      border-radius: 50%;
-      border-top-color: #00e8ff;
-      margin: 20px auto;
-      animation: spin 1s linear infinite;
+      width:48px; height:48px; border:5px solid rgba(0,232,255,.3);
+      border-radius:50%; border-top-color:#00e8ff; margin:1.5rem auto;
+      animation:spin 1s linear infinite;
     }
-
-    .message {
-      margin-top: 1rem;
-      font-size: 1.1rem;
-    }
-
-    .error-message {
-      color: #ff3e3e;
-      display: none;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
+    @keyframes spin { to{transform:rotate(360deg);} }
+    .err { display:none; color:#ff3e3e; margin-top:1rem; }
   </style>
 </head>
 <body>
-<div class="callback-container">
-  <h2>Procesando tu autenticación</h2>
+<div class="box">
+  <h2>Procesando tu autenticación…</h2>
   <div class="spinner"></div>
-  <p class="message">Estamos verificando tu identidad...</p>
-  <p class="error-message" id="errorMessage">Error en la autenticación. Redirigiendo...</p>
+  <p class="msg">Estamos verificando tu identidad…</p>
+  <p id="err" class="err">Error en la autenticación. Redirigiendo…</p>
 </div>
 
 <script>
-  // Este script ayuda a manejar la UI durante el proceso de callback
-  document.addEventListener('DOMContentLoaded', function() {
-    // Mostrar mensaje de error si se detecta un fallo
-    window.addEventListener('auth:error', function(e) {
-      document.getElementById('errorMessage').style.display = 'block';
-      document.querySelector('.message').style.display = 'none';
-    });
+  // UI reactiva a eventos del AuthService
+  document.addEventListener("DOMContentLoaded", () => {
+    const err = document.getElementById("err");
+    const msg = document.querySelector(".msg");
 
-    // Si no hay redirección después de 10 segundos, mostrar mensaje de timeout
-    setTimeout(function() {
-      if (document.visibilityState === 'visible') {
-        document.getElementById('errorMessage').textContent = 'La autenticación está tomando más tiempo del esperado. Intenta de nuevo.';
-        document.getElementById('errorMessage').style.display = 'block';
+    const showError = text => { err.textContent = text; err.style.display = "block"; msg.style.display = "none"; };
+
+    window.addEventListener("auth:error", () => showError("Error en la autenticación. Intenta de nuevo."));
+
+    // Timeout de cortesía (10 s sin redirección)
+    setTimeout(() => {
+      if (document.visibilityState === "visible") {
+        showError("La autenticación está tardando más de lo esperado. Por favor, reintenta.");
       }
     }, 10000);
   });

@@ -1,58 +1,78 @@
-// auth-guard.js - Versión sin módulos ES6
-// Este script gestiona la autenticación y el auto-logout por inactividad
+/*
+ * auth-guard.js — Vigilancia de sesión e inactividad
+ * --------------------------------------------------
+ * Se apoya en los eventos que emite auth.js (auth:ready, auth:logout, …)
+ * y aplica un auto‑logout tras 60 minutos de desuso.
+ */
 
-(function() {
-  document.addEventListener('DOMContentLoaded', function() {
-    console.log("Auth-guard: Inicializando...");
+(function (window, document) {
+  "use strict";
 
-    // Verificar si AuthService está disponible
-    if (typeof window.AuthService === 'undefined') {
-      console.error("Auth-guard: Error - AuthService no está disponible. ¿El archivo auth.js está cargado correctamente?");
-      return;
-    }
+  const TAG = "[Auth‑guard]";
+  const log = (...a) => console.log(TAG, ...a);
 
-    // Cuando AuthService haya terminado el flujo de autenticación
-    // Usamos window para capturar el evento correctamente
-    window.addEventListener('auth:ready', function() {
-      console.log("Auth-guard: Evento auth:ready recibido");
-      if (!window.AuthService.isAuthenticated()) {
-        console.log("Auth-guard: Usuario no autenticado, haciendo logout");
-        window.AuthService.logout();        // token caducado o ausente ➜ logout
-      } else {
-        console.log("Auth-guard: Usuario autenticado correctamente");
+  const INACTIVITY_LIMIT = 60 * 60 * 1_000; // 60 min
+  let idleTimer;
+
+  /* --------------------------------------------------------- */
+  /* 1 · Control de inactividad                                */
+  /* --------------------------------------------------------- */
+  function resetIdle() {
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(() => {
+      log("Tiempo de inactividad excedido («logout» automático)");
+      window.AuthService.logout();
+    }, INACTIVITY_LIMIT);
+  }
+
+  /* --------------------------------------------------------- */
+  /* 2 · Arranque                                              */
+  /* --------------------------------------------------------- */
+  function boot() {
+    log("Iniciando guard…");
+
+    // Esperar a AuthService (máx 2 s)
+    let waited = 0;
+    const iv = setInterval(() => {
+      if (typeof window.AuthService === "undefined") {
+        if ((waited += 50) >= 2_000) {
+          console.error(TAG, "AuthService no detectado");
+          clearInterval(iv);
+        }
+        return;
       }
-    });
+      clearInterval(iv);
 
-    // Inicia autenticación o valida sesión existente
-    console.log("Auth-guard: Iniciando AuthService");
-    window.AuthService.init();
+      // Evento que confirma sesión lista
+      window.addEventListener("auth:ready", () => {
+        log("Evento auth:ready recibido");
+        if (!window.AuthService.isAuthenticated()) {
+          log("Sesión no válida — forzando logout");
+          window.AuthService.logout();
+        }
+      });
 
-    /* ------------------------------------------------------------------
-       Lógica de auto-logout tras 1 h de inactividad
-    ------------------------------------------------------------------ */
-    const INACTIVITY_LIMIT = 60 * 60 * 1000; // 1 hora en milisegundos
-    let idleTimer;
+      // Eventos de actividad
+      ["mousemove", "mousedown", "keydown", "touchstart", "scroll"].forEach(e =>
+        document.addEventListener(e, resetIdle, true)
+      );
 
-    function resetIdleTimer() {
-      clearTimeout(idleTimer);
-      idleTimer = setTimeout(function() {
-        console.log("Auth-guard: Tiempo de inactividad superado, haciendo logout");
-        window.AuthService.logout();
-      }, INACTIVITY_LIMIT);
-    }
+      resetIdle();
+      log(`Temporizador de inactividad activo (${INACTIVITY_LIMIT / 60000} min)`);
+    }, 50);
+  }
 
-    // Eventos que consideramos "actividad" del usuario
-    ['mousemove', 'mousedown', 'keydown', 'touchstart', 'scroll'].forEach(function(evt) {
-      document.addEventListener(evt, resetIdleTimer, true);
-    });
+  /* --------------------------------------------------------- */
+  /* 3 · Lanzamiento                                           */
+  /* --------------------------------------------------------- */
+  if (document.readyState !== "loading") {
+    boot();
+  } else {
+    document.addEventListener("DOMContentLoaded", boot);
+  }
 
-    // Arranca el contador en la primera carga
-    resetIdleTimer();
-    console.log("Auth-guard: Timer de inactividad iniciado (" + (INACTIVITY_LIMIT/60000) + " minutos)");
-  });
-
-  // Opcional: exponer funciones para debugging si es necesario
-  window.AuthGuard = {
-    version: '1.0.0'
-  };
-})();
+  /* --------------------------------------------------------- */
+  /* 4 · API mínima para debugging                             */
+  /* --------------------------------------------------------- */
+  window.AuthGuard = { version: "2.0.0", resetIdle };
+})(window, document);

@@ -1,88 +1,72 @@
-// auth-callback.js - Versión super-tolerante
-(function() {
-  function initCallback() {
-    console.log('[Auth-Callback] Iniciando procesamiento de callback OAuth');
+/*
+ * auth-callback.js — Landing page del flujo OAuth2 (PKCE + Amazon Cognito)
+ * ----------------------------------------------------------------------
+ * Funciona como "espera pasiva": deja que auth.js procese el código y
+ * simplemente reacciona a los eventos que emite (`auth:ready`, `auth:error`,
+ * `auth:needed`).
+ * Así evitamos la doble invocación de `handleCallback()` y los fetch
+ * cancelados.
+ */
 
-    // Función asíncrona para procesar el callback
-    async function processCallback() {
-      try {
-        // Verificar si AuthService está disponible
-        if (typeof window.AuthService === 'undefined') {
-          console.error('[Auth-Callback] AuthService no disponible');
-          setTimeout(processCallback, 100); // Reintentar
-          return;
-        }
+(function (window, document) {
+  "use strict";
 
-        console.log('[Auth-Callback] AuthService disponible, continuando...');
+  /* ------------------------------------------------------------- */
+  /* Utilidades                                                    */
+  /* ------------------------------------------------------------- */
+  const goHome = () => window.location.replace("../index.html");
+  const goDash = () => window.location.replace("../html/redireccion.html");
 
-        // Verificar código en URL
-        const params = new URLSearchParams(window.location.search);
-        const code = params.get('code');
+  /* ------------------------------------------------------------- */
+  /* Boot                                                          */
+  /* ------------------------------------------------------------- */
+  function boot() {
+    console.log("[Auth-Callback] Inicializando");
 
-        if (!code) {
-          console.warn('[Auth-Callback] No se encontró código de autorización en la URL');
-          window.location.replace('../index.html');
-          return;
-        }
-
-        console.log('[Auth-Callback] Código de autorización detectado');
-
-        // Intentar handleCallback hasta 3 veces con pausas entre intentos
-        let success = false;
-        let attempts = 0;
-
-        while (!success && attempts < 3) {
-          attempts++;
-          try {
-            console.log(`[Auth-Callback] Intento ${attempts} de handleCallback`);
-            success = await window.AuthService.handleCallback();
-
-            if (success) {
-              console.log('[Auth-Callback] Autenticación exitosa, redirigiendo al dashboard');
-              window.location.replace('../html/redireccion.html');
-              return;
-            } else if (window.AuthService.isAuthenticated()) {
-              // Si no funcionó pero aún así estamos autenticados
-              console.log('[Auth-Callback] handleCallback reportó fallo pero usuario está autenticado');
-              window.location.replace('../html/redireccion.html');
-              return;
-            }
-
-            console.log(`[Auth-Callback] Intento ${attempts} falló, esperando antes de reintentar...`);
-            // Esperar antes del siguiente intento
-            await new Promise(resolve => setTimeout(resolve, 500 * attempts));
-          } catch (err) {
-            console.error(`[Auth-Callback] Error en intento ${attempts}:`, err);
-
-            // Verificar si a pesar del error estamos autenticados
-            if (window.AuthService.isAuthenticated()) {
-              console.log('[Auth-Callback] A pesar del error, el usuario está autenticado');
-              window.location.replace('../html/redireccion.html');
-              return;
-            }
-
-            // Esperar antes del siguiente intento
-            await new Promise(resolve => setTimeout(resolve, 500 * attempts));
-          }
-        }
-
-        // Si llegamos aquí, todos los intentos fallaron
-        console.log('[Auth-Callback] Todos los intentos fallaron, redirigiendo al inicio');
-        window.location.replace('../index.html');
-      } catch (error) {
-        console.error('[Auth-Callback] Error general:', error);
-        window.location.replace('../index.html');
-      }
+    // 1 · Debe existir ?code= en la querystring
+    const qs = new URLSearchParams(window.location.search);
+    if (!qs.has("code")) {
+      console.warn("[Auth-Callback] Falta parámetro code");
+      return goHome();
     }
 
-    // Iniciar el proceso
-    processCallback();
+    // 2 · Esperar a que AuthService esté disponible (máx 2 s)
+    let waited = 0;
+    const iv = setInterval(() => {
+      if (typeof window.AuthService === "undefined") {
+        if ((waited += 50) >= 2_000) {
+          console.error("[Auth-Callback] AuthService no detectado");
+          clearInterval(iv);
+          goHome();
+        }
+        return;
+      }
+      clearInterval(iv);
+      hookEvents();
+    }, 50);
   }
 
-  // Iniciar cuando el DOM esté cargado
-  if (document.readyState !== 'loading') {
-    initCallback();
-  } else {
-    document.addEventListener('DOMContentLoaded', initCallback);
+  /* ------------------------------------------------------------- */
+  /* Registro de listeners                                         */
+  /* ------------------------------------------------------------- */
+  function hookEvents() {
+    console.log("[Auth-Callback] AuthService disponible, esperando resultado…");
+
+    // Sesión ya válida ⇒ directo al dashboard
+    if (window.AuthService.isAuthenticated()) return goDash();
+
+    // Reaccionar una sola vez a los eventos emitidos por auth.js
+    window.addEventListener("auth:ready",  goDash,  { once: true });
+    window.addEventListener("auth:error",  goHome,  { once: true });
+    window.addEventListener("auth:needed", goHome,  { once: true });
   }
-})();
+
+  /* ------------------------------------------------------------- */
+  /* Lanzamiento cuando DOM esté listo                             */
+  /* ------------------------------------------------------------- */
+  if (document.readyState !== "loading") {
+    boot();
+  } else {
+    document.addEventListener("DOMContentLoaded", boot);
+  }
+})(window, document);

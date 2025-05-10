@@ -4,8 +4,21 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Home</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <link rel="stylesheet" href="css/main.css">
+        <!-- 1 · Librerías externas -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+        <link rel="stylesheet" href="css/main.css" />
+        <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+
+        <!-- 2 · Core Auth (defer para que cargue antes de DOMContentLoaded) -->
+        <script src="js/auth.js" defer></script>
+
+        <!-- 3 · Resto de scripts propios (defer) -->
+        <script src="js/main.js"          defer></script>
+        <script src="js/logo-animation.js" defer></script>
+        <script src="js/nosotros.js"       defer></script>
+        <script src="js/locations.js"      defer></script>
+        <script src="js/contact.js"        defer></script>
+        <script src="js/language-switcher.js" defer></script>
     </head>
     <body>
  <!-- HEADER -->
@@ -563,51 +576,26 @@
             <i class="fas fa-arrow-up"></i>
         </div>
 
-        <!-- ... Importar JS ... -->
- <!-- Primero los scripts normales -->
- <script src="./js/main.js"></script>
- <script src="./js/logo-animation.js"></script>
- <script src="./js/nosotros.js"></script>
- <script src="./js/locations.js"></script>
- <script src="./js/contact.js"></script>
- <script src="./js/language-switcher.js"></script>
-
- <!-- Importar JWT Decode para el auth -->
- <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
-
- <!-- Reemplazar el script type="module" anterior con esto: -->
- <script src="./js/auth.js"></script>
+ <!-- =========================================================== -->
+ <!--  Script inline: attach Login                                -->
+ <!-- =========================================================== -->
  <script>
-     document.addEventListener("DOMContentLoaded", function() {
-       // Verificar si AuthService está disponible
-       if (typeof window.AuthService === 'undefined') {
-         console.error("Error: AuthService no está disponible. Verifica que auth.js esté cargado correctamente.");
+     document.addEventListener("DOMContentLoaded", () => {
+       if (typeof window.AuthService === "undefined") {
+         console.error("[Index] AuthService no cargado — revisa auth.js");
          return;
        }
 
-       // Configurar botones de login/signup
+       // Configurar botón de login (signup opcional)
        window.AuthService.attachLogin("loginBtn");
+       window.AuthService.attachSignUp?.("signUpBtn");
 
-       // Verificar si existe el botón de signup antes de configurarlo
-       const signUpBtn = document.getElementById("signUpBtn");
-       if (signUpBtn) {
-         window.AuthService.attachSignUp("signUpBtn");
-       }
-
-       // Inicializar AuthService
-       window.AuthService.init();
-
-       // Escuchar eventos de autenticación si es necesario
-       window.addEventListener("auth:ready", function() {
-         console.log("Usuario autenticado correctamente");
-         // Opcional: Puedes añadir lógica adicional aquí cuando el usuario esté autenticado
-       });
-
-       window.addEventListener("auth:needed", function() {
-         console.log("Usuario no autenticado");
-         // Opcional: Puedes añadir lógica adicional aquí cuando el usuario no esté autenticado
-       });
+       // Eventos informativos
+       window.addEventListener("auth:ready", () => console.log("[Index] Usuario autenticado"));
+       window.addEventListener("auth:needed", () => console.log("[Index] Usuario no autenticado"));
      });
  </script>
+
+
     </body>
 </html>

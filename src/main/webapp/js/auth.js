@@ -1,379 +1,264 @@
-// auth.js - Versión sin módulos ES6, compatible con entornos tradicionales
-(function(window) {
+/*
+ * auth.js — Servicio corporativo de autenticación PKCE para Amazon Cognito
+ * -------------------------------------------------------------------------
+ * Diseño clásico, sin módulos ES‑6. Compatible con proyectos legacy servidos
+ * por Tomcat. Optimizado para: simplicidad, trazabilidad y ausencia de
+ * condiciones de carrera.
+ */
+
+(function (window) {
   "use strict";
 
-  // Cargar jwtDecode directamente si no está disponible
-  if (typeof window.jwtDecode !== 'function') {
-    // Añadimos la referencia a jwtDecode directamente en el HTML
-    console.log("[Auth] Se recomienda añadir jwtDecode como script en el HTML");
+  /* ---------------------------------------------------------------------- */
+  /* 1 · Configuración de entorno                                           */
+  /* ---------------------------------------------------------------------- */
+
+  const CONFIG = {
+    DOMAIN:        "https://us-east-19ns1g8vpk.auth.us-east-1.amazoncognito.com",
+    CLIENT_ID:     "6omlacb6fjdnimu8dalu81ft0r",
+    REDIRECT_URI:  "http://localhost:8090/back/cognito/callback", // Debe
+                                                             // coincidir al
+                                                             // 100 % con AWS
+
+    // Endpoint interno (servlet) que canjea el código por los tokens.
+    CALLBACK_URL:  "/back/cognito/callback",
+
+    SCOPES:        "openid profile email",
+    PKCE_KEY:      "pkce_verifier",          // sessionStorage key
+    PROCESS_FLAG:  "cognito_processing",      // sessionStorage flag
+    DEBUG:         true                       // activar/desactivar logs
+  };
+
+  /* ---------------------------------------------------------------------- */
+  /* 2 · Logger minimalista (respeta CONFIG.DEBUG)                           */
+  /* ---------------------------------------------------------------------- */
+
+  const log = {
+    _p: (lvl, msg, args) => {
+      if (!CONFIG.DEBUG && lvl === "log") return;
+      // eslint-disable-next-line no-console
+      console[lvl](`[Auth] ${msg}`, ...args);
+    },
+    log:   function (m, ...a) { this._p("log", m, a); },
+    info:  function (m, ...a) { this._p("info", m, a); },
+    warn:  function (m, ...a) { this._p("warn", m, a); },
+    error: function (m, ...a) { this._p("error", m, a); }
+  };
+
+  /* ---------------------------------------------------------------------- */
+  /* 3 · Utilidades de codificación Base64URL                                */
+  /* ---------------------------------------------------------------------- */
+
+  function b64urlEncode(bytes) {
+    return btoa(String.fromCharCode.apply(null, bytes))
+      .replace(/\+/g, "-")
+      .replace(/\//g, "_")
+      .replace(/=+$/, "");
   }
 
-  // Configuración
-  const CONFIG = {
-    DOMAIN:        'https://us-east-19ns1g8vpk.auth.us-east-1.amazoncognito.com',
-    CLIENT_ID:     '6omlacb6fjdnimu8dalu81ft0r',
-    REDIRECT_URI:  'http://localhost:8090/back/html/callback.html',
-    CALLBACK_URL:  'http://localhost:8090/back/cognito/callback',
-    SCOPES:        'openid profile email',
-    PKCE_KEY:      'pkce_verifier',
-    DEBUG:         true
-  };
+  /* ---------------------------------------------------------------------- */
+  /* 4 · Servicio de autenticación                                          */
+  /* ---------------------------------------------------------------------- */
 
-  // Logger interno para controlar salida según CONFIG.DEBUG
-  const logger = {
-    log: function(msg, ...args) {
-      if (CONFIG.DEBUG) console.log(`[Auth] ${msg}`, ...args);
-    },
-    warn: function(msg, ...args) {
-      console.warn(`[Auth] ⚠️ ${msg}`, ...args);
-    },
-    error: function(msg, ...args) {
-      console.error(`[Auth] 🔴 ${msg}`, ...args);
-    },
-    info: function(msg, ...args) {
-      if (CONFIG.DEBUG) console.info(`[Auth] ℹ️ ${msg}`, ...args);
-    }
-  };
+  const AuthService = {
 
-  // Definición del servicio de autenticación
-  window.AuthService = {
-    // Decodifica el id_token y devuelve el payload, o null si falla
-    getUserData: function() {
-      const token = sessionStorage.getItem('id_token');
-      if (!token) {
-        logger.warn("No hay token de ID disponible");
-        return null;
-      }
+    /* ------------------------------------------------------------------ */
+    /* 4.1 · PKCE                                                         */
+    /* ------------------------------------------------------------------ */
 
-      try {
-        // Usar la función jwtDecode global si está disponible
-        if (typeof window.jwtDecode === 'function') {
-          return window.jwtDecode(token);
-        } else if (typeof jwt_decode === 'function') {
-          // Compatibilidad con diferentes versiones
-          return jwt_decode(token);
-        } else {
-          // Alternativa manual si no hay decodificador disponible
-          logger.warn("jwtDecode no disponible, usando decodificación manual básica");
-          const payload = token.split('.')[1];
-          if (!payload) throw new Error("Token malformado");
-          return JSON.parse(atob(payload.replace(/-/g, '+').replace(/_/g, '/')));
-        }
-      } catch (err) {
-        logger.error("Error decodificando JWT:", err);
-        return null;
-      }
-    },
-
-    // Genera code_verifier y code_challenge para PKCE
-    createPkceChallenge: async function() {
-      logger.info("Generando PKCE challenge");
+    async _generatePkce() {
+      log.info("Generando challenge PKCE");
       const randomBytes = crypto.getRandomValues(new Uint8Array(32));
-      const verifier = this._base64UrlEncode(randomBytes);
-      const hashBuffer = await crypto.subtle.digest(
-        'SHA-256',
+      const verifier    = b64urlEncode(randomBytes);
+
+      const hash        = await crypto.subtle.digest(
+        "SHA-256",
         new TextEncoder().encode(verifier)
       );
-      const challenge = this._base64UrlEncode(new Uint8Array(hashBuffer));
-      localStorage.setItem(CONFIG.PKCE_KEY, verifier);
+      const challenge   = b64urlEncode(new Uint8Array(hash));
+
+      sessionStorage.setItem(CONFIG.PKCE_KEY, verifier);
       return challenge;
     },
 
-    _base64UrlEncode: function(buffer) {
-      return btoa(String.fromCharCode(...buffer))
-        .replace(/\+/g, '-')
-        .replace(/\//g, '_')
-        .replace(/=+$/, '');
+    /* ------------------------------------------------------------------ */
+    /* 4.2 · Redirección a Cognito                                        */
+    /* ------------------------------------------------------------------ */
+
+    async _redirectToCognito(signUp) {
+      const challenge = await this._generatePkce();
+
+      const qs = new URLSearchParams({
+        response_type:         "code",
+        client_id:             CONFIG.CLIENT_ID,
+        redirect_uri:          CONFIG.REDIRECT_URI,
+        scope:                 CONFIG.SCOPES,
+        code_challenge_method: "S256",
+        code_challenge:        challenge
+      });
+      if (signUp) qs.set("screen_hint", "signup");
+
+      const url = `${CONFIG.DOMAIN}/oauth2/authorize?${qs.toString()}`;
+      log.info("Redirigiendo a Cognito →", url);
+      window.location.href = url;
     },
 
-    // Redirige a Cognito para login/signup
-    redirectToCognito: async function(signUp = false) {
+    login()  { this._redirectToCognito(false); },
+    signUp() { this._redirectToCognito(true);  },
+
+    /* ------------------------------------------------------------------ */
+    /* 4.3 · Callback: canjear código por tokens                           */
+    /* ------------------------------------------------------------------ */
+
+    async handleCallback() {
+      // Candado contra ejecuciones duplicadas
+      if (sessionStorage.getItem(CONFIG.PROCESS_FLAG)) {
+        log.warn("handleCallback() duplicado — abortado");
+        return false;
+      }
+      sessionStorage.setItem(CONFIG.PROCESS_FLAG, "1");
+
+      const clearFlag = () => sessionStorage.removeItem(CONFIG.PROCESS_FLAG);
+
       try {
-        logger.info(`Iniciando redirección para ${signUp ? 'signup' : 'login'}`);
-        const challenge = await this.createPkceChallenge();
-
-        // Logs para depuración
-        const verifier = localStorage.getItem(CONFIG.PKCE_KEY);
-        logger.info("PKCE code_verifier:", verifier);
-        logger.info("PKCE code_challenge:", challenge);
-
-        const params = new URLSearchParams({
-          response_type:         'code',
-          client_id:             CONFIG.CLIENT_ID,
-          redirect_uri:          CONFIG.REDIRECT_URI,
-          scope:                 CONFIG.SCOPES,
-          code_challenge_method: 'S256',
-          code_challenge:        challenge
-        });
-
-        if (signUp) {
-          params.set('screen_hint', 'signup');
+        const params   = new URLSearchParams(window.location.search);
+        const code     = params.get("code");
+        if (!code) {
+          log.warn("URL sin parámetro code");
+          return false;
         }
 
-        const redirectUrl = `${CONFIG.DOMAIN}/oauth2/authorize?${params.toString()}`;
-        logger.info(`Redirigiendo a: ${redirectUrl}`);
-        window.location.href = redirectUrl;
+        const verifier = sessionStorage.getItem(CONFIG.PKCE_KEY);
+        if (!verifier) throw new Error("code_verifier ausente (sesión caducada)");
 
-      } catch (err) {
-        logger.error("PKCE error:", err);
-        alert('Error al iniciar autenticación. Consulta la consola del navegador.');
-      }
-    },
-
-    login: function() {
-      logger.info("Iniciando login");
-      return this.redirectToCognito(false);
-    },
-
-    signUp: function() {
-      logger.info("Iniciando registro");
-      return this.redirectToCognito(true);
-    },
-
-    // Maneja el callback de Cognito: intercambia code por tokens
-    handleCallback: async function() {
-      logger.info("Procesando callback OAuth");
-
-      const params = new URLSearchParams(window.location.search);
-      const code = params.get('code');
-      if (!code) {
-        logger.warn("No se encontró código de autorización en la URL");
-        return false;
-      }
-
-      const verifier = localStorage.getItem(CONFIG.PKCE_KEY);
-      if (!verifier) {
-        logger.error("Verifier no encontrado, la sesión puede haber expirado");
-        alert('Sesión expirada. Vuelve a iniciar sesión.');
-        return false;
-      }
-
-      try {
-        logger.info("Intercambiando código por tokens...");
+        log.info("Intercambiando código por tokens…");
         const res = await fetch(CONFIG.CALLBACK_URL, {
-          method:  'POST',
-          headers: { 'Content-Type': 'application/json' },
+          method:  "POST",
+          headers: { "Content-Type": "application/json" },
           body:    JSON.stringify({ code, verifier })
         });
 
-        if (!res.ok) {
-          const errorText = await res.text().catch(() => 'Error desconocido');
-          throw new Error(`${res.status} ${res.statusText}: ${errorText}`);
-        }
+        const body = await res.text();
+        if (!res.ok) throw new Error(`${res.status} ${res.statusText}: ${body}`);
 
-        const data = await res.json();
-        logger.info("Intercambio de tokens exitoso");
+        const data = JSON.parse(body);
 
-        // 1) Guardar tokens
-        sessionStorage.setItem('id_token', data.id_token);
-        sessionStorage.setItem('access_token', data.access_token);
-        sessionStorage.setItem(
-          'expires_at',
-          (Date.now() + data.expires_in * 1000).toString()
-        );
+        sessionStorage.setItem("id_token",     data.id_token);
+        sessionStorage.setItem("access_token", data.access_token);
+        sessionStorage.setItem("expires_at",   `${Date.now() + data.expires_in * 1000}`);
+        if (data.refresh_token) sessionStorage.setItem("refresh_token", data.refresh_token);
 
-        if (data.refresh_token) {
-          localStorage.setItem('refresh_token', data.refresh_token);
-          logger.info("Token de actualización guardado para uso futuro");
-        }
-
-        // 2) Limpiar PKCE
-        localStorage.removeItem(CONFIG.PKCE_KEY);
-
-        // 3) Avisar al resto de la app
-        logger.info("Emitiendo evento auth:ready");
-        window.dispatchEvent(new Event('auth:ready'));
+        sessionStorage.removeItem(CONFIG.PKCE_KEY);
+        log.info("Tokens almacenados con éxito");
+        window.dispatchEvent(new Event("auth:ready"));
         return true;
-
       } catch (err) {
-        logger.error("Error en intercambio de tokens:", err);
-        alert('Error en autenticación. Consulta la consola del navegador.');
-        localStorage.removeItem(CONFIG.PKCE_KEY);
+        log.error("Error en callback:", err);
+        window.dispatchEvent(new Event("auth:error"));
         return false;
+      } finally {
+        clearFlag();
       }
     },
 
-    // ¿Hay sesión activa?
-    isAuthenticated: function() {
-      // Verificar AMBOS tokens (id_token y access_token)
-      const idToken = sessionStorage.getItem('id_token');
-      const accessToken = sessionStorage.getItem('access_token');
-      const expires = parseInt(sessionStorage.getItem('expires_at') || '0', 10);
+    /* ------------------------------------------------------------------ */
+    /* 4.4 · Estado de sesión                                             */
+    /* ------------------------------------------------------------------ */
 
-      const isValid = Boolean(idToken && accessToken && Date.now() < expires);
-      logger.info(`Usuario autenticado: ${isValid}`);
+    _now()        { return Date.now(); },
+    _expiresAt()  { return parseInt(sessionStorage.getItem("expires_at") || "0", 10); },
 
-      // Si está a punto de expirar (menos de 5 minutos), intentar renovar
-      if (isValid && (expires - Date.now() < 5 * 60 * 1000)) {
-        logger.info("Tokens a punto de expirar, intentando renovación automática");
-        this.refreshToken().catch(err => logger.error("Error en renovación automática:", err));
-      }
-
-      return isValid;
+    isAuthenticated() {
+      const valid = Boolean(
+        sessionStorage.getItem("id_token") &&
+        sessionStorage.getItem("access_token") &&
+        this._now() < this._expiresAt()
+      );
+      log.info("Usuario autenticado:", valid);
+      return valid;
     },
 
-    // Renovar tokens usando refresh_token
-    refreshToken: async function() {
-      const refreshToken = localStorage.getItem('refresh_token');
-      if (!refreshToken) {
-        logger.error("No hay refresh_token disponible");
-        return false;
-      }
+    /* ------------------------------------------------------------------ */
+    /* 4.5 · Renovación de tokens mediante refresh_token                   */
+    /* ------------------------------------------------------------------ */
+
+    async refreshToken() {
+      const refresh = sessionStorage.getItem("refresh_token");
+      if (!refresh) return false;
 
       try {
-        logger.info("Intentando renovar tokens...");
-
-        const res = await fetch('/back/cognito/refresh', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ refresh_token: refreshToken })
+        const res  = await fetch("/back/cognito/refresh", {
+          method:  "POST",
+          headers: { "Content-Type": "application/json" },
+          body:    JSON.stringify({ refresh_token: refresh })
         });
+        const body = await res.text();
+        if (!res.ok) throw new Error(body);
 
-        if (!res.ok) {
-          const errorText = await res.text().catch(() => 'Error desconocido');
-          throw new Error(`${res.status}: ${errorText}`);
-        }
+        const data = JSON.parse(body);
+        sessionStorage.setItem("id_token",     data.id_token);
+        sessionStorage.setItem("access_token", data.access_token);
+        sessionStorage.setItem("expires_at",   `${this._now() + data.expires_in * 1000}`);
 
-        const data = await res.json();
-
-        // Actualizar tokens
-        sessionStorage.setItem('id_token', data.id_token);
-        sessionStorage.setItem('access_token', data.access_token);
-        sessionStorage.setItem(
-          'expires_at',
-          (Date.now() + data.expires_in * 1000).toString()
-        );
-
-        logger.info("Tokens renovados correctamente");
-        // Notificar a la aplicación que los tokens se han renovado
-        window.dispatchEvent(new Event('auth:refreshed'));
+        window.dispatchEvent(new Event("auth:refreshed"));
         return true;
-
-      } catch (error) {
-        logger.error("Error al renovar tokens:", error);
+      } catch (err) {
+        log.error("Fallo al renovar tokens:", err);
         return false;
       }
     },
 
-    // Logout limpio
-    logout: function() {
-      logger.info("Iniciando proceso de logout");
+    /* ------------------------------------------------------------------ */
+    /* 4.6 · Logout limpio                                                */
+    /* ------------------------------------------------------------------ */
 
-      // Limpiar tokens
+    logout() {
+      log.info("Ejecutando logout");
       sessionStorage.clear();
-      localStorage.removeItem('refresh_token');
-
-      // Limpiar cualquier estado relacionado con OAuth
-      localStorage.removeItem(CONFIG.PKCE_KEY);
-
-      // Emitir evento antes de la redirección
-      window.dispatchEvent(new Event('auth:logout'));
-
-      // Redireccionar a home
-      logger.info("Redirigiendo a página de inicio");
-      window.location.href = '/back';
+      window.dispatchEvent(new Event("auth:logout"));
+      window.location.href = "/back"; // Home del contexto
     },
 
-    // Configurar botones de login/signup
-    attachLogin: function(btnId = 'loginBtn') {
-      const btn = document.getElementById(btnId);
-      if (btn) {
-        logger.info(`Configurando botón de login (${btnId})`);
-        // Usar bind para mantener el contexto de 'this'
-        btn.addEventListener('click', this.login.bind(this));
-      } else {
-        logger.warn(`Botón de login (${btnId}) no encontrado`);
-      }
-    },
+    /* ------------------------------------------------------------------ */
+    /* 4.7 · Helpers públicos                                              */
+    /* ------------------------------------------------------------------ */
 
-    attachSignUp: function(btnId = 'signUpBtn') {
-      const btn = document.getElementById(btnId);
-      if (btn) {
-        logger.info(`Configurando botón de signup (${btnId})`);
-        // Usar bind para mantener el contexto de 'this'
-        btn.addEventListener('click', this.signUp.bind(this));
-      } else {
-        logger.warn(`Botón de signup (${btnId}) no encontrado`);
-      }
-    },
-
-    // Inicialización: procesa callback o dispara auth:ready
-    init: function() {
-      logger.info("Iniciando AuthService");
-
-      // Autoiniciación asíncrona
-      const self = this;
-      (async function() {
-        try {
-          // 1) Si hay code en URL, lo intercambiamos
-          if (window.location.search.includes('code=')) {
-            logger.info("Código detectado en URL, procesando callback");
-            const ok = await self.handleCallback();
-            // Limpiar querystring
-            window.history.replaceState({}, document.title, window.location.pathname);
-            if (ok) return;
-          }
-
-          // 2) Si ya estamos autenticados, avisamos
-          if (self.isAuthenticated()) {
-            logger.info("Usuario ya autenticado, emitiendo auth:ready");
-            window.dispatchEvent(new Event('auth:ready'));
-          } else {
-            logger.info("Usuario no autenticado, emitiendo auth:needed");
-            window.dispatchEvent(new Event('auth:needed'));
-          }
-        } catch (err) {
-          logger.error("Error durante la inicialización:", err);
-          // Intentar recuperarse emitiendo auth:needed
-          window.dispatchEvent(new Event('auth:needed'));
-        }
-      })();
-    },
-
-    // Métodos adicionales
-    getAccessToken: function() {
-      return sessionStorage.getItem('access_token');
-    },
-
-    willExpireSoon: function(minutesThreshold = 5) {
-      const expires = parseInt(sessionStorage.getItem('expires_at') || '0', 10);
-      const timeUntilExpiry = expires - Date.now();
-      return timeUntilExpiry < (minutesThreshold * 60 * 1000);
-    },
-
-    getExpirationTime: function() {
-      const expires = parseInt(sessionStorage.getItem('expires_at') || '0', 10);
-      if (!expires) return 'No disponible';
-
-      const date = new Date(expires);
-      return date.toLocaleString();
-    },
-
-    hasRoles: function(requiredRoles = []) {
-      if (!this.isAuthenticated()) return false;
-
-      const userData = this.getUserData() || {};
-      const userGroups = Array.isArray(userData["cognito:groups"])
-        ? userData["cognito:groups"]
-        : [];
-
-      return requiredRoles.some(role => userGroups.includes(role));
-    },
-
-    isAdmin: function() {
-      return this.hasRoles(['admin']);
-    },
-
-    isWorker: function() {
-      return this.hasRoles(['trabajador']);
-    }
+    getAccessToken() { return sessionStorage.getItem("access_token"); },
+    attachLogin (id = "loginBtn")   { document.getElementById(id)?.addEventListener("click", () => this.login()); },
+    attachSignUp(id = "signUpBtn")  { document.getElementById(id)?.addEventListener("click", () => this.signUp()); }
   };
 
-  // Iniciar automáticamente si se incluye este script
-  logger.info("Script auth.js cargado, esperando DOMContentLoaded");
-  document.addEventListener('DOMContentLoaded', function() {
-    logger.info("DOMContentLoaded, iniciando AuthService");
-    window.AuthService.init();
+  /* ---------------------------------------------------------------------- */
+  /* 5 · Inicialización automática                                          */
+  /* ---------------------------------------------------------------------- */
+
+  log.info("auth.js cargado — esperando DOMContentLoaded");
+
+  document.addEventListener("DOMContentLoaded", () => {
+    log.info("DOM listo — inicializando AuthService");
+
+    (async () => {
+      // 1) Procesar callback si procede
+      if (window.location.search.includes("code=")) {
+        const ok = await AuthService.handleCallback();
+        // Limpiar querystring
+        history.replaceState({}, document.title, window.location.pathname);
+        if (ok) return;
+      }
+
+      // 2) Emitir evento según estado actual
+      if (AuthService.isAuthenticated()) {
+        window.dispatchEvent(new Event("auth:ready"));
+      } else {
+        window.dispatchEvent(new Event("auth:needed"));
+      }
+    })();
   });
+
+  /* ---------------------------------------------------------------------- */
+  /* 6 · Exponer servicio global                                           */
+  /* ---------------------------------------------------------------------- */
+
+  window.AuthService = AuthService;
 
 })(window);
