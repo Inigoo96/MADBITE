@@ -12,27 +12,207 @@
 
   <!-- 2 · Estilos minimalistas -->
   <style>
-    :root { color-scheme: dark; }
+    :root {
+      color-scheme: dark;
+      --madbite-cyan: #00e8ff;
+      --madbite-magenta: #ff00aa;
+      --madbite-dark: #000000;
+      --madbite-text: #ffffff;
+      --madbite-box: rgba(10, 10, 10, 0.85);
+      --madbite-error: #ff3e3e;
+      --box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+      --transition: all 0.3s ease;
+      --border-radius: 8px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      margin: 0; display: grid; place-items: center; height: 100vh;
-      font-family: Arial, sans-serif; background:#111; color:#f0f0f0;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      height: 100vh;
+      font-family: 'Arial', sans-serif;
+      background: var(--madbite-dark);
+      color: var(--madbite-text);
+      background-image:
+        linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
+        url('../assets/images/backgrounds/portada_burguer.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
     }
+
     .box {
-      text-align:center; padding:2rem; border-radius:8px; background:#222;
-      box-shadow:0 4px 12px rgba(0,0,0,.5);
+      text-align: center;
+      padding: 2.5rem;
+      border-radius: var(--border-radius);
+      background: var(--madbite-box);
+      box-shadow: var(--box-shadow);
+      width: 90%;
+      max-width: 400px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(8px);
     }
+
+    .box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--madbite-cyan), var(--madbite-magenta));
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Título con efecto neón similar a la imagen */
+    h2 span:first-child {
+      color: transparent;
+      -webkit-text-stroke: 1px #fff;
+      position: relative;
+      display: inline-block;
+    }
+
+    h2 span:last-child {
+      color: transparent;
+      -webkit-text-stroke: 1px #fff;
+      position: relative;
+      display: inline-block;
+    }
+
+    h2 span:first-child::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: -1;
+      color: var(--madbite-cyan);
+      filter: blur(8px);
+    }
+
+    h2 span:last-child::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: -1;
+      color: var(--madbite-magenta);
+      filter: blur(8px);
+    }
+
+    h2 span:first-child {
+      text-shadow:
+        0 0 5px var(--madbite-cyan),
+        0 0 10px var(--madbite-cyan),
+        0 0 20px var(--madbite-cyan);
+    }
+
+    h2 span:last-child {
+      text-shadow:
+        0 0 5px var(--madbite-magenta),
+        0 0 10px var(--madbite-magenta),
+        0 0 20px var(--madbite-magenta);
+    }
+
     .spinner {
-      width:48px; height:48px; border:5px solid rgba(0,232,255,.3);
-      border-radius:50%; border-top-color:#00e8ff; margin:1.5rem auto;
-      animation:spin 1s linear infinite;
+      width: 60px;
+      height: 60px;
+      border: 4px solid rgba(0, 0, 0, 0.1);
+      border-radius: 50%;
+      border-top-color: var(--madbite-cyan);
+      border-bottom-color: var(--madbite-magenta);
+      margin: 1.8rem auto;
+      animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+      box-shadow:
+        0 0 15px rgba(0, 232, 255, 0.5),
+        0 0 30px rgba(0, 232, 255, 0.2);
     }
-    @keyframes spin { to{transform:rotate(360deg);} }
-    .err { display:none; color:#ff3e3e; margin-top:1rem; }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .msg {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 0.5rem;
+      animation: pulse 2s infinite;
+      letter-spacing: 0.5px;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.7; }
+      50% { opacity: 1; }
+      100% { opacity: 0.7; }
+    }
+
+    .err {
+      display: none;
+      color: var(--madbite-error);
+      margin-top: 1rem;
+      padding: 0.8rem;
+      background: rgba(255, 62, 62, 0.1);
+      border-radius: 4px;
+      border-left: 3px solid var(--madbite-error);
+      font-size: 0.95rem;
+      text-align: left;
+      box-shadow: 0 0 10px rgba(255, 62, 62, 0.2);
+    }
+
+    /* Efecto de neón para el texto de error */
+    .err.visible {
+      animation: errorPulse 2s infinite;
+    }
+
+    @keyframes errorPulse {
+      0% { box-shadow: 0 0 5px rgba(255, 62, 62, 0.3); }
+      50% { box-shadow: 0 0 15px rgba(255, 62, 62, 0.5); }
+      100% { box-shadow: 0 0 5px rgba(255, 62, 62, 0.3); }
+    }
+
+    /* Responsive */
+    @media (max-width: 450px) {
+      .box {
+        padding: 2rem 1.5rem;
+        width: 95%;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .spinner {
+        width: 50px;
+        height: 50px;
+        margin: 1.5rem auto;
+      }
+    }
   </style>
 </head>
 <body>
 <div class="box">
-  <h2>Procesando tu autenticación…</h2>
+  <h2>
+    <span data-text="PROCESANDO">PROCESANDO</span>
+    <span data-text="AUTENTICACIÓN">AUTENTICACIÓN</span>
+  </h2>
   <div class="spinner"></div>
   <p class="msg">Estamos verificando tu identidad…</p>
   <p id="err" class="err">Error en la autenticación. Redirigiendo…</p>
@@ -44,7 +224,12 @@
     const err = document.getElementById("err");
     const msg = document.querySelector(".msg");
 
-    const showError = text => { err.textContent = text; err.style.display = "block"; msg.style.display = "none"; };
+    const showError = text => {
+      err.textContent = text;
+      err.style.display = "block";
+      err.classList.add("visible");
+      msg.style.display = "none";
+    };
 
     window.addEventListener("auth:error", () => showError("Error en la autenticación. Intenta de nuevo."));
 
