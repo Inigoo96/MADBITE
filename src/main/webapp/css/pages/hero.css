@@ -147,11 +147,17 @@ html, body {
 }
 
 .text-cyan {
-  text-shadow: 0 0 10px rgba(0, 232, 255, 0);
+  color: var(--madbite-cyan);
+  text-shadow:
+    0 0 10px rgba(0, 232, 255, 0.7),
+    0 0 20px rgba(0, 232, 255, 0.5);
 }
 
 .text-magenta {
-  text-shadow: 0 0 10px rgba(255, 0, 170, 0);
+  color: var(--madbite-magenta);
+  text-shadow:
+    0 0 10px rgba(255, 0, 170, 0.7),
+    0 0 20px rgba(255, 0, 170, 0.5);
 }
 
 /* Create the neon contour effect */
